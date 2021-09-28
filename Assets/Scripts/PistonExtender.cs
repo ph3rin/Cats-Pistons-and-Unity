@@ -13,7 +13,7 @@ namespace CatProcessingUnit
             new Vector2Int(0, -1)
         };
 
-        private static HashSet<WorkshopTile> GetGluedBlocks(WorkshopTile startTile, 
+        private static HashSet<WorkshopTile> GetGluedBlocks(WorkshopTile startTile, Vector2Int moveDirection,
             WorkshopTile ignoreTileA, WorkshopTile ignoreTileB = null)
         {
             Debug.Assert(startTile != null);
@@ -24,14 +24,17 @@ namespace CatProcessingUnit
             while (queue.Count > 0)
             {
                 var front = queue.Dequeue();
+                var position = front.Position;
                 foreach (var delta in Deltas)
                 {
-                    var position = front.Position;
-                    position += delta;
-                    var tile = workshop.GetTileAt(position);
-                    if (tile == null || visited.Contains(tile) || tile == ignoreTileA || tile == ignoreTileB) continue;
-                    visited.Add(tile);
-                    queue.Enqueue(tile);
+                    var neighborPosition = position + delta;
+                    var neighborTile = workshop.GetTileAt(neighborPosition);
+                    if (neighborTile == null || visited.Contains(neighborTile) || neighborTile == ignoreTileA ||
+                        neighborTile == ignoreTileB) continue;
+                    if (delta != moveDirection && !front.IsStickyOnOrientation(delta) &&
+                        !neighborTile.IsStickyOnOrientation(-delta)) continue;
+                    visited.Add(neighborTile);
+                    queue.Enqueue(neighborTile);
                 }
             }
 
@@ -46,11 +49,12 @@ namespace CatProcessingUnit
             var tileCoordinates = tileData.ToCoordinates();
             if (startTile != null)
             {
-                var gluedTiles = GetGluedBlocks(startTile, pistonTile);
+                var gluedTiles = GetGluedBlocks(startTile, direction, pistonTile);
                 tileCoordinates.Translate(gluedTiles, direction);
             }
 
             var pistonArm = TileFactory.I.CreatePistonArm(pistonTile.Workshop, pistonTile.Orientation);
+            pistonArm.IsSticky = pistonTile.IsSticky;
             tileCoordinates.SetTilePosition(pistonArm, startTilePosition);
             if (tileCoordinates.IsValidLayout())
             {
@@ -74,9 +78,11 @@ namespace CatProcessingUnit
             tileCoordinates.SetTilePosition(armTile, null);
             if (pullTile != null)
             {
-                var gluedTiles = GetGluedBlocks(pullTile, pistonTile, armTile);
+                var gluedTiles = GetGluedBlocks(armTile, -orientation, pistonTile, armTile);
+                gluedTiles.Remove(armTile);
                 tileCoordinates.Translate(gluedTiles, -orientation);
             }
+
             if (tileCoordinates.IsValidLayout())
             {
                 tileData.ApplyCoordinates(tileCoordinates);

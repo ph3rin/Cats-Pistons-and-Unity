@@ -19,5 +19,10 @@ namespace CatProcessingUnit
         public virtual void RefreshDisplay()
         {
         }
+
+        public virtual bool IsStickyOnOrientation(Vector2Int orientation)
+        {
+            return false;
+        }
     }
 }

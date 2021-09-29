@@ -27,7 +27,7 @@ namespace CatProcessingUnit
                 eventData.button == PointerEventData.InputButton.Left)
             {
                 IsSticky = !IsSticky;
-                Workshop.RefreshTileRenderers();
+                Workshop.Refresh();
             }
         }
     }

@@ -11,6 +11,7 @@ namespace CatProcessingUnit
             for (var i = 0; i < parent.childCount; ++i)
             {
                 var child = parent.GetChild(i);
+                if (!child.gameObject.activeInHierarchy) continue; 
                 var localPos = child.localPosition;
                 var x = Mathf.RoundToInt(localPos.x);
                 var y = Mathf.RoundToInt(localPos.y);

@@ -27,7 +27,7 @@ namespace CatProcessingUnit
             if (PistonExtender.ExtendPiston(Workshop.TileData, this, _orientation))
             {
                 _extended = true;
-                Workshop.RefreshTileRenderers();
+                Workshop.Refresh();
                 FindObjectOfType<AudioManager>().Play("extendPiston");
             }
         }
@@ -38,7 +38,7 @@ namespace CatProcessingUnit
             if (PistonExtender.RetractPiston(Workshop.TileData, this, _orientation))
             {
                 _extended = false;
-                Workshop.RefreshTileRenderers();
+                Workshop.Refresh();
                 FindObjectOfType<AudioManager>().Play("retractPiston");
             }
         }
@@ -81,7 +81,7 @@ namespace CatProcessingUnit
                     ((PistonArmTile) Workshop.GetTileAt(Position + _orientation)).IsSticky = IsSticky;
                 }
 
-                Workshop.RefreshTileRenderers();
+                Workshop.Refresh();
             }
         }
     }

@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Guides
+    uniqueID: 2402941233
+    locked: 0
+  - name: Markers
+    uniqueID: 2937307041
+    locked: 0
+  - name: Tiles
+    uniqueID: 1249478155
+    locked: 0

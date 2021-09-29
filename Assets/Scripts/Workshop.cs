@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CatProcessingUnit
 {
@@ -11,6 +13,7 @@ namespace CatProcessingUnit
         [SerializeField] private GameObject _gridGuidePrefab;
 
         [SerializeField] private List<Color> _targetColors;
+        private List<Vector2Int> _targetPositions;
         
         private WorkshopTileData _tileData;
         
@@ -20,6 +23,11 @@ namespace CatProcessingUnit
         {
             return _targetColors[targetIndex];
         }
+
+        public Vector2Int GetTargetPosition(int targetIndex)
+        {
+            return _targetPositions[targetIndex];
+        }
         
         private void Awake()
         {
@@ -28,6 +36,17 @@ namespace CatProcessingUnit
                 tile.Workshop = this;
             }
 
+            _targetPositions = new Vector2Int[_targetColors.Count].ToList(); 
+            
+            foreach (var target in transform.GetComponentsInChildren<TargetTile>())
+            {
+                var fPos = target.transform.localPosition;
+                var pos = new Vector2Int(Mathf.RoundToInt(fPos.x), Mathf.RoundToInt(fPos.y));
+                var idx = target.Index;
+                target.SetColor(GetTargetColor(idx));
+                _targetPositions[idx] = pos;
+            }
+            
             for (var x = 0; x < _width; ++x)
             {
                 for (var y = 0; y < _height; ++y)
@@ -41,7 +60,7 @@ namespace CatProcessingUnit
         private void Start()
         {
             _tileData = new WorkshopTileData(TileBaker.BakeTiles(transform, _width, _height));
-            RefreshTileRenderers();
+            Refresh();
         }
 
         public WorkshopTile GetTileAt(Vector2Int position)
@@ -54,7 +73,7 @@ namespace CatProcessingUnit
             _tileData = data;
         }
 
-        public void RefreshTileRenderers()
+        public void Refresh()
         {
             foreach (var tile in _tileData.Tiles)
             {
@@ -62,6 +81,32 @@ namespace CatProcessingUnit
                 tileTr.SetParent(transform);
                 tileTr.localPosition = new Vector3(tile.Position.x, tile.Position.y, tileTr.localPosition.z);
                 tile.RefreshDisplay();
+            }
+
+            var win = true;
+            foreach (var tile in _tileData.Tiles)
+            {
+                if (tile is ColorTile colorTile)
+                {
+                    if (colorTile.Position != GetTargetPosition(colorTile.Index))
+                    {
+                        win = false;
+                        break;
+                    }
+                }
+            }
+
+            if (win)
+            {
+                Debug.Log("You win!");
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }

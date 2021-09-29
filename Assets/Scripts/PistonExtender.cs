@@ -76,12 +76,9 @@ namespace CatProcessingUnit
             var pullTile = tileData.GetTileAt(pullTilePosition);
             var tileCoordinates = tileData.ToCoordinates();
             tileCoordinates.SetTilePosition(armTile, null);
-            if (pullTile != null)
-            {
-                var gluedTiles = GetGluedBlocks(armTile, -orientation, pistonTile, armTile);
-                gluedTiles.Remove(armTile);
-                tileCoordinates.Translate(gluedTiles, -orientation);
-            }
+            var gluedTiles = GetGluedBlocks(armTile, -orientation, pistonTile, armTile);
+            gluedTiles.Remove(armTile);
+            tileCoordinates.Translate(gluedTiles, -orientation);
 
             if (tileCoordinates.IsValidLayout())
             {

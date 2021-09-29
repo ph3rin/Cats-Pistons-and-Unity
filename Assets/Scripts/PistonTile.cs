@@ -28,6 +28,7 @@ namespace CatProcessingUnit
             {
                 _extended = true;
                 Workshop.RefreshTileRenderers();
+                FindObjectOfType<AudioManager>().Play("extendPiston");
             }
         }
 
@@ -38,6 +39,7 @@ namespace CatProcessingUnit
             {
                 _extended = false;
                 Workshop.RefreshTileRenderers();
+                FindObjectOfType<AudioManager>().Play("retractPiston");
             }
         }
 

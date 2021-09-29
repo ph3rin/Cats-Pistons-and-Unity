@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CatProcessingUnit
@@ -7,16 +8,33 @@ namespace CatProcessingUnit
     {
         [SerializeField] private int _width;
         [SerializeField] private int _height;
+        [SerializeField] private GameObject _gridGuidePrefab;
 
+        [SerializeField] private List<Color> _targetColors;
+        
         private WorkshopTileData _tileData;
-
+        
         public WorkshopTileData TileData => _tileData;
 
+        public Color GetTargetColor(int targetIndex)
+        {
+            return _targetColors[targetIndex];
+        }
+        
         private void Awake()
         {
             foreach (var tile in transform.GetComponentsInChildren<WorkshopTile>())
             {
                 tile.Workshop = this;
+            }
+
+            for (var x = 0; x < _width; ++x)
+            {
+                for (var y = 0; y < _height; ++y)
+                {
+                    var guide = Instantiate(_gridGuidePrefab, transform);
+                    guide.transform.localPosition = new Vector2(x, y);
+                }
             }
         }
 

@@ -22,6 +22,13 @@ namespace CatProcessingUnit
                 }
 
                 tile.Position = new Vector2Int(x, y);
+                if (tile is OrientedTile orientedTile)
+                {
+                    var right = orientedTile.transform.right;
+                    orientedTile.Orientation =
+                        new Vector2Int(Mathf.RoundToInt(right.x), Mathf.RoundToInt(right.y));
+                }
+
                 tiles[x, y] = tile;
             }
 

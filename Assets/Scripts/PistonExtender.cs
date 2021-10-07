@@ -44,16 +44,17 @@ namespace CatProcessingUnit
         
         
         public static HashSet<WorkshopTile> GetGluedBlock(
-            Workshop workshop,
+            this Workshop workshop,
             Vector2Int moveDirection,
-            HashSet<WorkshopTile> staticBlocks,
-            HashSet<TileConnection> translateBlockPositions)
+            HashSet<WorkshopTile> startTiles,
+            HashSet<WorkshopTile> staticTiles)
         {
             var visited = new HashSet<WorkshopTile>();
             var queue = new Queue<WorkshopTile>();
-            foreach (var conn in translateBlockPositions)
+            foreach (var startTile in startTiles)
             {
-                Debug.Assert(!staticBlocks.Contains(conn.SrcTile));
+                visited.Add(startTile);
+                queue.Enqueue(startTile);
             }
             while (queue.Count > 0)
             {
@@ -62,16 +63,14 @@ namespace CatProcessingUnit
                 foreach (var delta in Deltas)
                 {
                     var neighborPosition = position + delta;
-                    var neighborTile = workshop.GetTileAt(neighborPosition);
-                    if (neighborTile == null || visited.Contains(neighborTile) || staticBlocks.Contains(neighborTile)) continue;
-                    if (delta != moveDirection &&
-                        (!front.IsStickyOnOrientation(delta) && !neighborTile.IsStickyOnOrientation(-delta) || 
-                         !StickablityChecker.AreStickable(front, neighborTile)))
+                    var neighbor = workshop.GetTileAt(neighborPosition);
+                    if (neighbor == null || visited.Contains(neighbor) || staticTiles.Contains(neighbor)) continue;
+                    if (delta == moveDirection ||
+                        TileSurface.AreGluedTogether(Vector2Int.zero, front.Surface, delta, neighbor.Surface))
                     {
-                        continue;
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
                     }
-                    visited.Add(neighborTile);
-                    queue.Enqueue(neighborTile);
                 }
             }
 

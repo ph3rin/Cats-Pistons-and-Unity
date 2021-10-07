@@ -1,9 +1,9 @@
 ﻿namespace CatProcessingUnit
 {
-    public static class TileSurfacePresets
+    public partial class TileSurface
     {
         public static readonly TileSurface Solid =
-            TileSurface.Create(
+            Create(
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
@@ -14,7 +14,7 @@
                 SurfaceFlagsEnum.Exists);
 
         public static readonly TileSurface SolidSticky =
-            TileSurface.Create(
+            Create(
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
@@ -25,7 +25,7 @@
                 SurfaceFlagsEnum.Sticky);
 
         public static readonly TileSurface PistonSticky =
-            TileSurface.Create(
+            Create(
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
@@ -36,7 +36,7 @@
                 SurfaceFlagsEnum.Sticky);
 
         public static readonly TileSurface PistonExtended =
-            TileSurface.Create(
+            Create(
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Empty,
@@ -47,7 +47,7 @@
                 SurfaceFlagsEnum.Empty);
 
         public static readonly TileSurface PistonArm =
-            TileSurface.Create(
+            Create(
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
@@ -58,7 +58,7 @@
                 SurfaceFlagsEnum.Exists);
 
         public static readonly TileSurface PistonArmSticky =
-            TileSurface.Create(
+            Create(
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,

@@ -5,10 +5,11 @@ using UnityEngine;
 namespace CatProcessingUnit
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class WorkshopTile : MonoBehaviour
+    public abstract class WorkshopTile : MonoBehaviour
     {
         public Workshop Workshop { get; set; }
         public Vector2Int Position { get; set; }
+        public abstract TileSurface Surface { get; }
 
         protected SpriteRenderer _spriteRenderer;
         

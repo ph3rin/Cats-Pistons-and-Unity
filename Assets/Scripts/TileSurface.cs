@@ -2,7 +2,7 @@
 
 namespace CatProcessingUnit
 {
-    public class TileSurface
+    public partial class TileSurface
     {
         public SurfaceFlags[] Flags { get; }
 
@@ -23,6 +23,11 @@ namespace CatProcessingUnit
             }
 
             return new TileSurface(newFlags);
+        }
+
+        public TileSurface RotateTo(Vector2Int direction)
+        {
+            return Rotate(DirectionUtils.DirectionToIndex(direction));
         }
 
         public SurfaceFlags GetFlags(Vector2Int dir, int index)

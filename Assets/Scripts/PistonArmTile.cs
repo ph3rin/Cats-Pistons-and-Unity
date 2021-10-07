@@ -12,8 +12,11 @@ namespace CatProcessingUnit
 
         public override bool IsStickyOnOrientation(Vector2Int orientation)
         {
-            return orientation == -_orientation || IsSticky && orientation == _orientation;
+            return orientation == -_direction || IsSticky && orientation == _direction;
         }
+
+        public override TileSurface Surface =>
+            (IsSticky ? TileSurface.PistonArmSticky : TileSurface.PistonArm).RotateTo(_direction);
 
         public override void RefreshDisplay()
         {
@@ -23,7 +26,7 @@ namespace CatProcessingUnit
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            var piston = Workshop.GetTileAt(Position - _orientation) as PistonTile;
+            var piston = Workshop.GetTileAt(Position - _direction) as PistonTile;
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 piston.ToggleExtension();

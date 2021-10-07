@@ -9,7 +9,9 @@ namespace CatProcessingUnit
 
         [SerializeField] private Sprite _normalSprite;
         [SerializeField] private Sprite _stickySprite;
-        
+
+        public override TileSurface Surface { get; }
+
         public override void RefreshDisplay()
         {
             base.RefreshDisplay();

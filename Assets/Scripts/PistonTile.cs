@@ -15,6 +15,18 @@ namespace CatProcessingUnit
 
         public bool IsSticky { get; set; }
 
+        public override TileSurface Surface => UnrotatedSurface.RotateTo(_direction);
+
+        private TileSurface UnrotatedSurface
+        {
+            get
+            {
+                if (_extended) return TileSurface.PistonExtended;
+                if (IsSticky) return TileSurface.PistonSticky;
+                return TileSurface.Solid;
+            }
+        }
+
         public override void RefreshDisplay()
         {
             base.RefreshDisplay();
@@ -26,7 +38,7 @@ namespace CatProcessingUnit
         private void Extend()
         {
             Debug.Assert(!_extended);
-            if (PistonExtender.ExtendPiston(Workshop.TileData, this, _orientation))
+            if (PistonExtender.ExtendPiston(Workshop.TileData, this, _direction))
             {
                 _extended = true;
                 Workshop.Refresh();
@@ -37,7 +49,7 @@ namespace CatProcessingUnit
         private void Retract()
         {
             Debug.Assert(_extended);
-            if (PistonExtender.RetractPiston(Workshop.TileData, this, _orientation))
+            if (PistonExtender.RetractPiston(Workshop.TileData, this, _direction))
             {
                 _extended = false;
                 Workshop.Refresh();
@@ -47,7 +59,7 @@ namespace CatProcessingUnit
 
         public override bool IsStickyOnOrientation(Vector2Int orientation)
         {
-            return IsSticky && orientation == _orientation;
+            return IsSticky && orientation == _direction;
         }
 
         public void ToggleStickiness()
@@ -55,17 +67,18 @@ namespace CatProcessingUnit
             IsSticky = !IsSticky;
             if (_extended)
             {
-                ((PistonArmTile) Workshop.GetTileAt(Position + _orientation)).IsSticky = IsSticky;
+                ((PistonArmTile) Workshop.GetTileAt(Position + _direction)).IsSticky = IsSticky;
             }
+
             AudioManager.I.Play("stickySwitch");
             Workshop.Refresh();
         }
-        
+
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-               ToggleExtension();
+                ToggleExtension();
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {

@@ -5,6 +5,7 @@ namespace CatProcessingUnit
     public class ColorTile : WorkshopTile
     {
         public Workshop Workshop { get; set; }
+        public override TileSurface Surface => TileSurface.Solid;
 
         [SerializeField] private int _index;
 

@@ -1,27 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CatProcessingUnit
 {
     public abstract class OrientedTile : WorkshopTile
     {
-        [SerializeField] protected Vector2Int _orientation;
+        [FormerlySerializedAs("_orientation")] [SerializeField] protected Vector2Int _direction;
 
         public Vector2Int Orientation
         {
-            get => _orientation;
-            set => _orientation = value;
+            get => _direction;
+            set => _direction = value;
         }
-
+        
         public override void RefreshDisplay()
         {
             base.RefreshDisplay();
-            transform.localRotation = RotationUtil.OrientationToRotation(_orientation);
+            transform.localRotation = RotationUtil.OrientationToRotation(_direction);
         }
 
         public Vector2Int LocalOffsetToGlobalOffset(Vector2Int localOffset)
         {
-            var right = _orientation;
-            var up = _orientation.x * Vector2Int.up + _orientation.y * Vector2Int.left;
+            var right = _direction;
+            var up = _direction.x * Vector2Int.up + _direction.y * Vector2Int.left;
             return localOffset.x * right + localOffset.y * up;
         }
     }

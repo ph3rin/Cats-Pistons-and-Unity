@@ -192,18 +192,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2056011527}
     m_Modifications:
-    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
-      propertyPath: m_Color.g
-      value: 0.035871506
-      objectReference: {fileID: 0}
-    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7088990517405192033, guid: 709263903ec5d814cad75a65dd673567, type: 3}
       propertyPath: m_Name
       value: Color Tile 1
@@ -638,6 +626,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -726,6 +715,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c0315cdebe4fde8f868d9455fa21ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _workshop: {fileID: 2056011528}
 --- !u!1001 &521259183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2548,18 +2550,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2115021491}
     m_Modifications:
-    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
-      propertyPath: m_Color.g
-      value: 0.035871506
-      objectReference: {fileID: 0}
-    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7088990517405192033, guid: 709263903ec5d814cad75a65dd673567, type: 3}
       propertyPath: m_Name
       value: Color Tile 1
@@ -2944,7 +2934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2056011527
 Transform:
   m_ObjectHideFlags: 0
@@ -3156,15 +3146,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: b4e8d8dc3112db34b86bbc3e6f4e69f3, type: 3}
+  - clip: {fileID: 8300000, guid: 34481185d12c28b4ab6a7724664ceb2c, type: 3}
     name: extendPiston
     volume: 0.355
-    pitch: 0.97
+    pitch: 0.5
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 4d3e9d57e2e0ffe44978be1c889e630d, type: 3}
+  - clip: {fileID: 8300000, guid: 34481185d12c28b4ab6a7724664ceb2c, type: 3}
     name: retractPiston
     volume: 0.355
-    pitch: 0.97
+    pitch: 0.5
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 610b818e46abae24b86390969d84b280, type: 3}
+    name: stickySwitch
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
 --- !u!4 &2091314753
 Transform:

@@ -18,6 +18,9 @@ namespace CatProcessingUnit
         private WorkshopTileData _tileData;
         
         public WorkshopTileData TileData => _tileData;
+        
+        public int Width => _width;
+        public int Height => _height;
 
         public Color GetTargetColor(int targetIndex)
         {
@@ -43,7 +46,7 @@ namespace CatProcessingUnit
                 var fPos = target.transform.localPosition;
                 var pos = new Vector2Int(Mathf.RoundToInt(fPos.x), Mathf.RoundToInt(fPos.y));
                 var idx = target.Index;
-                target.SetColor(GetTargetColor(idx));
+                target.SetColor(Color.white);
                 _targetPositions[idx] = pos;
             }
             

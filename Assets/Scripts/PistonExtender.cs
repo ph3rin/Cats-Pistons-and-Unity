@@ -41,6 +41,43 @@ namespace CatProcessingUnit
             return visited;
         }
 
+        
+        
+        public static HashSet<WorkshopTile> GetGluedBlock(
+            Workshop workshop,
+            Vector2Int moveDirection,
+            HashSet<WorkshopTile> staticBlocks,
+            HashSet<TileConnection> translateBlockPositions)
+        {
+            var visited = new HashSet<WorkshopTile>();
+            var queue = new Queue<WorkshopTile>();
+            foreach (var conn in translateBlockPositions)
+            {
+                Debug.Assert(!staticBlocks.Contains(conn.SrcTile));
+            }
+            while (queue.Count > 0)
+            {
+                var front = queue.Dequeue();
+                var position = front.Position;
+                foreach (var delta in Deltas)
+                {
+                    var neighborPosition = position + delta;
+                    var neighborTile = workshop.GetTileAt(neighborPosition);
+                    if (neighborTile == null || visited.Contains(neighborTile) || staticBlocks.Contains(neighborTile)) continue;
+                    if (delta != moveDirection &&
+                        (!front.IsStickyOnOrientation(delta) && !neighborTile.IsStickyOnOrientation(-delta) || 
+                         !StickablityChecker.AreStickable(front, neighborTile)))
+                    {
+                        continue;
+                    }
+                    visited.Add(neighborTile);
+                    queue.Enqueue(neighborTile);
+                }
+            }
+
+            return visited;
+        }
+
         public static bool ExtendPiston(WorkshopTileData tileData, PistonTile pistonTile,
             Vector2Int direction)
         {

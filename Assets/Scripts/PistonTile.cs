@@ -9,6 +9,7 @@ namespace CatProcessingUnit
         [SerializeField] private Sprite _retractedSprite;
         [SerializeField] private Sprite _retractedStickySprite;
         [SerializeField] private Sprite _extendedSprite;
+        [SerializeField] private Sprite _extendedStickySprite;
 
         [SerializeField] private bool _extended;
 
@@ -17,8 +18,9 @@ namespace CatProcessingUnit
         public override void RefreshDisplay()
         {
             base.RefreshDisplay();
-            _spriteRenderer.sprite = _extended ? _extendedSprite :
-                IsSticky ? _retractedStickySprite : _retractedSprite;
+            _spriteRenderer.sprite = _extended
+                ? (IsSticky ? _extendedStickySprite : _extendedSprite)
+                : (IsSticky ? _retractedStickySprite : _retractedSprite);
         }
 
         private void Extend()
@@ -48,40 +50,38 @@ namespace CatProcessingUnit
             return IsSticky && orientation == _orientation;
         }
 
-        // private void OnMouseDown()
-        // {
-        //     if (Input.GetMouseButtonDown(0))
-        //     {
-        //        
-        //     }
-        //     else if (Input.GetMouseButtonDown(1))
-        //     {
-        //        
-        //     }
-        // }
-
+        public void ToggleStickiness()
+        {
+            IsSticky = !IsSticky;
+            if (_extended)
+            {
+                ((PistonArmTile) Workshop.GetTileAt(Position + _orientation)).IsSticky = IsSticky;
+            }
+            AudioManager.I.Play("stickySwitch");
+            Workshop.Refresh();
+        }
+        
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                if (_extended)
-                {
-                    Retract();
-                }
-                else
-                {
-                    Extend();
-                }
+               ToggleExtension();
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                IsSticky = !IsSticky;
-                if (_extended)
-                {
-                    ((PistonArmTile) Workshop.GetTileAt(Position + _orientation)).IsSticky = IsSticky;
-                }
+                ToggleStickiness();
+            }
+        }
 
-                Workshop.Refresh();
+        public void ToggleExtension()
+        {
+            if (_extended)
+            {
+                Retract();
+            }
+            else
+            {
+                Extend();
             }
         }
     }

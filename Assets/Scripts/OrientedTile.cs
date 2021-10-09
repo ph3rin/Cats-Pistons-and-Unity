@@ -25,5 +25,11 @@ namespace CatProcessingUnit
             var up = _direction.x * Vector2Int.up + _direction.y * Vector2Int.left;
             return localOffset.x * right + localOffset.y * up;
         }
+
+        public WorkshopTile GetNeighboringTileByLocalOffset(Vector2Int localOffset)
+        {
+            var globalOffset = LocalOffsetToGlobalOffset(localOffset);
+            return Workshop.GetTileAt(Position + globalOffset);
+        }
     }
 }

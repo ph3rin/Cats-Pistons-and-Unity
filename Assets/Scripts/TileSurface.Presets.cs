@@ -28,17 +28,17 @@
             Create(
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
-                SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
-                SurfaceFlagsEnum.Sticky);
+                SurfaceFlagsEnum.Exists,
+                SurfaceFlagsEnum.Exists);
 
         public static readonly TileSurface PistonExtended =
             Create(
-                SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Exists,
+                SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
@@ -52,8 +52,8 @@
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Exists);
 
@@ -61,11 +61,11 @@
             Create(
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Exists,
+                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Sticky);
+                SurfaceFlagsEnum.Exists);
     }
 }

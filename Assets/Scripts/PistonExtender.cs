@@ -43,7 +43,7 @@ namespace CatProcessingUnit
 
         
         
-        public static HashSet<WorkshopTile> GetGluedBlock(
+        public static HashSet<WorkshopTile> GetGluedTiles(
             this Workshop workshop,
             Vector2Int moveDirection,
             HashSet<WorkshopTile> startTiles,
@@ -81,40 +81,49 @@ namespace CatProcessingUnit
             Vector2Int direction)
         {
             var startTilePosition = pistonTile.Position + direction;
-            var startTile = tileData.GetTileAt(startTilePosition);
+            var right = pistonTile.GetNeighboringTileByLocalOffset(Vector2Int.right);
+            var up = pistonTile.GetNeighboringTileByLocalOffset(Vector2Int.up);
+            var down = pistonTile.GetNeighboringTileByLocalOffset(Vector2Int.down);
+            var startTiles = new HashSet<WorkshopTile>();
+            var staticTiles = new HashSet<WorkshopTile>{pistonTile};
+            if (right != null) startTiles.Add(right);
+            if (up != null && WorkshopTile.AreGluedTogether(pistonTile, up)) startTiles.Add(up);
+            if (down != null && WorkshopTile.AreGluedTogether(pistonTile, down)) startTiles.Add(down);
+            var gluedTiles = GetGluedTiles(pistonTile.Workshop, direction, startTiles, staticTiles);
             var tileCoordinates = tileData.ToCoordinates();
-            if (startTile != null)
-            {
-                var gluedTiles = GetGluedBlocks(startTile, direction, pistonTile);
-                tileCoordinates.Translate(gluedTiles, direction);
-            }
+            tileCoordinates.Translate(gluedTiles, direction);
 
-            var pistonArm = TileFactory.I.CreatePistonArm(pistonTile.Workshop, pistonTile.Orientation);
-            pistonArm.IsSticky = pistonTile.IsSticky;
-            tileCoordinates.SetTilePosition(pistonArm, startTilePosition);
             if (tileCoordinates.IsValidLayout())
             {
+                var pistonArm = TileFactory.I.CreatePistonArm(pistonTile.Workshop, pistonTile.Orientation);
+                pistonArm.IsSticky = pistonTile.IsSticky;
+                tileCoordinates.SetTilePosition(pistonArm, startTilePosition);
                 tileData.ApplyCoordinates(tileCoordinates);
                 return true;
             }
-            else
-            {
-                Object.Destroy(pistonArm.gameObject);
-                return false;
-            }
+
+            return false;
         }
 
-        public static bool RetractPiston(WorkshopTileData tileData, PistonTile pistonTile, Vector2Int orientation)
+        public static bool RetractPiston(WorkshopTileData tileData, PistonTile pistonTile, Vector2Int pistonDirection)
         {
-            var armTilePosition = pistonTile.Position + orientation;
-            var pullTilePosition = armTilePosition + orientation;
-            var armTile = tileData.GetTileAt(armTilePosition);
-            var pullTile = tileData.GetTileAt(pullTilePosition);
+            var armTilePosition = pistonTile.Position + pistonDirection;
+            var armTile = tileData.GetTileAt(armTilePosition) as PistonArmTile;
+            Debug.Assert(armTile != null);
+            var right =  armTile.GetNeighboringTileByLocalOffset(Vector2Int.right);
+            var up = armTile.GetNeighboringTileByLocalOffset(Vector2Int.up);
+            var down = armTile.GetNeighboringTileByLocalOffset(Vector2Int.down);
+            var startTiles = new HashSet<WorkshopTile>();
+            var staticTiles = new HashSet<WorkshopTile> {pistonTile, armTile};
+            if (right != null && WorkshopTile.AreGluedTogether(armTile, right)) startTiles.Add(right);
+            if (up != null && WorkshopTile.AreGluedTogether(armTile, up)) startTiles.Add(up);
+            if (down != null && WorkshopTile.AreGluedTogether(armTile, down)) startTiles.Add(down);
+            var gluedTiles = GetGluedTiles(pistonTile.Workshop, -pistonDirection, startTiles, staticTiles);
+            
             var tileCoordinates = tileData.ToCoordinates();
             tileCoordinates.SetTilePosition(armTile, null);
-            var gluedTiles = GetGluedBlocks(armTile, -orientation, pistonTile, armTile);
             gluedTiles.Remove(armTile);
-            tileCoordinates.Translate(gluedTiles, -orientation);
+            tileCoordinates.Translate(gluedTiles, -pistonDirection);
 
             if (tileCoordinates.IsValidLayout())
             {

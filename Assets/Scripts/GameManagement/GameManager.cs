@@ -34,13 +34,14 @@ namespace CatProcessingUnit.GameManagement
             {
                 var scene = SceneManager.GetSceneAt(index);
                 var rootObjects = scene.GetRootGameObjects();
-                Debug.Assert(rootObjects.Length == 1);
-                var rootObject = rootObjects[0];
-                if (rootObject == gameObject) return;
-                rootObject.SetActive(true);
-                for (var i = rootObject.transform.childCount - 1; i >= 0; --i)
+                foreach (var rootObject in rootObjects)
                 {
-                    rootObject.transform.GetChild(i).SetParent(null);
+                    if (rootObject == gameObject) return;
+                    rootObject.SetActive(true);
+                    for (var i = rootObject.transform.childCount - 1; i >= 0; --i)
+                    {
+                        rootObject.transform.GetChild(i).SetParent(null);
+                    }
                 }
             }
         }

@@ -33,10 +33,14 @@ namespace CatProcessingUnit.GameManagement
             for (var index = 0; index < SceneManager.sceneCount; ++index)
             {
                 var scene = SceneManager.GetSceneAt(index);
-                foreach (var root in scene.GetRootGameObjects())
+                var rootObjects = scene.GetRootGameObjects();
+                Debug.Assert(rootObjects.Length == 1);
+                var rootObject = rootObjects[0];
+                if (rootObject == gameObject) return;
+                rootObject.SetActive(true);
+                for (var i = rootObject.transform.childCount - 1; i >= 0; --i)
                 {
-                    if (root == gameObject) continue;
-                    root.SetActive(true);
+                    rootObject.transform.GetChild(i).SetParent(null);
                 }
             }
         }

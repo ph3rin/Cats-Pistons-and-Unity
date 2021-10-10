@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CatProcessingUnit.GameManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +15,11 @@ namespace CatProcessingUnit
 
         [SerializeField] private List<Color> _targetColors;
         private List<Vector2Int> _targetPositions;
-        
+
         private WorkshopTileData _tileData;
-        
+
         public WorkshopTileData TileData => _tileData;
-        
+
         public int Width => _width;
         public int Height => _height;
 
@@ -31,16 +32,18 @@ namespace CatProcessingUnit
         {
             return _targetPositions[targetIndex];
         }
-        
+
         private void Awake()
         {
+            print($"Workshop active frame: {Time.frameCount}");
+
             foreach (var tile in transform.GetComponentsInChildren<WorkshopTile>())
             {
                 tile.Workshop = this;
             }
 
-            _targetPositions = new Vector2Int[_targetColors.Count].ToList(); 
-            
+            _targetPositions = new Vector2Int[_targetColors.Count].ToList();
+
             foreach (var target in transform.GetComponentsInChildren<TargetTile>())
             {
                 var fPos = target.transform.localPosition;
@@ -49,7 +52,7 @@ namespace CatProcessingUnit
                 target.SetColor(Color.white);
                 _targetPositions[idx] = pos;
             }
-            
+
             for (var x = 0; x < _width; ++x)
             {
                 for (var y = 0; y < _height; ++y)
@@ -110,6 +113,11 @@ namespace CatProcessingUnit
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameManager.I.StartCoroutine(GameManager.I.LoadScenes(new[] {2, 3}));
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,8 +19,21 @@ namespace CatProcessingUnit.GameManagement
 #if !UNITY_EDITOR
             ActivateOtherGameObjects();
             LoadStartScenes();
-#else
-            BootstrapScenes();
+#endif
+        }
+
+        private void Bootstrap()
+        {
+            BootstrapServices();
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        private static void InitializeGameManager()
+        {
+            I = null;
+#if UNITY_EDITOR
+            _firstEnterPlaymode = true;
+            _preprocessedSceneCount = 0;
 #endif
         }
 
@@ -36,7 +50,7 @@ namespace CatProcessingUnit.GameManagement
                 var rootObjects = scene.GetRootGameObjects();
                 foreach (var rootObject in rootObjects)
                 {
-                    if (rootObject == gameObject) return;
+                    if (rootObject == gameObject) continue;
                     rootObject.SetActive(true);
                     for (var i = rootObject.transform.childCount - 1; i >= 0; --i)
                     {
@@ -46,9 +60,8 @@ namespace CatProcessingUnit.GameManagement
             }
         }
 
-        private void BootstrapScenes()
+        private void BootstrapServices()
         {
-            print($"Start game frame: {Time.frameCount}");
             ServiceLocator.InitializeAllServices();
         }
 
@@ -62,21 +75,30 @@ namespace CatProcessingUnit.GameManagement
                 SceneManager.LoadScene(buildIndex, LoadSceneMode.Additive);
             }
 
-            void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+            CallbackAfterSceneAwaken(scenesRemaining, () =>
             {
-                if (--scenesRemaining == 0)
-                {
-                    SceneManager.sceneLoaded -= HandleSceneLoaded;
 #if !UNITY_EDITOR
                     ActivateOtherGameObjects();
 #endif
-                    BootstrapScenes();
-                    finished = true;
+                BootstrapServices();
+                finished = true;
+            });
+
+            yield return new WaitUntil(() => finished);
+        }
+
+        private static void CallbackAfterSceneAwaken(int count, Action callback)
+        {
+            void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+            {
+                if (--count == 0)
+                {
+                    SceneManager.sceneLoaded -= HandleSceneLoaded;
+                    callback?.Invoke();
                 }
             }
 
             SceneManager.sceneLoaded += HandleSceneLoaded;
-            yield return new WaitUntil(() => finished);
         }
 
         private Coroutine UnloadAllScenesInPlaymode()
@@ -102,6 +124,22 @@ namespace CatProcessingUnit.GameManagement
                     .Select(SceneManager.GetSceneAt)
                     .Where(s => s != gameObject.scene)
                     .ToList();
+        }
+
+        private static bool _firstEnterPlaymode;
+        private static int _preprocessedSceneCount;
+
+        public static void NotifyScenePreprocessed()
+        {
+#if UNITY_EDITOR
+            if (!_firstEnterPlaymode) return;
+            _preprocessedSceneCount++;
+            if (_preprocessedSceneCount == SceneManager.sceneCount)
+            {
+                I.Bootstrap();
+                _firstEnterPlaymode = false;
+            }
+#endif
         }
     }
 }

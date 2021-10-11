@@ -20,7 +20,7 @@ namespace CatProcessingUnit.GameManagement
             {
                 if (InitializeCalled) return;
                 InitializeCalled = true;
-                Service.Initialize();
+                Service.Init();
             }
         }
 

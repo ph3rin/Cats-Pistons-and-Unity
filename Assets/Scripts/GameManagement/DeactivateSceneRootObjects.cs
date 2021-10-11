@@ -24,6 +24,10 @@ namespace CatProcessingUnit.GameManagement
                 }
                 newRoot.SetActive(false);
             }
+            else
+            {
+                GameManager.NotifyScenePreprocessed();
+            }
         }
     }
 }

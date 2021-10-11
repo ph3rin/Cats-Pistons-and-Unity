@@ -7,7 +7,7 @@ namespace CatProcessingUnit
     [RequireComponent(typeof(RegisterService))]
     public class TestService2 : MonoBehaviour, IService
     {
-        public void Initialize()
+        public void Init()
         {
             Debug.Log("Initialize service 2");
             Debug.Assert(ServiceLocator.GetService<TestService>() != null);

@@ -50,7 +50,7 @@ namespace CatProcessingUnit.GameManagement
                 var rootObjects = scene.GetRootGameObjects();
                 foreach (var rootObject in rootObjects)
                 {
-                    if (rootObject == gameObject) continue;
+                    if (rootObject == gameObject || rootObject.name != "__ROOT__") continue;
                     rootObject.SetActive(true);
                     for (var i = rootObject.transform.childCount - 1; i >= 0; --i)
                     {

@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 namespace CatProcessingUnit
 {
-    public class Workshop : MonoBehaviour
+    [RequireComponent(typeof(RegisterService))]
+    public class Workshop : MonoBehaviour, IService
     {
         [SerializeField] private int _width;
         [SerializeField] private int _height;
@@ -32,11 +33,9 @@ namespace CatProcessingUnit
         {
             return _targetPositions[targetIndex];
         }
-
-        private void Awake()
+        
+        public void Init()
         {
-            print($"Workshop active frame: {Time.frameCount}");
-
             foreach (var tile in transform.GetComponentsInChildren<WorkshopTile>())
             {
                 tile.Workshop = this;
@@ -62,7 +61,7 @@ namespace CatProcessingUnit
                 }
             }
         }
-
+        
         private void Start()
         {
             _tileData = new WorkshopTileData(TileBaker.BakeTiles(transform, _width, _height));

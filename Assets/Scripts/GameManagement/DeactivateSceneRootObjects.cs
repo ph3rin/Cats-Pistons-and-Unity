@@ -16,7 +16,7 @@ namespace CatProcessingUnit.GameManagement
             if (isBuild)
             {
                 var roots = scene.GetRootGameObjects();
-                var newRoot = new GameObject("ROOT");
+                var newRoot = new GameObject("__ROOT__");
                 foreach (var go in roots)
                 {
                     if (go.GetComponent<GameManager>() != null) continue;

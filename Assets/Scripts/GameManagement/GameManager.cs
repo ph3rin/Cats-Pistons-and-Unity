@@ -41,6 +41,7 @@ namespace CatProcessingUnit.GameManagement
 
         public static void LoadSceneCollection(SceneCollection sceneCollection)
         {
+            Debug.Assert(sceneCollection != null, "sceneCollection != null");
             I.StartCoroutine(LoadScenes(sceneCollection.Select(s => s.BuildIndex).ToArray()));
         }
 

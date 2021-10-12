@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.SceneManagement;
 #endif
 
 using UnityEngine.SceneManagement;
@@ -24,6 +25,12 @@ namespace CatProcessingUnit.GameManagement
                 _buildIndex = newBuildIndex;
             }
             return _buildIndex >= 0;
+        }
+
+        public Scene LoadInEditor(bool additive = true)
+        {
+            var mode = additive ? OpenSceneMode.Additive : OpenSceneMode.Single;
+            return EditorSceneManager.OpenScene(AssetDatabase.GetAssetPath(_scene), mode);
         }
 #endif
         [SerializeField] private int _buildIndex;

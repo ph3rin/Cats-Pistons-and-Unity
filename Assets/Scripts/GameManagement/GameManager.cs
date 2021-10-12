@@ -11,14 +11,15 @@ namespace CatProcessingUnit.GameManagement
     {
         public static GameManager I { get; private set; }
 
-        [SerializeField] private List<int> _startScenes;
-
+        [SerializeField] private SceneCollection _startSceneCollection;
+        private static bool _isLoadingScenes;
+        
         private void Awake()
         {
             I = this;
 #if !UNITY_EDITOR
             ActivateOtherGameObjects();
-            LoadStartScenes();
+            LoadSceneCollection(_startSceneCollection);
 #endif
         }
 
@@ -31,18 +32,19 @@ namespace CatProcessingUnit.GameManagement
         private static void InitializeGameManager()
         {
             I = null;
+            _isLoadingScenes = false;
 #if UNITY_EDITOR
             _firstEnterPlaymode = true;
             _preprocessedSceneCount = 0;
 #endif
         }
 
-        private void LoadStartScenes()
+        public static void LoadSceneCollection(SceneCollection sceneCollection)
         {
-            StartCoroutine(LoadScenes(_startScenes.ToArray()));
+            I.StartCoroutine(LoadScenes(sceneCollection.Select(s => s.BuildIndex).ToArray()));
         }
 
-        private void ActivateOtherGameObjects()
+        private static void ActivateOtherGameObjects()
         {
             for (var index = 0; index < SceneManager.sceneCount; ++index)
             {
@@ -50,7 +52,7 @@ namespace CatProcessingUnit.GameManagement
                 var rootObjects = scene.GetRootGameObjects();
                 foreach (var rootObject in rootObjects)
                 {
-                    if (rootObject == gameObject || rootObject.name != "__ROOT__") continue;
+                    if (rootObject == I.gameObject || rootObject.name != "__ROOT__") continue;
                     rootObject.SetActive(true);
                     for (var i = rootObject.transform.childCount - 1; i >= 0; --i)
                     {
@@ -60,13 +62,20 @@ namespace CatProcessingUnit.GameManagement
             }
         }
 
-        private void BootstrapServices()
+        private static void BootstrapServices()
         {
             ServiceLocator.InitializeAllServices();
         }
 
-        public IEnumerator LoadScenes(int[] buildIndices)
+        public static IEnumerator LoadScenes(int[] buildIndices)
         {
+            if (_isLoadingScenes)
+            {
+                Debug.LogError("Scene loading already in progress");
+                yield break;
+            }
+
+            _isLoadingScenes = true;
             yield return UnloadAllScenesInPlaymode();
             var scenesRemaining = buildIndices.Length;
             var finished = false;
@@ -85,6 +94,7 @@ namespace CatProcessingUnit.GameManagement
             });
 
             yield return new WaitUntil(() => finished);
+            _isLoadingScenes = true;
         }
 
         private static void CallbackAfterSceneAwaken(int count, Action callback)
@@ -101,7 +111,7 @@ namespace CatProcessingUnit.GameManagement
             SceneManager.sceneLoaded += HandleSceneLoaded;
         }
 
-        private Coroutine UnloadAllScenesInPlaymode()
+        private static Coroutine UnloadAllScenesInPlaymode()
         {
             var otherScenes = GetAllOtherLoadedScenes();
             var operations = otherScenes.Select(SceneManager.UnloadSceneAsync);
@@ -114,15 +124,15 @@ namespace CatProcessingUnit.GameManagement
                 }
             }
 
-            return StartCoroutine(Wait());
+            return I.StartCoroutine(Wait());
         }
 
-        private List<Scene> GetAllOtherLoadedScenes()
+        private static List<Scene> GetAllOtherLoadedScenes()
         {
             return
                 Enumerable.Range(0, SceneManager.sceneCount)
                     .Select(SceneManager.GetSceneAt)
-                    .Where(s => s != gameObject.scene)
+                    .Where(s => s != I.gameObject.scene)
                     .ToList();
         }
 

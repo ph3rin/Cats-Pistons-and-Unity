@@ -113,11 +113,6 @@ namespace CatProcessingUnit
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GameManager.I.StartCoroutine(GameManager.I.LoadScenes(new[] {2, 3}));
-            }
         }
     }
 }

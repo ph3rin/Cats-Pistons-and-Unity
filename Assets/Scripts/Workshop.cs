@@ -13,6 +13,7 @@ namespace CatProcessingUnit
         [SerializeField] private int _width;
         [SerializeField] private int _height;
         [SerializeField] private GameObject _gridGuidePrefab;
+        public bool Solved => false;
 
         [SerializeField] private List<Color> _targetColors;
         private List<Vector2Int> _targetPositions;
@@ -106,7 +107,7 @@ namespace CatProcessingUnit
                 Debug.Log("You win!");
             }
         }
-
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.R))

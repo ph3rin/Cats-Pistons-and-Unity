@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb6bdd7a799f4cfd80912ebf5fd3e560, type: 3}
-  m_Name: Level 1
+  m_Name: Level 1 SC
   m_EditorClassIdentifier: 
   _basedOn: {fileID: 0}
   _sceneReferences:
-  - {fileID: 11400000, guid: b4163e5650712344db5b42610619e3c3, type: 2}
+  - {fileID: 11400000, guid: 7905f0d768d9a12439f07ab85b4453b3, type: 2}

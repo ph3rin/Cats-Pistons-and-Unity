@@ -77,7 +77,7 @@ namespace CatProcessingUnit
             return visited;
         }
 
-        public static bool ExtendPiston(WorkshopTileData tileData, PistonTile pistonTile,
+        public static bool ExtendPiston(WorkshopData data, PistonTile pistonTile,
             Vector2Int direction)
         {
             var startTilePosition = pistonTile.Position + direction;
@@ -90,7 +90,7 @@ namespace CatProcessingUnit
             if (up != null && WorkshopTile.AreGluedTogether(pistonTile, up)) startTiles.Add(up);
             if (down != null && WorkshopTile.AreGluedTogether(pistonTile, down)) startTiles.Add(down);
             var gluedTiles = GetGluedTiles(pistonTile.Workshop, direction, startTiles, staticTiles);
-            var tileCoordinates = tileData.ToCoordinates();
+            var tileCoordinates = data.ToCoordinates();
             tileCoordinates.Translate(gluedTiles, direction);
 
             if (tileCoordinates.IsValidLayout())
@@ -98,17 +98,17 @@ namespace CatProcessingUnit
                 var pistonArm = TileFactory.I.CreatePistonArm(pistonTile.Workshop, pistonTile.Orientation);
                 pistonArm.IsSticky = pistonTile.IsSticky;
                 tileCoordinates.SetTilePosition(pistonArm, startTilePosition);
-                tileData.ApplyCoordinates(tileCoordinates);
+                data.ApplyCoordinates(tileCoordinates);
                 return true;
             }
 
             return false;
         }
 
-        public static bool RetractPiston(WorkshopTileData tileData, PistonTile pistonTile, Vector2Int pistonDirection)
+        public static bool RetractPiston(WorkshopData data, PistonTile pistonTile, Vector2Int pistonDirection)
         {
             var armTilePosition = pistonTile.Position + pistonDirection;
-            var armTile = tileData.GetTileAt(armTilePosition) as PistonArmTile;
+            var armTile = data.GetTileAt(armTilePosition) as PistonArmTile;
             Debug.Assert(armTile != null);
             var right =  armTile.GetNeighboringTileByLocalOffset(Vector2Int.right);
             var up = armTile.GetNeighboringTileByLocalOffset(Vector2Int.up);
@@ -120,14 +120,14 @@ namespace CatProcessingUnit
             if (down != null && WorkshopTile.AreGluedTogether(armTile, down)) startTiles.Add(down);
             var gluedTiles = GetGluedTiles(pistonTile.Workshop, -pistonDirection, startTiles, staticTiles);
             
-            var tileCoordinates = tileData.ToCoordinates();
+            var tileCoordinates = data.ToCoordinates();
             tileCoordinates.SetTilePosition(armTile, null);
             gluedTiles.Remove(armTile);
             tileCoordinates.Translate(gluedTiles, -pistonDirection);
 
             if (tileCoordinates.IsValidLayout())
             {
-                tileData.ApplyCoordinates(tileCoordinates);
+                data.ApplyCoordinates(tileCoordinates);
                 Object.Destroy(armTile.gameObject);
                 return true;
             }

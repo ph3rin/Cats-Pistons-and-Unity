@@ -1,18 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace CatProcessingUnit
 {
     public class PistonTile : OrientedTile, IPointerClickHandler
     {
-        [SerializeField] private Sprite _retractedSprite;
-        [SerializeField] private Sprite _retractedStickySprite;
-        [SerializeField] private Sprite _extendedSprite;
-        [SerializeField] private Sprite _extendedStickySprite;
-
         [SerializeField] private bool _extended;
-
+        [SerializeField] private SpriteConfig _sprites;
+        
         public bool IsSticky { get; set; }
 
         public override TileSurface Surface => UnrotatedSurface.RotateTo(_direction);
@@ -30,15 +27,13 @@ namespace CatProcessingUnit
         public override void RefreshDisplay()
         {
             base.RefreshDisplay();
-            _spriteRenderer.sprite = _extended
-                ? (IsSticky ? _extendedStickySprite : _extendedSprite)
-                : (IsSticky ? _retractedStickySprite : _retractedSprite);
+            _spriteRenderer.sprite = _sprites.GetPistonSprite(IsSticky, _extended);
         }
 
         private void Extend()
         {
             Debug.Assert(!_extended);
-            if (PistonExtender.ExtendPiston(Workshop.TileData, this, _direction))
+            if (PistonExtender.ExtendPiston(Workshop.Data, this, _direction))
             {
                 _extended = true;
                 Workshop.Refresh();
@@ -49,7 +44,7 @@ namespace CatProcessingUnit
         private void Retract()
         {
             Debug.Assert(_extended);
-            if (PistonExtender.RetractPiston(Workshop.TileData, this, _direction))
+            if (PistonExtender.RetractPiston(Workshop.Data, this, _direction))
             {
                 _extended = false;
                 Workshop.Refresh();

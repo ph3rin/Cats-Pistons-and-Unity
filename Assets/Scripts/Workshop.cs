@@ -18,9 +18,9 @@ namespace CatProcessingUnit
         [SerializeField] private List<Color> _targetColors;
         private List<Vector2Int> _targetPositions;
 
-        private WorkshopTileData _tileData;
+        private WorkshopData _data;
 
-        public WorkshopTileData TileData => _tileData;
+        public WorkshopData Data => _data;
 
         public int Width => _width;
         public int Height => _height;
@@ -65,23 +65,23 @@ namespace CatProcessingUnit
         
         private void Start()
         {
-            _tileData = new WorkshopTileData(TileBaker.BakeTiles(transform, _width, _height));
+            _data = new WorkshopData(TileBaker.BakeTiles(transform, _width, _height));
             Refresh();
         }
 
         public WorkshopTile GetTileAt(Vector2Int position)
         {
-            return _tileData.GetTileAt(position);
+            return _data.GetTileAt(position);
         }
 
-        public void SetData(WorkshopTileData data)
+        public void SetData(WorkshopData data)
         {
-            _tileData = data;
+            _data = data;
         }
 
         public void Refresh()
         {
-            foreach (var tile in _tileData.Tiles)
+            foreach (var tile in _data.Tiles)
             {
                 var tileTr = tile.transform;
                 tileTr.SetParent(transform);
@@ -90,7 +90,7 @@ namespace CatProcessingUnit
             }
 
             var win = true;
-            foreach (var tile in _tileData.Tiles)
+            foreach (var tile in _data.Tiles)
             {
                 if (tile is ColorTile colorTile)
                 {

@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace CatProcessingUnit
 {
-    public class WorkshopTileData
+    public class WorkshopData
     {
         private readonly int _width;
         private readonly int _height;
 
         private WorkshopTile[,] _tiles;
 
-        public WorkshopTileData(WorkshopTile[,] tiles)
+        public WorkshopData(WorkshopTile[,] tiles)
         {
             _width = tiles.GetLength(0);
             _height = tiles.GetLength(1);
@@ -61,10 +61,10 @@ namespace CatProcessingUnit
             }
         }
 
-        public WorkshopTileData Clone()
+        public WorkshopData Clone()
         {
             var newTiles = _tiles.Clone();
-            return new WorkshopTileData(newTiles as WorkshopTile[,]);
+            return new WorkshopData(newTiles as WorkshopTile[,]);
         }
     }
 }

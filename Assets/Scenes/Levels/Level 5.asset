@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level 5
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 7c0673cfde32873449053b0ebde6d15c, type: 3}
-  _buildIndex: 0
+  _buildIndex: 7

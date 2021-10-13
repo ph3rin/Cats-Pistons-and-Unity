@@ -7,5 +7,9 @@ namespace CatProcessingUnit.TileDataNS
         public Vector2Int Direction { get; set; }
         protected abstract TileSurface UnrotatedSurface { get; }
         public override TileSurface Surface => UnrotatedSurface.RotateTo(Direction);
+
+        protected RotatableTileData(RotatableTileData other) : base(other)
+        {
+        }
     }
 }

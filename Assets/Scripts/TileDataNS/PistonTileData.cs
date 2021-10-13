@@ -14,5 +14,16 @@
                 return TileSurface.Solid;
             }
         }
+
+        public PistonTileData(PistonTileData other) : base(other)
+        {
+            Extended = other.Extended;
+            Sticky = other.Sticky;
+        }
+
+        public override TileData Clone()
+        {
+            return new PistonTileData(this);
+        }
     }
 }

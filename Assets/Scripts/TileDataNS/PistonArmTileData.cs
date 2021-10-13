@@ -6,5 +6,15 @@
 
         protected override TileSurface UnrotatedSurface =>
             Sticky ? TileSurface.PistonArmSticky : TileSurface.PistonArm;
+
+        public PistonArmTileData(PistonArmTileData other) : base(other)
+        {
+            Sticky = other.Sticky;
+        }
+
+        public override TileData Clone()
+        {
+            return new PistonArmTileData(this);
+        }
     }
 }

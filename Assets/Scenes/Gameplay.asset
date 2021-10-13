@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gameplay
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 18fec3d6a45d9a346abd26076b8d1e74, type: 3}
-  _buildIndex: 3
+  _buildIndex: 1

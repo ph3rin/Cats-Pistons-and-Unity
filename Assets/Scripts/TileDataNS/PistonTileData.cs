@@ -6,7 +6,7 @@ namespace CatProcessingUnit.TileDataNS
     public class PistonTileData : RotatableTileData
     {
         public bool Extended { get; private set; } = false;
-        public bool Sticky { get; private set; } = false;
+        public bool Sticky { get; set; } = false;
 
         private PistonTileRenderer _renderer;
 
@@ -89,35 +89,36 @@ namespace CatProcessingUnit.TileDataNS
         private void ToggleStickiness()
         {
             var newData = WorkshopData.Clone();
-            var newPistonTile = newData.GetTileAt(Position) as PistonTileData;
-            Debug.Assert(newPistonTile != null);
-            newPistonTile.Sticky = !newPistonTile.Sticky;
-            if (Extended)
-            {
-                var newArmTile = newData.GetTileAt(Position + Direction) as PistonArmTileData;
-                newArmTile.Sticky = !newArmTile.Sticky;
-            }
-
-            if (WorkshopData.StickyPiston != null && WorkshopData.StickyPiston != this)
-            {
-                PistonTileData otherPiston = WorkshopData.StickyPiston;
-                newData.StickyPiston = newPistonTile;
-                var otherTile = newData.GetTileAt(otherPiston.Position) as PistonTileData;
-                otherTile.Sticky = !otherTile.Sticky;
-                if (otherPiston.Extended)
-                {
-                    var otherArmTile = newData.GetTileAt(otherPiston.Position + otherPiston.Direction) as PistonArmTileData;
-                    otherArmTile.Sticky = !otherArmTile.Sticky;
-                }
-            }
-            else if (WorkshopData.StickyPiston == null)
-            {
-                newData.StickyPiston = newPistonTile;
-            }
-            else if (WorkshopData.StickyPiston == this)
-            {
-                newData.StickyPiston = null;
-            }
+            newData.TogglePistonStickiness(this);
+            // var newPistonTile = newData.GetTileAt(Position) as PistonTileData;
+            // Debug.Assert(newPistonTile != null);
+            // newPistonTile.Sticky = !newPistonTile.Sticky;
+            // if (Extended)
+            // {
+            //     var newArmTile = newData.GetTileAt(Position + Direction) as PistonArmTileData;
+            //     newArmTile.Sticky = !newArmTile.Sticky;
+            // }
+            //
+            // if (WorkshopData.StickyPiston != null && WorkshopData.StickyPiston != this)
+            // {
+            //     PistonTileData otherPiston = WorkshopData.StickyPiston;
+            //     newData.StickyPiston = newPistonTile;
+            //     var otherTile = newData.GetTileAt(otherPiston.Position) as PistonTileData;
+            //     otherTile.Sticky = !otherTile.Sticky;
+            //     if (otherPiston.Extended)
+            //     {
+            //         var otherArmTile = newData.GetTileAt(otherPiston.Position + otherPiston.Direction) as PistonArmTileData;
+            //         otherArmTile.Sticky = !otherArmTile.Sticky;
+            //     }
+            // }
+            // else if (WorkshopData.StickyPiston == null)
+            // {
+            //     newData.StickyPiston = newPistonTile;
+            // }
+            // else if (WorkshopData.StickyPiston == this)
+            // {
+            //     newData.StickyPiston = null;
+            // }
 
             newData.PushToWorkshopHistory();
         }

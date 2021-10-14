@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using CatProcessingUnit.TileDataNS;
 using UnityEngine;
 
 namespace CatProcessingUnit
@@ -10,16 +10,19 @@ namespace CatProcessingUnit
         private readonly int _width;
         private readonly int _height;
 
-        private WorkshopTile[,] _tiles;
+        private TileData[,] _tiles;
 
-        public WorkshopData(WorkshopTile[,] tiles)
+        public Workshop Workshop { get; }
+
+        public WorkshopData(Workshop workshop)
         {
-            _width = tiles.GetLength(0);
-            _height = tiles.GetLength(1);
-            _tiles = tiles;
+            Workshop = workshop;
+            _width = workshop.Width;
+            _height = workshop.Height;
+            _tiles = new TileData[_width, _height];
         }
 
-        public IEnumerable<WorkshopTile> Tiles
+        public IEnumerable<TileData> Tiles
         {
             get
             {
@@ -37,17 +40,27 @@ namespace CatProcessingUnit
             }
         }
 
-        public WorkshopTile GetTileAt(Vector2Int position)
+        public TileData GetTileAt(Vector2Int position)
         {
             if (position.x < 0 || position.x >= _width || position.y < 0 || position.y >= _height) return null;
             return _tiles[position.x, position.y];
+        }
+
+        public void AddTile(TileData tileData)
+        {
+            Debug.Assert(tileData != null, "tileData != null");
+            var pos = tileData.Position;
+            Debug.Assert(GetTileAt(pos) == null);
+            Debug.Assert(tileData.WorkshopData == null);
+            _tiles[pos.x, pos.y] = tileData;
+            tileData.WorkshopData = this;
         }
 
         public WorkshopTileCoordinates ToCoordinates()
         {
             return new WorkshopTileCoordinates(_tiles);
         }
-        
+
         public void ApplyCoordinates(WorkshopTileCoordinates tileCoordinates)
         {
             var coordinates = tileCoordinates.Coordinates;
@@ -61,10 +74,36 @@ namespace CatProcessingUnit
             }
         }
 
+        public void OnActivate()
+        {
+            foreach (var tile in Tiles)
+            {
+                tile.OnActivate();
+            }
+        }
+
+        public void OnDeactivate()
+        {
+            foreach (var tile in Tiles)
+            {
+                tile.OnDeactivate();
+            }
+        }
+
         public WorkshopData Clone()
         {
-            var newTiles = _tiles.Clone();
-            return new WorkshopData(newTiles as WorkshopTile[,]);
+            var clone = new WorkshopData(Workshop);
+            foreach (var tile in Tiles)
+            {
+                clone.AddTile(tile.Clone());
+            }
+
+            return clone;
+        }
+
+        public void PushToWorkshopHistory()
+        {
+            Workshop.PushToHistory(this);
         }
     }
 }

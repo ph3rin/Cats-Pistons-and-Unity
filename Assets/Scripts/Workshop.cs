@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.TileRenderers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,46 +14,31 @@ namespace CatProcessingUnit
         [SerializeField] private int _width;
         [SerializeField] private int _height;
         [SerializeField] private GameObject _gridGuidePrefab;
+
+        private List<WorkshopData> _history;
+        private int _activeDataIndex;
+
         public bool Solved => false;
-
-        [SerializeField] private List<Color> _targetColors;
-        private List<Vector2Int> _targetPositions;
-
-        private WorkshopData _data;
-
-        public WorkshopData Data => _data;
-
+        public WorkshopData ActiveData => _history[_activeDataIndex];
         public int Width => _width;
         public int Height => _height;
 
-        public Color GetTargetColor(int targetIndex)
-        {
-            return _targetColors[targetIndex];
-        }
-
-        public Vector2Int GetTargetPosition(int targetIndex)
-        {
-            return _targetPositions[targetIndex];
-        }
-        
         public void Init()
         {
-            foreach (var tile in transform.GetComponentsInChildren<WorkshopTile>())
-            {
-                tile.Workshop = this;
-            }
+            _history = new List<WorkshopData>();
+            _activeDataIndex = 0;
+            GenerateTileGuides();
+        }
 
-            _targetPositions = new Vector2Int[_targetColors.Count].ToList();
+        private void Start()
+        {
+            var initialData = TileBaker.BakeTiles(this);
+            initialData.OnActivate();
+            _history.Add(initialData);
+        }
 
-            foreach (var target in transform.GetComponentsInChildren<TargetTile>())
-            {
-                var fPos = target.transform.localPosition;
-                var pos = new Vector2Int(Mathf.RoundToInt(fPos.x), Mathf.RoundToInt(fPos.y));
-                var idx = target.Index;
-                target.SetColor(Color.white);
-                _targetPositions[idx] = pos;
-            }
-
+        private void GenerateTileGuides()
+        {
             for (var x = 0; x < _width; ++x)
             {
                 for (var y = 0; y < _height; ++y)
@@ -63,56 +49,39 @@ namespace CatProcessingUnit
             }
         }
         
-        private void Start()
+        public bool Undo()
         {
-            _data = new WorkshopData(TileBaker.BakeTiles(transform, _width, _height));
-            Refresh();
-        }
-
-        public WorkshopTile GetTileAt(Vector2Int position)
-        {
-            return _data.GetTileAt(position);
-        }
-
-        public void SetData(WorkshopData data)
-        {
-            _data = data;
-        }
-
-        public void Refresh()
-        {
-            foreach (var tile in _data.Tiles)
-            {
-                var tileTr = tile.transform;
-                tileTr.SetParent(transform);
-                tileTr.localPosition = new Vector3(tile.Position.x, tile.Position.y, tileTr.localPosition.z);
-                tile.RefreshDisplay();
-            }
-
-            var win = true;
-            foreach (var tile in _data.Tiles)
-            {
-                if (tile is ColorTile colorTile)
-                {
-                    if (colorTile.Position != GetTargetPosition(colorTile.Index))
-                    {
-                        win = false;
-                        break;
-                    }
-                }
-            }
-
-            if (win)
-            {
-                Debug.Log("You win!");
-            }
+            if (_activeDataIndex <= 0) return false;
+            _history[_activeDataIndex].OnDeactivate();
+            _history[--_activeDataIndex].OnActivate();
+            return true;
         }
         
-        private void Update()
+        public bool Redo()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (_activeDataIndex >= _history.Count - 1) return false;
+            _history[_activeDataIndex].OnDeactivate();
+            _history[++_activeDataIndex].OnActivate();
+            return true;
+        }
+
+        public void PushToHistory(WorkshopData data)
+        {
+            _history.RemoveRange(_activeDataIndex + 1, _history.Count - _activeDataIndex - 1);
+            _history.Add(data);
+            _history[_activeDataIndex].OnDeactivate();
+            _history[++_activeDataIndex].OnActivate();
+            RemoveUnusedRenderer();
+        }
+
+        private void RemoveUnusedRenderer()
+        {
+            foreach (var rdr in transform.GetComponentsInChildren<TileRenderer>(true))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                if (ActiveData.Tiles.All(t => t.Renderer != rdr))
+                {
+                    Destroy(rdr.gameObject);
+                }
             }
         }
     }

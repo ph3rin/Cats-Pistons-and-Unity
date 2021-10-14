@@ -5,7 +5,8 @@ namespace CatProcessingUnit.TileDataNS
 {
     public abstract class TileData
     {
-        public TileRenderer Renderer { get; set; }
+        public WorkshopData WorkshopData { get; set; } = null;
+        public abstract TileRenderer Renderer { get; }
         public Vector2Int Position { get; set; }
         public abstract TileSurface Surface { get; }
         public abstract TileData Clone();
@@ -20,8 +21,20 @@ namespace CatProcessingUnit.TileDataNS
 
         protected TileData(TileData other)
         {
-            Renderer = other.Renderer;
             Position = other.Position;
+        }
+
+        protected TileData(Vector2Int position)
+        {
+            Position = position;
+        }
+
+        public static bool AreGluedTogether(TileData tileA, TileData tileB)
+        {
+            Debug.Assert(tileA != null);
+            Debug.Assert(tileB != null);
+
+            return TileSurface.AreGluedTogether(tileA.Position, tileA.Surface, tileB.Position, tileB.Surface);
         }
     }
 }

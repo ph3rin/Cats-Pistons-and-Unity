@@ -26,5 +26,10 @@ namespace CatProcessingUnit
 
             throw new ArgumentOutOfRangeException(nameof(orientation));
         }
+
+        public static Vector2Int RightVectorToDirection(Vector2 right)
+        {
+            return new Vector2Int(Mathf.RoundToInt(right.x), Mathf.RoundToInt(right.y));
+        }
     }
 }

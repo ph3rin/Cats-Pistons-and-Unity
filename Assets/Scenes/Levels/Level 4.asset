@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914f3bd293340599706bfb9f36a631e, type: 3}
   m_Name: Level 4
   m_EditorClassIdentifier: 
-  _scene: {fileID: 102900000, guid: c062d260dbe696c41ab99cc0dde12b0a, type: 3}
-  _buildIndex: 6
+  _scene: {fileID: 102900000, guid: 7c0673cfde32873449053b0ebde6d15c, type: 3}
+  _buildIndex: 7

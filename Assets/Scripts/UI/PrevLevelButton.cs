@@ -1,12 +1,10 @@
-﻿using System;
-using CatProcessingUnit.GameManagement;
+﻿using CatProcessingUnit.GameManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CatProcessingUnit.UI
 {
-    [RequireComponent(typeof(Button))]
-    public class NextLevelButton : MonoBehaviour
+    public class PrevLevelButton : MonoBehaviour
     {
         private Button _button;
         private LevelManager _levelManager;
@@ -21,20 +19,15 @@ namespace CatProcessingUnit.UI
         {
             _levelManager = ServiceLocator.GetService<LevelManager>();
             _levelIdx = _levelManager.GetCurrentLevelIndex();
-            if (!_levelManager.HasNextLevel())
+            if (!_levelManager.HasPreviousLevel())
             {
                 Destroy(gameObject);
             }
         }
 
-        private void Update()
-        {
-            _button.interactable = _levelManager.IsLevelCompleted(_levelIdx);
-        }
-        
         public void OnClick()
         {
-            _levelManager.GoToNextLevel();
+            _levelManager.GoToPreviousLevel();
         }
     }
 }

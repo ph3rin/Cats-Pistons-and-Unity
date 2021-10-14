@@ -21,7 +21,7 @@ namespace CatProcessingUnit
             _height = workshop.Height;
             _tiles = new TileData[_width, _height];
         }
-
+        
         public IEnumerable<TileData> Tiles
         {
             get
@@ -39,6 +39,8 @@ namespace CatProcessingUnit
                 }
             }
         }
+
+        public PistonTileData StickyPiston { get; set; }
 
         public TileData GetTileAt(Vector2Int position)
         {
@@ -97,7 +99,7 @@ namespace CatProcessingUnit
             {
                 clone.AddTile(tile.Clone());
             }
-
+            clone.StickyPiston = StickyPiston != null ? clone.GetTileAt(StickyPiston.Position) as PistonTileData : null;
             return clone;
         }
 

@@ -90,12 +90,13 @@ namespace CatProcessingUnit.GameManagement
 #if !UNITY_EDITOR
                     ActivateOtherGameObjects();
 #endif
+                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(buildIndices.Last()));
                 BootstrapServices();
                 finished = true;
             });
 
             yield return new WaitUntil(() => finished);
-            _isLoadingScenes = true;
+            _isLoadingScenes = false;
         }
 
         private static void CallbackAfterSceneAwaken(int count, Action callback)

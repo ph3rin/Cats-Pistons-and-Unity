@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.TileDataNS;
 using CatProcessingUnit.TileRenderers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,7 @@ namespace CatProcessingUnit
 
         private List<WorkshopData> _history;
         private int _activeDataIndex;
+        private Vector2Int _targetPosition;
 
         public bool Solved => false;
         public WorkshopData ActiveData => _history[_activeDataIndex];
@@ -27,7 +29,19 @@ namespace CatProcessingUnit
         {
             _history = new List<WorkshopData>();
             _activeDataIndex = 0;
+            BakeTargetPosition();
             GenerateTileGuides();
+        }
+
+        private void BakeTargetPosition()
+        {
+            var targetMarker = GetComponentInChildren<TargetTileMarker>();
+            if (targetMarker == null)
+            {
+                Debug.LogError("This level has no target tile!");
+                return;
+            }
+            _targetPosition = targetMarker.transform.position.RountToInt();
         }
 
         private void Start()
@@ -65,6 +79,13 @@ namespace CatProcessingUnit
             return true;
         }
 
+        public void Restart()
+        {
+            _history[_activeDataIndex].OnDeactivate();
+            _history[_activeDataIndex = 0].OnActivate();
+            RemoveUnusedRenderer();
+        }
+
         public void PushToHistory(WorkshopData data)
         {
             _history.RemoveRange(_activeDataIndex + 1, _history.Count - _activeDataIndex - 1);
@@ -72,6 +93,11 @@ namespace CatProcessingUnit
             _history[_activeDataIndex].OnDeactivate();
             _history[++_activeDataIndex].OnActivate();
             RemoveUnusedRenderer();
+            if (data.GetTileAt(_targetPosition) is CatTileData)
+            {
+                Debug.Log("You win!");
+                ServiceLocator.GetService<LevelManager>().CompleteCurrentLevel();
+            }
         }
 
         private void RemoveUnusedRenderer()

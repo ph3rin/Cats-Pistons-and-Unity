@@ -84,7 +84,7 @@ namespace CatProcessingUnit.TileDataNS
             Renderer.onLeftClick -= ToggleExtension;
             Renderer.onRightClick -= ToggleStickiness;
         }
-        
+
 
         private void ToggleStickiness()
         {
@@ -97,6 +97,28 @@ namespace CatProcessingUnit.TileDataNS
                 var newArmTile = newData.GetTileAt(Position + Direction) as PistonArmTileData;
                 newArmTile.Sticky = !newArmTile.Sticky;
             }
+
+            if (WorkshopData.StickyPiston != null && WorkshopData.StickyPiston != this)
+            {
+                PistonTileData otherPiston = WorkshopData.StickyPiston;
+                newData.StickyPiston = newPistonTile;
+                var otherTile = newData.GetTileAt(otherPiston.Position) as PistonTileData;
+                otherTile.Sticky = !otherTile.Sticky;
+                if (otherPiston.Extended)
+                {
+                    var otherArmTile = newData.GetTileAt(otherPiston.Position + otherPiston.Direction) as PistonArmTileData;
+                    otherArmTile.Sticky = !otherArmTile.Sticky;
+                }
+            }
+            else if (WorkshopData.StickyPiston == null)
+            {
+                newData.StickyPiston = newPistonTile;
+            }
+            else if (WorkshopData.StickyPiston == this)
+            {
+                newData.StickyPiston = null;
+            }
+
             newData.PushToWorkshopHistory();
         }
 

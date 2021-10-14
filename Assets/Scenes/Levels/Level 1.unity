@@ -367,9 +367,6 @@ MonoBehaviour:
   _width: 5
   _height: 4
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!4 &363378680
 Transform:
   m_ObjectHideFlags: 0
@@ -1638,6 +1635,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4007985873554986023, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
   m_PrefabInstance: {fileID: 1127542191}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1178450104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1662612214}
+    m_Modifications:
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848815, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779576908306848817, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
+      propertyPath: m_Name
+      value: Target Tile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c855a8c65811c4840881e5fda35fe8c4, type: 3}
 --- !u!4 &1183539805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4007985873554986023, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
@@ -3078,9 +3132,6 @@ MonoBehaviour:
   _width: 8
   _height: 8
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!4 &1885295078
 Transform:
   m_ObjectHideFlags: 0
@@ -3463,9 +3514,6 @@ MonoBehaviour:
   _width: 7
   _height: 5
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!114 &2056011529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3884,9 +3932,6 @@ MonoBehaviour:
   _width: 8
   _height: 8
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!4 &2115021491
 Transform:
   m_ObjectHideFlags: 0

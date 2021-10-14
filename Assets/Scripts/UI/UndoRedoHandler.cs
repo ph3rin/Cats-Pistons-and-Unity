@@ -1,5 +1,4 @@
-﻿using System;
-using CatProcessingUnit.GameManagement;
+﻿using CatProcessingUnit.GameManagement;
 using UnityEngine;
 
 namespace CatProcessingUnit.UI

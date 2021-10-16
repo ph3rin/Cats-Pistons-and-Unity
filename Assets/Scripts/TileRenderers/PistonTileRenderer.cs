@@ -10,6 +10,7 @@ namespace CatProcessingUnit.TileRenderers
 
         public void Render(PistonTileData pistonTileData)
         {
+            GetComponent<Animator>().enabled = false;
             base.Render(pistonTileData);
             var sticky = pistonTileData.Sticky;
             var extended = pistonTileData.Extended;

@@ -19,6 +19,10 @@ namespace CatProcessingUnit.TileDataNS
         {
         }
 
+        public virtual void OnPostAnimation()
+        {
+        }
+
         protected TileData(TileData other)
         {
             Position = other.Position;

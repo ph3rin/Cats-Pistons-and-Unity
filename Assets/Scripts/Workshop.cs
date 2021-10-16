@@ -83,7 +83,6 @@ namespace CatProcessingUnit
         {
             _history[_activeDataIndex].OnDeactivate();
             _history[_activeDataIndex = 0].OnActivate();
-            RemoveUnusedRenderer();
         }
 
         public void PushToHistory(WorkshopData data)
@@ -92,7 +91,6 @@ namespace CatProcessingUnit
             _history.Add(data);
             _history[_activeDataIndex].OnDeactivate();
             _history[++_activeDataIndex].OnActivate();
-            RemoveUnusedRenderer();
             if (data.GetTileAt(_targetPosition) is CatTileData)
             {
                 Debug.Log("You win!");
@@ -100,7 +98,7 @@ namespace CatProcessingUnit
             }
         }
 
-        private void RemoveUnusedRenderer()
+        public void RemoveUnusedRenderer()
         {
             foreach (var rdr in transform.GetComponentsInChildren<TileRenderer>(true))
             {

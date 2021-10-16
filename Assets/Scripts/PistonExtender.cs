@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CatProcessingUnit.AnimationInstructions;
 using CatProcessingUnit.TileDataNS;
 using UnityEngine;
 
@@ -30,6 +31,7 @@ namespace CatProcessingUnit
                 {
                     visited.Add(startTile);
                 }
+
                 queue.Enqueue(startTile);
             }
 
@@ -57,8 +59,10 @@ namespace CatProcessingUnit
         public static WorkshopTileCoordinates MovePistonArm(
             WorkshopData data,
             RotatableTileData armTile,
-            int directionSign)
+            int directionSign,
+            List<DeferredAnimationInstruction> generatedAnimations)
         {
+            generatedAnimations.Clear();
             Debug.Assert(directionSign == -1 || directionSign == 1);
             armTile = data.FindCounterpart(armTile);
             var direction = armTile.Direction * directionSign;
@@ -67,6 +71,9 @@ namespace CatProcessingUnit
             var gluedTiles = data.GetGluedTiles(direction, startTiles, staticTiles);
             var coordinates = data.ToCoordinates();
             coordinates.Translate(gluedTiles, direction);
+            var translateInstruction = new AnimationTranslate(direction);
+            generatedAnimations.AddRange(
+                gluedTiles.Select(gluedTile => new DeferredAnimationInstruction(translateInstruction, gluedTile)));
             return coordinates;
         }
 
@@ -82,11 +89,14 @@ namespace CatProcessingUnit
             }
         }
 
-        public static bool ExtendPiston(WorkshopData data, PistonTileData pistonTile,
-            Vector2Int direction)
+        public static bool ExtendPiston(
+            WorkshopData data,
+            PistonTileData pistonTile,
+            Vector2Int direction,
+            List<DeferredAnimationInstruction> generatedAnimations)
         {
-            var tileCoordinates = MovePistonArm(data, pistonTile, 1);
-            
+            var tileCoordinates = MovePistonArm(data, pistonTile, 1, generatedAnimations);
+
             Debug.Assert(data.Tiles.Contains(pistonTile));
             var startTilePosition = pistonTile.Position + direction;
             if (tileCoordinates.IsValidLayout())
@@ -96,6 +106,8 @@ namespace CatProcessingUnit
                     WorkshopData = data
                 };
                 tileCoordinates.SetTilePosition(pistonArm, startTilePosition);
+                generatedAnimations.Add(new DeferredAnimationInstruction(
+                    new AnimationPush(), pistonArm));
                 data.ApplyCoordinates(tileCoordinates);
                 return true;
             }
@@ -103,15 +115,21 @@ namespace CatProcessingUnit
             return false;
         }
 
-        public static bool RetractPiston(WorkshopData data, PistonTileData pistonTile, Vector2Int pistonDirection)
+        public static bool RetractPiston(
+            WorkshopData data,
+            PistonTileData pistonTile,
+            Vector2Int pistonDirection,
+            List<DeferredAnimationInstruction> generatedAnimations)
         {
             Debug.Assert(data.Tiles.Contains(pistonTile));
             var armTilePosition = pistonTile.Position + pistonDirection;
             var armTile = data.GetTileAt(armTilePosition) as PistonArmTileData;
             Debug.Assert(armTile != null);
 
-            var tileCoordinates = MovePistonArm(data, armTile, -1);
+            var tileCoordinates = MovePistonArm(data, armTile, -1, generatedAnimations);
             tileCoordinates.SetTilePosition(armTile, null);
+            generatedAnimations.Add(new DeferredAnimationInstruction(
+                new AnimationPull(), armTile));
             if (tileCoordinates.IsValidLayout())
             {
                 data.ApplyCoordinates(tileCoordinates);

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4007985873554986022}
   - component: {fileID: 4007985873554986021}
   - component: {fileID: 5824498428442957533}
+  - component: {fileID: 2726050791251786324}
   m_Layer: 0
   m_Name: Piston
   m_TagString: Untagged
@@ -122,5 +123,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a371ce0841e4636817d8acb5df50b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 4007985873554986022}
   _sprites: {fileID: 11400000, guid: e5751de619950054ba0f38383098ac0b, type: 2}
+--- !u!95 &2726050791251786324
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4007985873554986025}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f93892a223b21a4f9c3220d53ec2632, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

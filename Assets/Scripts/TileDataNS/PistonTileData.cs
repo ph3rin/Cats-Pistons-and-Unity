@@ -1,4 +1,6 @@
-﻿using CatProcessingUnit.TileRenderers;
+﻿using System.Collections.Generic;
+using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.TileRenderers;
 using UnityEngine;
 
 namespace CatProcessingUnit.TileDataNS
@@ -49,10 +51,20 @@ namespace CatProcessingUnit.TileDataNS
             var newData = WorkshopData.Clone();
             var newPiston = newData.GetTileAt(Position) as PistonTileData;
             Debug.Assert(newPiston != null);
-            if (PistonExtender.ExtendPiston(newData, newPiston, Direction))
+            var animations = new List<DeferredAnimationInstruction>();
+            if (PistonExtender.ExtendPiston(newData, newPiston, Direction, animations))
             {
                 newPiston.Extended = true;
                 newData.PushToWorkshopHistory();
+                var animationManager = ServiceLocator.GetService<AnimationManager>();
+                foreach (var animation in animations)
+                {
+                    animation.Tile.Renderer.QueueAnimation(animation.Instruction);
+                    animationManager.AddAnimationFinishedCallback(animation.Tile.OnPostAnimation);
+                }
+
+                animationManager.AddAnimationFinishedCallback(() => WorkshopData.Workshop.RemoveUnusedRenderer());
+                animationManager.PlayAll();
             }
         }
 
@@ -62,10 +74,20 @@ namespace CatProcessingUnit.TileDataNS
             var newData = WorkshopData.Clone();
             var newPiston = newData.GetTileAt(Position) as PistonTileData;
             Debug.Assert(newPiston != null);
-            if (PistonExtender.RetractPiston(newData, newPiston, Direction))
+            var animations = new List<DeferredAnimationInstruction>();
+            if (PistonExtender.RetractPiston(newData, newPiston, Direction, animations))
             {
                 newPiston.Extended = false;
                 newData.PushToWorkshopHistory();
+                var animationManager = ServiceLocator.GetService<AnimationManager>();
+                foreach (var animation in animations)
+                {
+                    animation.Tile.Renderer.QueueAnimation(animation.Instruction);
+                    animationManager.AddAnimationFinishedCallback(animation.Tile.OnPostAnimation);
+                }
+
+                animationManager.AddAnimationFinishedCallback(() => WorkshopData.Workshop.RemoveUnusedRenderer());
+                animationManager.PlayAll();
             }
         }
 
@@ -75,6 +97,11 @@ namespace CatProcessingUnit.TileDataNS
             Renderer.onLeftClick += ToggleExtension;
             Renderer.onRightClick += ToggleStickiness;
             Debug.Assert(_renderer != null, "_renderer != null");
+        }
+
+        public override void OnPostAnimation()
+        {
+            base.OnPostAnimation();
             _renderer.Render(this);
         }
 
@@ -90,36 +117,6 @@ namespace CatProcessingUnit.TileDataNS
         {
             var newData = WorkshopData.Clone();
             newData.TogglePistonStickiness(this);
-            // var newPistonTile = newData.GetTileAt(Position) as PistonTileData;
-            // Debug.Assert(newPistonTile != null);
-            // newPistonTile.Sticky = !newPistonTile.Sticky;
-            // if (Extended)
-            // {
-            //     var newArmTile = newData.GetTileAt(Position + Direction) as PistonArmTileData;
-            //     newArmTile.Sticky = !newArmTile.Sticky;
-            // }
-            //
-            // if (WorkshopData.StickyPiston != null && WorkshopData.StickyPiston != this)
-            // {
-            //     PistonTileData otherPiston = WorkshopData.StickyPiston;
-            //     newData.StickyPiston = newPistonTile;
-            //     var otherTile = newData.GetTileAt(otherPiston.Position) as PistonTileData;
-            //     otherTile.Sticky = !otherTile.Sticky;
-            //     if (otherPiston.Extended)
-            //     {
-            //         var otherArmTile = newData.GetTileAt(otherPiston.Position + otherPiston.Direction) as PistonArmTileData;
-            //         otherArmTile.Sticky = !otherArmTile.Sticky;
-            //     }
-            // }
-            // else if (WorkshopData.StickyPiston == null)
-            // {
-            //     newData.StickyPiston = newPistonTile;
-            // }
-            // else if (WorkshopData.StickyPiston == this)
-            // {
-            //     newData.StickyPiston = null;
-            // }
-
             newData.PushToWorkshopHistory();
         }
 

@@ -98,6 +98,198 @@ TextureImporter:
   - first:
       213: 6674992426767594553
     second: PistonOffPull 31
+  - first:
+      213: -1553306348635055364
+    second: PistonOffPull_0
+  - first:
+      213: -3182481007444032020
+    second: PistonOffPull_1
+  - first:
+      213: 1212106409545281274
+    second: PistonOffPull_2
+  - first:
+      213: -2035656823101343272
+    second: PistonOffPull_3
+  - first:
+      213: 6709787404719731595
+    second: PistonOffPull_4
+  - first:
+      213: -5604581734547204950
+    second: PistonOffPull_5
+  - first:
+      213: 7770790950190574550
+    second: PistonOffPull_6
+  - first:
+      213: 387688856419095696
+    second: PistonOffPull_7
+  - first:
+      213: 4704165272339102181
+    second: PistonOffPull_8
+  - first:
+      213: 7670162326170455894
+    second: PistonOffPull_9
+  - first:
+      213: -7543900286836471510
+    second: PistonOffPull_10
+  - first:
+      213: 1181172968315277576
+    second: PistonOffPull_11
+  - first:
+      213: 1512242838500344735
+    second: PistonOffPull_12
+  - first:
+      213: -6598804254715254651
+    second: PistonOffPull_13
+  - first:
+      213: -6072226542821721018
+    second: PistonOffPull_14
+  - first:
+      213: 5433605263505939736
+    second: PistonOffPull_15
+  - first:
+      213: 7646740416224566439
+    second: PistonOffPull_16
+  - first:
+      213: 8147422068227076725
+    second: PistonOffPull_17
+  - first:
+      213: 323742362866629771
+    second: PistonOffPull_18
+  - first:
+      213: 1591686413154389178
+    second: PistonOffPull_19
+  - first:
+      213: 817478496395042348
+    second: PistonOffPull_20
+  - first:
+      213: -3205034802951272565
+    second: PistonOffPull_21
+  - first:
+      213: -3355730027338376747
+    second: PistonOffPull_22
+  - first:
+      213: -8421605040097399544
+    second: PistonOffPull_23
+  - first:
+      213: -9167003318521070732
+    second: PistonOffPull_24
+  - first:
+      213: -1246228455306305723
+    second: PistonOffPull_25
+  - first:
+      213: -943636670138234925
+    second: PistonOffPull_26
+  - first:
+      213: -8761542224505103773
+    second: PistonOffPull_27
+  - first:
+      213: -4133049258237953535
+    second: PistonOffPull_28
+  - first:
+      213: 5656325992968534145
+    second: PistonOffPull_29
+  - first:
+      213: -3975990632519214265
+    second: PistonOffPull_30
+  - first:
+      213: 2980122550219594117
+    second: PistonOffPull_31
+  - first:
+      213: 1923868725855904607
+    second: PistonOffPull_32
+  - first:
+      213: 204709361652857284
+    second: PistonOffPull_33
+  - first:
+      213: 7641201628057496026
+    second: PistonOffPull_34
+  - first:
+      213: -4707471043518159076
+    second: PistonOffPull_35
+  - first:
+      213: 8185346358455823465
+    second: PistonOffPull_36
+  - first:
+      213: -5556334427963748113
+    second: PistonOffPull_37
+  - first:
+      213: 3604543073307873757
+    second: PistonOffPull_38
+  - first:
+      213: -1503508856856486580
+    second: PistonOffPull_39
+  - first:
+      213: -6657376407194636388
+    second: PistonOffPull_40
+  - first:
+      213: 7582097963029376607
+    second: PistonOffPull_41
+  - first:
+      213: 1008752644440689110
+    second: PistonOffPull_42
+  - first:
+      213: -5044085335867439896
+    second: PistonOffPull_43
+  - first:
+      213: 4593366046249835334
+    second: PistonOffPull_44
+  - first:
+      213: 4260821210588226135
+    second: PistonOffPull_45
+  - first:
+      213: 1648209808736340250
+    second: PistonOffPull_46
+  - first:
+      213: -3083203086659714262
+    second: PistonOffPull_47
+  - first:
+      213: -3419330282868635782
+    second: PistonOffPull_48
+  - first:
+      213: -5271862578206617664
+    second: PistonOffPull_49
+  - first:
+      213: -8999298415534359279
+    second: PistonOffPull_50
+  - first:
+      213: 5329132060869985399
+    second: PistonOffPull_51
+  - first:
+      213: 2143430353115740266
+    second: PistonOffPull_52
+  - first:
+      213: 698433217432769148
+    second: PistonOffPull_53
+  - first:
+      213: -7848129791605332416
+    second: PistonOffPull_54
+  - first:
+      213: 1373998528607117205
+    second: PistonOffPull_55
+  - first:
+      213: 6705951918330537200
+    second: PistonOffPull_56
+  - first:
+      213: -4685048562775843846
+    second: PistonOffPull_57
+  - first:
+      213: 1104957261076446490
+    second: PistonOffPull_58
+  - first:
+      213: 3629743785983810660
+    second: PistonOffPull_59
+  - first:
+      213: -4062294437668112726
+    second: PistonOffPull_60
+  - first:
+      213: 7703849812593689192
+    second: PistonOffPull_61
+  - first:
+      213: 7302093428775787066
+    second: PistonOffPull_62
+  - first:
+      213: -1107898736536875063
+    second: PistonOffPull_63
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,7 +331,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -183,677 +375,1361 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PistonOffPull 0
+      name: PistonOffPull_0
       rect:
         serializedVersion: 2
         x: 0
         y: 160
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b21614c301f952b50800000000000000
-      internalID: 6567830523668947243
+      spriteID: cfa9f3e0b1c817ae0800000000000000
+      internalID: -1553306348635055364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 1
+      name: PistonOffPull_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce50fde926e85d3d0800000000000000
+      internalID: -3182481007444032020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_2
       rect:
         serializedVersion: 2
         x: 64
         y: 160
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a5d28c666dc8f87a0800000000000000
-      internalID: -6372720095230677670
+      spriteID: afeabe28b5442d010800000000000000
+      internalID: 1212106409545281274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 2
+      name: PistonOffPull_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9b17e97e4efb3e0800000000000000
+      internalID: -2035656823101343272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_4
       rect:
         serializedVersion: 2
         x: 128
         y: 160
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 85a4013c5fbe8e5f0800000000000000
-      internalID: -727071899048195496
+      spriteID: b83b5b83814fd1d50800000000000000
+      internalID: 6709787404719731595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 3
+      name: PistonOffPull_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4dba55b968832b0800000000000000
+      internalID: -5604581734547204950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_6
       rect:
         serializedVersion: 2
         x: 192
         y: 160
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f5ca98937bd0beab0800000000000000
-      internalID: -4977869882532451233
+      spriteID: 6dbede1a23567db60800000000000000
+      internalID: 7770790950190574550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 4
+      name: PistonOffPull_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094dc3af5f8516500800000000000000
+      internalID: 387688856419095696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_8
       rect:
         serializedVersion: 2
         x: 256
         y: 160
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 13718603df198a5e0800000000000000
-      internalID: -1898106726311782607
+      spriteID: 5e93086346d884140800000000000000
+      internalID: 4704165272339102181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 5
+      name: PistonOffPull_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f49f45ff3e17a60800000000000000
+      internalID: 7670162326170455894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_10
       rect:
         serializedVersion: 2
         x: 320
         y: 160
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8d8c7f9d03e1f5d00800000000000000
-      internalID: 963522040444733656
+      spriteID: a29052e88aeae4790800000000000000
+      internalID: -7543900286836471510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 6
+      name: PistonOffPull_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801d9ba7e8e546010800000000000000
+      internalID: 1181172968315277576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_12
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c2e59e1ac64d61220800000000000000
-      internalID: 2456384209815166508
+      spriteID: f9301f279d09cf410800000000000000
+      internalID: 1512242838500344735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 7
+      name: PistonOffPull_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5886c570e765c64a0800000000000000
+      internalID: -6598804254715254651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_14
       rect:
         serializedVersion: 2
         x: 64
         y: 128
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1daba6e396e229d10800000000000000
-      internalID: 2130816603253291729
+      spriteID: 64cb96f912e1bbba0800000000000000
+      internalID: -6072226542821721018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 8
+      name: PistonOffPull_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81dd6fcd23b086b40800000000000000
+      internalID: 5433605263505939736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_16
       rect:
         serializedVersion: 2
         x: 128
         y: 128
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4cffba524dff6e8a0800000000000000
-      internalID: -6276047744064028732
+      spriteID: 7ac10b6f4edae1a60800000000000000
+      internalID: 7646740416224566439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 9
+      name: PistonOffPull_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5727ad34435711170800000000000000
+      internalID: 8147422068227076725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_18
       rect:
         serializedVersion: 2
         x: 192
         y: 128
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5aa2e8738d3f29850800000000000000
-      internalID: 6382431731907963557
+      spriteID: b8c3969b6f92e7400800000000000000
+      internalID: 323742362866629771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 10
+      name: PistonOffPull_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc02e11c5ec61610800000000000000
+      internalID: 1591686413154389178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_20
       rect:
         serializedVersion: 2
         x: 256
         y: 128
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ae2f743522f64ec20800000000000000
-      internalID: 3234832625575654122
+      spriteID: c2e952d7c54485b00800000000000000
+      internalID: 817478496395042348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 11
+      name: PistonOffPull_21
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b874355e3dd6583d0800000000000000
+      internalID: -3205034802951272565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_22
       rect:
         serializedVersion: 2
         x: 320
         y: 128
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eeeab6b22232966e0800000000000000
-      internalID: -1843903942767169810
+      spriteID: 5d9526ec15d0e61d0800000000000000
+      internalID: -3355730027338376747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 12
+      name: PistonOffPull_23
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80dea5ae5d2702b80800000000000000
+      internalID: -8421605040097399544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_24
       rect:
         serializedVersion: 2
         x: 0
         y: 96
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2fbe7f4aa2e6b76d0800000000000000
-      internalID: -2991676398022169614
+      spriteID: 47b79b8fc0348c080800000000000000
+      internalID: -9167003318521070732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 13
+      name: PistonOffPull_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54fdb7c92d184bee0800000000000000
+      internalID: -1246228455306305723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_26
       rect:
         serializedVersion: 2
         x: 64
         y: 96
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4217ecf9cbcdf3a20800000000000000
-      internalID: 3044394575818813732
+      spriteID: 3d7c067b27787e2f0800000000000000
+      internalID: -943636670138234925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 14
+      name: PistonOffPull_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a99c774cfb86680800000000000000
+      internalID: -8761542224505103773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_28
       rect:
         serializedVersion: 2
         x: 128
         y: 96
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f88ffbef657610dd0800000000000000
-      internalID: -2521620693011924849
+      spriteID: 10af883f89574a6c0800000000000000
+      internalID: -4133049258237953535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 15
+      name: PistonOffPull_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 188b2b8a58e4f7e40800000000000000
+      internalID: 5656325992968534145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_30
       rect:
         serializedVersion: 2
         x: 192
         y: 96
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e93c92388920e6100800000000000000
-      internalID: 103022695534936990
+      spriteID: 74b596ed59172d8c0800000000000000
+      internalID: -3975990632519214265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 16
+      name: PistonOffPull_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58958f88ba58b5920800000000000000
+      internalID: 2980122550219594117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_32
       rect:
         serializedVersion: 2
         x: 256
         y: 96
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a6672277c55c9a290800000000000000
-      internalID: -7878549072181561750
+      spriteID: f53ef1fb964f2ba10800000000000000
+      internalID: 1923868725855904607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 17
+      name: PistonOffPull_33
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9f38f641647d200800000000000000
+      internalID: 204709361652857284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_34
       rect:
         serializedVersion: 2
         x: 320
         y: 96
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8da3f0b2fcbbebe70800000000000000
-      internalID: 9132943592808987352
+      spriteID: ad9e08955600b0a60800000000000000
+      internalID: 7641201628057496026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 18
+      name: PistonOffPull_35
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c17a9a4f604bbaeb0800000000000000
+      internalID: -4707471043518159076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_36
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 703499f5c5c0985c0800000000000000
-      internalID: -4212822385547984121
+      spriteID: 96ceb4b2521389170800000000000000
+      internalID: 8185346358455823465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 19
+      name: PistonOffPull_37
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe092f7c64fe3e2b0800000000000000
+      internalID: -5556334427963748113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_38
       rect:
         serializedVersion: 2
         x: 64
         y: 64
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3a78b74c0156ad0b0800000000000000
-      internalID: -5703134855420999773
+      spriteID: dd15c16d3d8e50230800000000000000
+      internalID: 3604543073307873757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 20
+      name: PistonOffPull_39
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d5a6e19a6722be0800000000000000
+      internalID: -1503508856856486580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_40
       rect:
         serializedVersion: 2
         x: 128
         y: 64
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7718d8f93cc8b69b0800000000000000
-      internalID: -5085816582361480841
+      spriteID: c9fe8111e6f3c93a0800000000000000
+      internalID: -6657376407194636388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 21
+      name: PistonOffPull_41
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5e249afce5093960800000000000000
+      internalID: 7582097963029376607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_42
       rect:
         serializedVersion: 2
         x: 192
         y: 64
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1cf86d7646902a350800000000000000
-      internalID: 6026389578218639297
+      spriteID: 6d98f1e7f2fcffd00800000000000000
+      internalID: 1008752644440689110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 22
+      name: PistonOffPull_43
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e44dda9c1fcff9b0800000000000000
+      internalID: -5044085335867439896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_44
       rect:
         serializedVersion: 2
         x: 256
         y: 64
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f02b43fa79a3f54e0800000000000000
-      internalID: -1990808087120530929
+      spriteID: 64bdf06151aeebf30800000000000000
+      internalID: 4593366046249835334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 23
+      name: PistonOffPull_45
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752af84f05a712b30800000000000000
+      internalID: 4260821210588226135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_46
       rect:
         serializedVersion: 2
         x: 320
         y: 64
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3eee76199393957d0800000000000000
-      internalID: -2929247163212370205
+      spriteID: a194b05a61e9fd610800000000000000
+      internalID: 1648209808736340250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 24
+      name: PistonOffPull_47
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a238241d0234635d0800000000000000
+      internalID: -3083203086659714262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_48
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d2ee7b98523e94ef0800000000000000
-      internalID: -123317764412150227
+      spriteID: a7701ef59391c80d0800000000000000
+      internalID: -3419330282868635782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 25
+      name: PistonOffPull_49
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfc159aae496d6b0800000000000000
+      internalID: -5271862578206617664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_50
       rect:
         serializedVersion: 2
         x: 64
         y: 32
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5d042df5de19b9ee0800000000000000
-      internalID: -1253247622591659819
+      spriteID: 11db65a75c11c1380800000000000000
+      internalID: -8999298415534359279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 26
+      name: PistonOffPull_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7740d49df51e4f940800000000000000
+      internalID: 5329132060869985399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_52
       rect:
         serializedVersion: 2
         x: 128
         y: 32
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cf78d093addb2eeb0800000000000000
-      internalID: -4691979116808927236
+      spriteID: a68f04ebc8efebd10800000000000000
+      internalID: 2143430353115740266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 27
+      name: PistonOffPull_53
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72d9609f4551b900800000000000000
+      internalID: 698433217432769148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_54
       rect:
         serializedVersion: 2
         x: 192
         y: 32
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 75fdbd8c3ddeaa960800000000000000
-      internalID: 7614159613886979927
+      spriteID: 04624342987d51390800000000000000
+      internalID: -7848129791605332416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 28
+      name: PistonOffPull_55
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f598bc16c611310800000000000000
+      internalID: 1373998528607117205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_56
       rect:
         serializedVersion: 2
         x: 256
         y: 32
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c937ee650e5df8650800000000000000
-      internalID: 6237439168439284636
+      spriteID: 0f4e0f47db3501d50800000000000000
+      internalID: 6705951918330537200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 29
+      name: PistonOffPull_57
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb9a44972d5bfeb0800000000000000
+      internalID: -4685048562775843846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_58
       rect:
         serializedVersion: 2
         x: 320
         y: 32
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9b8de1027e677bf20800000000000000
-      internalID: 3438347575569078457
+      spriteID: a1d337e46c8955f00800000000000000
+      internalID: 1104957261076446490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 30
+      name: PistonOffPull_59
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46c1f3dfdb07f5230800000000000000
+      internalID: 3629743785983810660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_60
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8b8ff722c12a2a580800000000000000
-      internalID: -8817306878716413768
+      spriteID: aa63fbd5bb4df97c0800000000000000
+      internalID: -4062294437668112726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistonOffPull 31
+      name: PistonOffPull_61
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8624b9a769299ea60800000000000000
+      internalID: 7703849812593689192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_62
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
+        width: 32
         height: 32
-      alignment: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a15ea094f365560800000000000000
+      internalID: 7302093428775787066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PistonOffPull_63
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 934b7eb1f3652ac50800000000000000
-      internalID: 6674992426767594553
+      spriteID: 9cf8d9118f3ff90f0800000000000000
+      internalID: -1107898736536875063
       vertices: []
       indices: 
       edges: []

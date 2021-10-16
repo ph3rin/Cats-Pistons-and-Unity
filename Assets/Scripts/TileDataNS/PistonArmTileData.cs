@@ -38,13 +38,17 @@ namespace CatProcessingUnit.TileDataNS
                 _renderer = TileFactory.I.CreatePistonArmRenderer(this);
             }
             _renderer.gameObject.SetActive(true);
+        }
+
+        public override void OnPostAnimation()
+        {
+            base.OnPostAnimation();
             _renderer.Render(this);
         }
 
         public override void OnDeactivate()
         {
             base.OnDeactivate();
-            _renderer.gameObject.SetActive(false);
         }
     }
 }

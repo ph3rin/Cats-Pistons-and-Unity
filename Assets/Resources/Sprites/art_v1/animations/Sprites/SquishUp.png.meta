@@ -1,40 +1,40 @@
 fileFormatVersion: 2
-guid: 03732805982e9d244883823ab3cc0bae
+guid: 35f7cab67de9efe4a9321f8ac9846f65
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8879237315375564722
-    second: SquishLeft 0
+      213: 5094743339297146155
+    second: SquishUp 0
   - first:
-      213: -8966531035973591290
-    second: SquishLeft 1
+      213: 5220902306499888347
+    second: SquishUp 1
   - first:
-      213: -8687286859415209366
-    second: SquishLeft 2
+      213: 8848573281871744435
+    second: SquishUp 2
   - first:
-      213: 64450358706647753
-    second: SquishLeft 3
+      213: 4567010817397138770
+    second: SquishUp 3
   - first:
-      213: 3081359397916085968
-    second: SquishLeft 4
+      213: -2575438789890540208
+    second: SquishUp 4
   - first:
-      213: 4070444254579928383
-    second: SquishLeft 5
+      213: 3151856664602271393
+    second: SquishUp 5
   - first:
-      213: -887938351691914097
-    second: SquishLeft 6
+      213: -8019097152016357775
+    second: SquishUp 6
   - first:
-      213: 1463830930585355325
-    second: SquishLeft 7
+      213: 6427451795116376077
+    second: SquishUp 7
   - first:
-      213: -3773045675222510324
-    second: SquishLeft 8
+      213: 1600589294485223821
+    second: SquishUp 8
   - first:
-      213: 4393469186449560164
-    second: SquishLeft 9
+      213: -6900571978958650388
+    second: SquishUp 9
   - first:
-      213: -6937338690899467567
-    second: SquishLeft 10
+      213: 9162129923941986243
+    second: SquishUp 10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SquishLeft 0
+      name: SquishUp 0
       rect:
         serializedVersion: 2
         x: 0
@@ -126,14 +126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b78a5b4b43693b70800000000000000
-      internalID: 8879237315375564722
+      spriteID: b250890f21a24b640800000000000000
+      internalID: 5094743339297146155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 1
+      name: SquishUp 1
       rect:
         serializedVersion: 2
         x: 32
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60f574d878b709380800000000000000
-      internalID: -8966531035973591290
+      spriteID: bd481f97cfe547840800000000000000
+      internalID: 5220902306499888347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 2
+      name: SquishUp 2
       rect:
         serializedVersion: 2
         x: 32
@@ -168,35 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6a33aae0ae807780800000000000000
-      internalID: -8687286859415209366
+      spriteID: 3bd4af2a4827cca70800000000000000
+      internalID: 8848573281871744435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c23b508249f4e000800000000000000
-      internalID: 64450358706647753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SquishLeft 4
+      name: SquishUp 3
       rect:
         serializedVersion: 2
         x: 0
@@ -210,14 +189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0de8912fb0033ca20800000000000000
-      internalID: 3081359397916085968
+      spriteID: 255a2503428416f30800000000000000
+      internalID: 4567010817397138770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 5
+      name: SquishUp 4
       rect:
         serializedVersion: 2
         x: 0
@@ -231,14 +210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3d2440cb7f1d7830800000000000000
-      internalID: 4070444254579928383
+      spriteID: 05dffcbd014324cd0800000000000000
+      internalID: -2575438789890540208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 6
+      name: SquishUp 5
       rect:
         serializedVersion: 2
         x: 0
@@ -252,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8425fc06c86da3f0800000000000000
-      internalID: -887938351691914097
+      spriteID: 1aed09cefe4adbb20800000000000000
+      internalID: 3151856664602271393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 7
+      name: SquishUp 6
       rect:
         serializedVersion: 2
         x: 0
@@ -273,14 +252,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3405c4c972905410800000000000000
-      internalID: 1463830930585355325
+      spriteID: 176e7b290a176b090800000000000000
+      internalID: -8019097152016357775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 8
+      name: SquishUp 7
       rect:
         serializedVersion: 2
         x: 32
@@ -294,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c05d907e2f273abc0800000000000000
-      internalID: -3773045675222510324
+      spriteID: d00cbd28a55e23950800000000000000
+      internalID: 6427451795116376077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 9
+      name: SquishUp 8
       rect:
         serializedVersion: 2
         x: 32
@@ -315,14 +294,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46253fd82fcb8fc30800000000000000
-      internalID: 4393469186449560164
+      spriteID: d89b519ab7f663610800000000000000
+      internalID: 1600589294485223821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquishLeft 10
+      name: SquishUp 9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3c72f885e3c30a0800000000000000
+      internalID: -6900571978958650388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SquishUp 10
       rect:
         serializedVersion: 2
         x: 0
@@ -336,8 +336,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d22d5a573f99bf90800000000000000
-      internalID: -6937338690899467567
+      spriteID: 3cfe98e6f9c662f70800000000000000
+      internalID: 9162129923941986243
       vertices: []
       indices: 
       edges: []

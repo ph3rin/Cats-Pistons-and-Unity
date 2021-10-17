@@ -11,6 +11,7 @@ namespace CatProcessingUnit
         [SerializeField] private Sprite _extendedStickySprite;
         [SerializeField] private Sprite _arm;
         [SerializeField] private Sprite _armSticky;
+        [SerializeField] private Sprite _armStem;
 
         public Sprite GetPistonSprite(bool sticky, bool extended)
         {
@@ -19,8 +20,9 @@ namespace CatProcessingUnit
                 : (sticky ? _retractedStickySprite : _retractedSprite);
         }
 
-        public Sprite GetPistonArmSprite(bool sticky)
+        public Sprite GetPistonArmSprite(bool sticky, bool isStem)
         {
+            if (isStem) return _armStem;
             return sticky ? _armSticky : _arm;
         }
     }

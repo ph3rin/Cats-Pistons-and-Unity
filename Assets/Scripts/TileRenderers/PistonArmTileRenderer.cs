@@ -10,7 +10,7 @@ namespace CatProcessingUnit.TileRenderers
         public void Render(PistonArmTileData tileData)
         {
             base.Render(tileData);
-            _spriteRenderer.sprite = _sprites.GetPistonArmSprite(tileData.Sticky);
+            _spriteRenderer.sprite = _sprites.GetPistonArmSprite(tileData.Sticky, tileData.IsStem);
         }
         
     }

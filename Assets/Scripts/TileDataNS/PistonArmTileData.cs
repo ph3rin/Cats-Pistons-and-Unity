@@ -13,10 +13,13 @@ namespace CatProcessingUnit.TileDataNS
         protected override TileSurface UnrotatedSurface =>
             Sticky ? TileSurface.PistonArmSticky : TileSurface.PistonArm;
 
+        public bool IsStem { get; set; }
+
         public PistonArmTileData(PistonArmTileData other) : base(other)
         {
             Sticky = other.Sticky;
             _renderer = other._renderer;
+            IsStem = other.IsStem;
         }
 
         public override TileData Clone()
@@ -24,10 +27,11 @@ namespace CatProcessingUnit.TileDataNS
             return new PistonArmTileData(this);
         }
 
-        public PistonArmTileData(Vector2Int position, Vector2Int direction, bool sticky) :
+        public PistonArmTileData(Vector2Int position, Vector2Int direction, bool sticky, bool isStem = false) :
             base(position, direction)
         {
             Sticky = sticky;
+            IsStem = isStem;
         }
 
         public override void OnActivate()

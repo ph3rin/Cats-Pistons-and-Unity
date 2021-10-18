@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using CatProcessingUnit.TileDataNS;
 using UnityEngine;
 
 namespace CatProcessingUnit
@@ -30,6 +32,15 @@ namespace CatProcessingUnit
         public static Vector2Int RightVectorToDirection(Vector2 right)
         {
             return new Vector2Int(Mathf.RoundToInt(right.x), Mathf.RoundToInt(right.y));
+        }
+
+        public static void AddNeighborIfGluedTo(this RotatableTileData self, Vector2Int offset, HashSet<TileData> set)
+        {
+            var neighbor = self.GetNeighboringTileByLocalOffset(offset);
+            if (neighbor != null && TileData.AreGluedTogether(neighbor, self))
+            {
+                set.Add(neighbor);
+            }
         }
     }
 }

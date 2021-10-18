@@ -27,10 +27,9 @@ namespace CatProcessingUnit
             if (piston == null) return;
             piston = data.FindCounterpart(piston);
             piston.Sticky = val;
-            if (piston.Extended)
+            for (var i = 1; i <= piston.CurrentLength; ++i)
             {
-                var arm = data.GetPistonArm(piston);
-                arm.Sticky = val;
+                ((PistonArmTileData) piston.GetNeighboringTileByLocalOffset(Vector2Int.right * i)).Sticky = val;
             }
         }
 

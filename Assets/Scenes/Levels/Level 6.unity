@@ -410,6 +410,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 363378680}
     m_Modifications:
+    - target: {fileID: 7088990517405192032, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 81300375020843227, guid: 8545778d1fd97964eb4bade96ad3c776, type: 3}
     - target: {fileID: 7088990517405192033, guid: 709263903ec5d814cad75a65dd673567, type: 3}
       propertyPath: m_Name
       value: Color Tile 0

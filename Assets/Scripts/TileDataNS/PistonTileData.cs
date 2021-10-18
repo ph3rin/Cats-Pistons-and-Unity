@@ -5,8 +5,12 @@ namespace CatProcessingUnit.TileDataNS
 {
     public class PistonTileData : RotatableTileData
     {
-        public bool Extended { get; private set; } = false;
+        public bool Extended => CurrentLength > 0;
         public bool Sticky { get; set; } = false;
+
+        public int MaxLength { get; }
+
+        public int CurrentLength { get; private set; } = 0;
 
         private PistonTileRenderer _renderer;
 
@@ -29,13 +33,15 @@ namespace CatProcessingUnit.TileDataNS
 
         public PistonTileData(PistonTileData other) : base(other)
         {
-            Extended = other.Extended;
             Sticky = other.Sticky;
+            MaxLength = other.MaxLength;
+            CurrentLength = other.CurrentLength;
             _renderer = other._renderer;
         }
 
-        public PistonTileData(Vector2Int position, Vector2Int direction) : base(position, direction)
+        public PistonTileData(Vector2Int position, Vector2Int direction, int maxLength = 1) : base(position, direction)
         {
+            MaxLength = maxLength;
         }
 
         public override TileData Clone()
@@ -49,9 +55,16 @@ namespace CatProcessingUnit.TileDataNS
             var newData = WorkshopData.Clone();
             var newPiston = newData.GetTileAt(Position) as PistonTileData;
             Debug.Assert(newPiston != null);
-            if (PistonExtender.ExtendPiston(newData, newPiston, Direction))
+            var lengthChanged = false;
+            for (var i = newPiston.CurrentLength; i < newPiston.MaxLength; ++i)
             {
-                newPiston.Extended = true;
+                if (!PistonExtender.ExtendPiston(newData, newPiston, Direction)) break;
+                ++newPiston.CurrentLength;
+                lengthChanged = true;
+            }
+
+            if (lengthChanged)
+            {
                 newData.PushToWorkshopHistory();
             }
         }
@@ -62,9 +75,20 @@ namespace CatProcessingUnit.TileDataNS
             var newData = WorkshopData.Clone();
             var newPiston = newData.GetTileAt(Position) as PistonTileData;
             Debug.Assert(newPiston != null);
-            if (PistonExtender.RetractPiston(newData, newPiston, Direction))
+            var lengthChanged = false;
+            for (var i = newPiston.CurrentLength; i > 0; --i)
             {
-                newPiston.Extended = false;
+                if (!PistonExtender.RetractPiston(newData, newPiston, Direction)) break;
+                --newPiston.CurrentLength;
+                if (newPiston.FindArmTile() is PistonArmTileData realArm)
+                {
+                    realArm.IsStem = false;
+                }
+                lengthChanged = true;
+            }
+
+            if (lengthChanged)
+            {
                 newData.PushToWorkshopHistory();
             }
         }

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8c723964b4155419b74e83fc4bcaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 5
+  _width: 10
   _height: 4
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
 --- !u!4 &363378680
@@ -333,6 +333,10 @@ PrefabInstance:
     - target: {fileID: 4007985873554986025, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
       propertyPath: m_Name
       value: Piston Top (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824498428442957533, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
+      propertyPath: _maxLength
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}

@@ -6,16 +6,16 @@ namespace CatProcessingUnit.Machineries
 {
     public class Piston : Machinery
     {
-        private readonly Vector2Int _direction;
+        public Vector2Int Direction { get; }
 
         public Piston(Vector2Int position, Vector2Int direction) : base(position)
         {
-            _direction = direction;
+            Direction = direction;
         }
 
         public Piston(Piston other) : base(other)
         {
-            _direction = other._direction;
+            Direction = other.Direction;
         }
 
         public override IEnumerable<Force> PropagateForce(Workspace workspace, Force force)
@@ -43,14 +43,14 @@ namespace CatProcessingUnit.Machineries
 
         private Tile CorrectRotation(Tile tile)
         {
-            tile.Rotate(_direction);
+            tile.Rotate(Direction);
             return tile;
         }
 
         private Vector2Int LocalToGlobalOffset(Vector2Int localOffset)
         {
-            var right = _direction;
-            var up = _direction.x * Vector2Int.up + _direction.y * Vector2Int.left;
+            var right = Direction;
+            var up = Direction.x * Vector2Int.up + Direction.y * Vector2Int.left;
             return localOffset.x * right + localOffset.y * up;
         }
 

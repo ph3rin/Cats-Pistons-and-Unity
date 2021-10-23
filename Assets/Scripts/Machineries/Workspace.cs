@@ -28,11 +28,12 @@ namespace CatProcessingUnit.Machineries
             _tiles = new Tile[width, height];
             Width = width;
             Height = height;
+            UpdateTiles();
         }
 
         private List<Force> PropagateForces(List<Force> forces, Machinery src)
         {
-            Debug.Assert(_machineries.Contains(src));
+            Debug.Assert(src == null || _machineries.Contains(src));
             Debug.Assert(forces.All(f => _machineries.Contains(f.Machinery)));
             forces = UniqueForces(forces).ToList();
             var visited = new HashSet<Machinery>(forces.Select(f => f.Machinery));
@@ -46,6 +47,7 @@ namespace CatProcessingUnit.Machineries
                 foreach (var newForce in newForces)
                 {
                     queue.Enqueue(newForce);
+                    forces.Add(newForce);
                     visited.Add(newForce.Machinery);
                 }
             }
@@ -55,6 +57,7 @@ namespace CatProcessingUnit.Machineries
 
         public bool ApplyForces(List<Force> forces, Machinery src)
         {
+            forces = PropagateForces(forces, src);
             foreach (var force in forces)
             {
                 force.Apply(this);
@@ -63,7 +66,7 @@ namespace CatProcessingUnit.Machineries
             return UpdateTiles();
         }
         
-        private bool UpdateTiles()
+        public bool UpdateTiles()
         {
             Array.Clear(_tiles, 0, _tiles.Length);
             _tilesOfMachineries.Clear();
@@ -112,10 +115,15 @@ namespace CatProcessingUnit.Machineries
             }            
         }
 
-        private Tile GetTileAt(Vector2Int pos)
+        public Tile GetTileAt(Vector2Int pos)
         {
             if (pos.x < 0 || pos.x >= Width || pos.y < 0 || pos.y >= Height) return null;
             return _tiles[pos.x, pos.y];
+        }
+
+        public Tile GetTileAt(int x, int y)
+        {
+            return GetTileAt(new Vector2Int(x, y));
         }
 
         private static IEnumerable<Force> UniqueForces(IEnumerable<Force> forces)

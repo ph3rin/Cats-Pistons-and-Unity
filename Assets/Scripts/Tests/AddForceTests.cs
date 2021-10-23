@@ -14,7 +14,7 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    pistonA
+                    pistonA.NoOpApplication()
                 }, 5, 5);
             Assert.IsTrue(workspace.ApplyForces(new List<Force>
             {
@@ -32,7 +32,7 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    pistonA
+                    pistonA.NoOpApplication()
                 }, 5, 5);
             Assert.IsTrue(workspace.UpdateTiles());
             Assert.IsFalse(workspace.ApplyForces(new List<Force>
@@ -49,7 +49,7 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    pistonA, pistonB
+                    pistonA.NoOpApplication(), pistonB.NoOpApplication()
                 }, 5, 5);
             Assert.IsTrue(workspace.ApplyForces(new List<Force>
             {
@@ -69,7 +69,7 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    pistonA, pistonB, pistonC
+                    pistonA.NoOpApplication(), pistonB.NoOpApplication(), pistonC.NoOpApplication()
                 }, 5, 5);
             Assert.IsTrue(workspace.ApplyForces(new List<Force>
             {

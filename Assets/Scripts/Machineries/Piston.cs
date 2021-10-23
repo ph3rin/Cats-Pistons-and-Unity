@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace CatProcessingUnit.Machineries
 {
-    public class Piston : Machinery
+    public class Piston : Machinery, ICloneable<Piston>
     {
         public Vector2Int Direction { get; }
         public int MaxLength { get; }
         public int CurrentLength { get; private set; }
 
-        public Piston(Vector2Int position, Vector2Int direction, int maxLength = 1, int currentLength = 0) : base(position)
+        public Piston(Vector2Int position, Vector2Int direction, int maxLength = 1, int currentLength = 0) :
+            base(position)
         {
             Debug.Assert(maxLength >= 1);
             Debug.Assert(currentLength <= maxLength);
-            
+
             Direction = direction;
             MaxLength = maxLength;
             CurrentLength = currentLength;
@@ -76,9 +77,25 @@ namespace CatProcessingUnit.Machineries
             return localOffset.x * right + localOffset.y * up;
         }
 
-        public override Machinery Clone()
+        public override Machinery CloneMachinery()
+        {
+            return Clone();
+        }
+
+        public Piston Clone()
         {
             return new Piston(this);
+
+        }
+        
+        public void Extend(MachineryHistory<Piston> history)
+        {
+            var (workspace, piston) = history.CreateWorkspaceFromActiveIndex();
+            var forces = new List<Force> {new Force(piston, Direction, Vector2Int.zero)};
+            if (workspace.ApplyForces(forces, null))
+            {
+                workspace.PushToHistory();
+            }
         }
     }
 }

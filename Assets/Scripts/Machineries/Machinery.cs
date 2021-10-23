@@ -28,6 +28,6 @@ namespace CatProcessingUnit.Machineries
             Position = other.Position;
         }
 
-        public abstract Machinery Clone();
+        public abstract Machinery CloneMachinery();
     }
 }

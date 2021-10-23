@@ -15,11 +15,5 @@ namespace CatProcessingUnit.Machineries
         }
         protected abstract T CreateMachineryInternal();
         public abstract IEnumerator LerpTowards(T dest, float time);
-
-        private Vector2Int RoundPositionToInteger()
-        {
-            var pos = (Vector2) transform.localPosition;
-            return new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
-        }
     }
 }

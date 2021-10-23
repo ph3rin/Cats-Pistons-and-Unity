@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using CatProcessingUnit.Machineries;
 using UnityEngine;
 
-namespace CatProcessingUnit
+namespace CatProcessingUnit.Machineries
 {
     public class Force
     {

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace CatProcessingUnit.Machineries
+﻿namespace CatProcessingUnit.Machineries
 {
     public interface IMachineryRenderer
     {

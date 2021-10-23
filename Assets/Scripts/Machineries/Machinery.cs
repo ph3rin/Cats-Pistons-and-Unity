@@ -8,11 +8,6 @@ namespace CatProcessingUnit.Machineries
         public Vector2Int Position { get; set; }
         public abstract IEnumerable<Force> PropagateForce(Workspace workspace, Force force);
         public abstract void ApplyForce(Workspace workspace, Force force);
-        
-        /// <summary>
-        /// Get all the tiles of this machine, with positions in local space
-        /// </summary>
-        /// <returns></returns>
         protected abstract IEnumerable<(Vector2Int, Tile)> GetTilesLocal();
 
         public IEnumerable<(Vector2Int, Tile)> GetTiles()

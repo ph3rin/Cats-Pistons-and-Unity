@@ -7,14 +7,23 @@ namespace CatProcessingUnit.Machineries
     public class Piston : Machinery
     {
         public Vector2Int Direction { get; }
+        public int MaxLength { get; }
+        public int CurrentLength { get; private set; }
 
-        public Piston(Vector2Int position, Vector2Int direction) : base(position)
+        public Piston(Vector2Int position, Vector2Int direction, int maxLength = 1, int currentLength = 0) : base(position)
         {
+            Debug.Assert(maxLength >= 1);
+            Debug.Assert(currentLength <= maxLength);
+            
             Direction = direction;
+            MaxLength = maxLength;
+            CurrentLength = currentLength;
         }
 
         public Piston(Piston other) : base(other)
         {
+            MaxLength = other.MaxLength;
+            CurrentLength = other.CurrentLength;
             Direction = other.Direction;
         }
 
@@ -38,7 +47,19 @@ namespace CatProcessingUnit.Machineries
 
         private IEnumerable<(Vector2Int, Tile)> GetTilesLocalUnrotated()
         {
-            yield return (Vector2Int.zero, new Tile(this, TileSurface.Solid));
+            if (CurrentLength == 0)
+            {
+                yield return (Vector2Int.zero, new Tile(this, TileSurface.Solid));
+            }
+            else
+            {
+                yield return (Vector2Int.zero, new Tile(this, TileSurface.PistonExtended));
+                for (var i = 1; i <= CurrentLength; ++i)
+                {
+                    // todo: distinguish between piston arm and head
+                    yield return (Vector2Int.right * i, new Tile(this, TileSurface.PistonArm));
+                }
+            }
         }
 
         private Tile CorrectRotation(Tile tile)

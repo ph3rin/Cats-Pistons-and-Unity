@@ -59,5 +59,32 @@ namespace CatProcessingUnit.Tests
             Assert.AreSame(pistonA, workspace.GetTileAt(2, 1).Parent);
             Assert.AreSame(pistonB, workspace.GetTileAt(3, 1).Parent);
         }
+
+        [Test]
+        public void Pushing_ThreePistons()
+        {
+            var pistonA = new Piston(new Vector2Int(3, 3), Vector2Int.down);
+            var pistonB = new Piston(new Vector2Int(4, 2), Vector2Int.left, 1, 1);
+            var pistonC = new Piston(new Vector2Int(4, 1), Vector2Int.up);
+            var workspace = new Workspace(
+                new[]
+                {
+                    pistonA, pistonB, pistonC
+                }, 5, 5);
+            Assert.IsTrue(workspace.ApplyForces(new List<Force>
+            {
+                new Force(pistonA, Vector2Int.down, Vector2Int.zero)
+            }, null));
+            Assert.IsNull(workspace.GetTileAt(3, 3));
+            Assert.AreEqual(TileSurface.Solid, workspace.GetTileAt(3, 2).Surface);
+            Assert.AreEqual(
+                TileSurface.PistonArm.RotateTo(Vector2Int.left), 
+                workspace.GetTileAt(3, 1).Surface);
+            Assert.AreEqual(
+                TileSurface.PistonExtended.RotateTo(Vector2Int.left),
+                workspace.GetTileAt(4, 1).Surface);
+            Assert.AreEqual(TileSurface.Solid, workspace.GetTileAt(4, 0).Surface);
+
+        }
     }
 }

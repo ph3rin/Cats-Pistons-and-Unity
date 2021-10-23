@@ -54,11 +54,12 @@ namespace CatProcessingUnit.Machineries
             else
             {
                 yield return (Vector2Int.zero, new Tile(this, TileSurface.PistonExtended));
-                for (var i = 1; i <= CurrentLength; ++i)
+                for (var i = 1; i < CurrentLength; ++i)
                 {
-                    // todo: distinguish between piston arm and head
-                    yield return (Vector2Int.right * i, new Tile(this, TileSurface.PistonArm));
+                    yield return (Vector2Int.right * i, new Tile(this, TileSurface.PistonStem));
                 }
+
+                yield return (Vector2Int.right * CurrentLength, new Tile(this, TileSurface.PistonHead));
             }
         }
 

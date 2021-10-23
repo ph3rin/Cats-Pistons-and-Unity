@@ -78,7 +78,7 @@ namespace CatProcessingUnit.Tests
             Assert.IsNull(workspace.GetTileAt(3, 3));
             Assert.AreEqual(TileSurface.Solid, workspace.GetTileAt(3, 2).Surface);
             Assert.AreEqual(
-                TileSurface.PistonArm.RotateTo(Vector2Int.left), 
+                TileSurface.PistonHead.RotateTo(Vector2Int.left), 
                 workspace.GetTileAt(3, 1).Surface);
             Assert.AreEqual(
                 TileSurface.PistonExtended.RotateTo(Vector2Int.left),

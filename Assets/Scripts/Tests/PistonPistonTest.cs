@@ -16,7 +16,7 @@ namespace CatProcessingUnit.Tests
         [Test]
         public void PistonArmUp00_StickyPistonDown10()
         {
-            var a = TileSurface.PistonArm.Rotate(1);
+            var a = TileSurface.PistonHead.Rotate(1);
             var b = TileSurface.PistonSticky.Rotate(3);
             Assert.IsFalse(TileSurface.AreGluedTogether(Vector2Int.zero, a, Vector2Int.right, b));
         }
@@ -24,7 +24,7 @@ namespace CatProcessingUnit.Tests
         [Test]
         public void PistonArmUp00_StickyPistonUp10()
         {
-            var a = TileSurface.PistonArm.Rotate(1);
+            var a = TileSurface.PistonHead.Rotate(1);
             var b = TileSurface.PistonSticky.Rotate(1);
             Assert.IsFalse(TileSurface.AreGluedTogether(Vector2Int.zero, a, Vector2Int.right, b));
         }

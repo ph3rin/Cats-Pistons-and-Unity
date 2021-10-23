@@ -46,7 +46,7 @@
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Empty);
 
-        public static readonly TileSurface PistonArm =
+        public static readonly TileSurface PistonHead =
             Create(
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
@@ -56,7 +56,18 @@
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Exists);
-
+        
+        public static readonly TileSurface PistonStem =
+            Create(
+                SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Empty);
+        
         public static readonly TileSurface PistonArmSticky =
             Create(
                 SurfaceFlagsEnum.Sticky,

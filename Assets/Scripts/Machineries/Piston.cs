@@ -95,11 +95,39 @@ namespace CatProcessingUnit.Machineries
                 applications.Select(app => app.Machinery),
                 levelHistory.Width,
                 levelHistory.Height);
-            var forces = new List<Force> {new Force(piston, Direction, Vector2Int.zero)};
-            if (workspace.ApplyForces(forces, null))
+            if (piston.ExtendInternal(workspace))
             {
                 levelHistory.Push(applications);
             }
+        }
+
+        private bool ExtendInternal(Workspace workspace)
+        {
+            var headPos = Position + Direction * CurrentLength;
+            var headTile = workspace.GetTileAt(headPos);
+            var forces = new List<Force>();
+            foreach (var delta in Workspace.Deltas)
+            {
+                var neighborPos = headPos + delta;
+                var neighbor = workspace.GetTileAt(neighborPos);
+                if (neighbor == null || ReferenceEquals(neighbor.Parent, this)) continue;
+                if (delta == Direction ||
+                    TileSurface.AreGluedTogether(Vector2Int.zero, headTile.Surface, delta, neighbor.Surface))
+                {
+                    forces.Add(new Force(neighbor.Parent, Direction, neighborPos - neighbor.Parent.Position));
+                }
+            }
+
+            if (workspace.ApplyForces(forces, this))
+            {
+                ++CurrentLength;
+                if (workspace.UpdateTiles())
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

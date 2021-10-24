@@ -15,7 +15,7 @@ namespace CatProcessingUnit.Machineries
             Direction = direction;
             Position = position;
         }
-
+        
         public IEnumerable<Force> Propagate(Workspace workspace)
         {
             return Machinery.PropagateForce(workspace, this);

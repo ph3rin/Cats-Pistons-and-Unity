@@ -7,7 +7,7 @@ namespace CatProcessingUnit.Machineries
 {
     public class Workspace
     {
-        private static Vector2Int[] Deltas = new[]
+        public static Vector2Int[] Deltas = new[]
         {
             new Vector2Int(1, 0),
             new Vector2Int(0, 1),

@@ -52,8 +52,8 @@
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Exists,
                 SurfaceFlagsEnum.Empty,
-                SurfaceFlagsEnum.Sticky,
-                SurfaceFlagsEnum.Sticky,
+                SurfaceFlagsEnum.Empty,
+                SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Exists);
         
@@ -68,7 +68,7 @@
                 SurfaceFlagsEnum.Empty,
                 SurfaceFlagsEnum.Empty);
         
-        public static readonly TileSurface PistonArmSticky =
+        public static readonly TileSurface PistonHeadSticky =
             Create(
                 SurfaceFlagsEnum.Sticky,
                 SurfaceFlagsEnum.Sticky,

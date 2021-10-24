@@ -34,23 +34,18 @@ namespace CatProcessingUnit.Machineries
             return ((IEnumerable) this).GetEnumerator();
         }
 
-        private void MoveForward()
-        {
-            foreach (var machineryHistory in _machineryHistories)
-            {
-                machineryHistory.MoveForward(ActiveIndex, ActiveIndex + 1);
-            }
-            ++ActiveIndex;
-        }
-
-        public void Push(List<IMachineryApplication> applications)
+        public void Push(List<IMachineryApplication> applications, AnimationOptions animationOptions = default)
         {
             foreach (var app in applications)
             {
                 app.ApplyAt(ActiveIndex + 1);
             }
 
-            MoveForward();
+            foreach (var machineryHistory in _machineryHistories)
+            {
+                machineryHistory.MoveForward(ActiveIndex, ActiveIndex + 1, animationOptions);
+            }
+            ++ActiveIndex;
         }
     }
 }

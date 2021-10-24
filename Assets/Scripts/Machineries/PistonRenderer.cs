@@ -1,21 +1,31 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace CatProcessingUnit.Machineries
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class PistonRenderer : MachineryRenderer<Piston>, IPointerClickHandler
     {
         [SerializeField] private int _maxLength;
         [SerializeField] private int _currentLength;
-
-        [SerializeField] private Transform _headTransform;
+        
+        [FormerlySerializedAs("_headTransform")] [SerializeField] private SpriteRenderer _headRenderer;
         [SerializeField] private SpriteRenderer _stemRenderer;
+
+        [SerializeField] private Sprite _baseSpriteOn;
+        [SerializeField] private Sprite _baseSpriteOff;
+        [SerializeField] private Sprite _headSpriteOn;
+        [SerializeField] private Sprite _headSpriteOff;
+
+        private SpriteRenderer _baseRenderer;
         
         private void Awake()
         {
             Debug.Assert(_maxLength >= 1);
             Debug.Assert(_currentLength <= _maxLength);
+            _baseRenderer = GetComponent<SpriteRenderer>();
         }
 
         protected override Piston CreateMachineryInternal()
@@ -31,12 +41,14 @@ namespace CatProcessingUnit.Machineries
         {
             var src = CurrentMachinery;
             CurrentMachinery = dest;
+            _headRenderer.sprite = dest.IsSticky ? _headSpriteOn : _headSpriteOff;
+            _baseRenderer.sprite = dest.IsSticky ? _baseSpriteOn : _baseSpriteOff;
             var elapsed = 0.0f;
             while (elapsed <= time)
             {
                 var t = elapsed / time;
                 transform.localPosition = Vector2.Lerp(src.Position, dest.Position, t);
-                _headTransform.localPosition = Vector2.Lerp(
+                _headRenderer.transform.localPosition = Vector2.Lerp(
                     src.CurrentLength * Vector2.right,
                     dest.CurrentLength * Vector2.right,
                     t);
@@ -49,7 +61,7 @@ namespace CatProcessingUnit.Machineries
             }
             
             transform.localPosition = (Vector2) dest.Position;
-            _headTransform.localPosition = dest.CurrentLength * Vector2.right;
+            _headRenderer.transform.localPosition = dest.CurrentLength * Vector2.right;
             _stemRenderer.size = new Vector2(dest.CurrentLength + 1, 1.0f);
         }
 
@@ -58,6 +70,9 @@ namespace CatProcessingUnit.Machineries
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 CurrentMachinery.Extend(MachineryHistory);
+            } else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                CurrentMachinery.SetStickiness(MachineryHistory, !CurrentMachinery.IsSticky);
             }
         }
     }

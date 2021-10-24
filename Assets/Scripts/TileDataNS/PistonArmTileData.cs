@@ -11,7 +11,7 @@ namespace CatProcessingUnit.TileDataNS
         public override TileRenderer Renderer => _renderer;
 
         protected override TileSurface UnrotatedSurface =>
-            Sticky ? TileSurface.PistonArmSticky : TileSurface.PistonHead;
+            Sticky ? TileSurface.PistonHeadSticky : TileSurface.PistonHead;
 
         public bool IsStem { get; set; }
 

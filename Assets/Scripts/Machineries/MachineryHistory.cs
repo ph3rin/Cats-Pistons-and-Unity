@@ -81,9 +81,10 @@ namespace CatProcessingUnit.Machineries
             return CloneMachineryAtInternal(index);
         }
 
-        public void MoveForward(int oldIndex, int newIndex)
+        public void MoveForward(int oldIndex, int newIndex, AnimationOptions animationOptions)
         {
-            LevelHistory.StartCoroutine(_renderer.LerpTowards(_history[newIndex], 0.125f));
+            var time = animationOptions.Snap ? 0.01f : animationOptions.Time;
+            LevelHistory.StartCoroutine(_renderer.LerpTowards(_history[newIndex], time));
         }
 
         private MachineryApplication CloneMachineryAtInternal(int index)

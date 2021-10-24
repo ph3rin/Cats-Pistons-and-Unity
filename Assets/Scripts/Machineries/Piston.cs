@@ -10,19 +10,24 @@ namespace CatProcessingUnit.Machineries
         public int MaxLength { get; }
         public int CurrentLength { get; private set; }
 
-        public Piston(Vector2Int position, Vector2Int direction, int maxLength = 1, int currentLength = 0) :
+        public bool IsSticky { get; private set; }
+
+        public Piston(Vector2Int position, Vector2Int direction, int maxLength = 1, int currentLength = 0,
+            bool isSticky = false) :
             base(position)
         {
             Debug.Assert(maxLength >= 1);
             Debug.Assert(currentLength <= maxLength);
 
             Direction = direction;
+            IsSticky = isSticky;
             MaxLength = maxLength;
             CurrentLength = currentLength;
         }
 
         public Piston(Piston other) : base(other)
         {
+            IsSticky = other.IsSticky;
             MaxLength = other.MaxLength;
             CurrentLength = other.CurrentLength;
             Direction = other.Direction;
@@ -50,7 +55,8 @@ namespace CatProcessingUnit.Machineries
         {
             if (CurrentLength == 0)
             {
-                yield return (Vector2Int.zero, new Tile(this, TileSurface.Solid));
+                var surface = IsSticky ? TileSurface.PistonSticky : TileSurface.Solid;
+                yield return (Vector2Int.zero, new Tile(this, surface));
             }
             else
             {
@@ -60,6 +66,7 @@ namespace CatProcessingUnit.Machineries
                     yield return (Vector2Int.right * i, new Tile(this, TileSurface.PistonStem));
                 }
 
+                var surface = IsSticky ? TileSurface.PistonHead : TileSurface.PistonHeadSticky;
                 yield return (Vector2Int.right * CurrentLength, new Tile(this, TileSurface.PistonHead));
             }
         }
@@ -97,7 +104,7 @@ namespace CatProcessingUnit.Machineries
                 levelHistory.Height);
             if (piston.ExtendInternal(workspace))
             {
-                levelHistory.Push(applications);
+                levelHistory.Push(applications, new AnimationOptions(0.125f));
             }
         }
 
@@ -128,6 +135,21 @@ namespace CatProcessingUnit.Machineries
             }
 
             return false;
+        }
+
+        public void SetStickiness(MachineryHistory<Piston> history, bool value)
+        {
+            var levelHistory = history.LevelHistory;
+            var (applications, piston) = history.SliceAt(levelHistory.ActiveIndex);
+            var machineries = applications.Select(a => a.Machinery).ToList();
+            var oldStickyPiston = (Piston) machineries.FirstOrDefault(m => m is Piston {IsSticky: true});
+            if (oldStickyPiston != null && !ReferenceEquals(piston, oldStickyPiston) && value)
+            {
+                oldStickyPiston.IsSticky = false;
+            }
+
+            piston.IsSticky = value;
+            levelHistory.Push(applications, AnimationOptions.Instant);
         }
     }
 }

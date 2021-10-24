@@ -3,6 +3,6 @@
     public interface IMachineryHistory
     {
         IMachineryApplication CloneMachineryAt(int index);
-        void MoveForward(int oldIndex, int newIndex);
+        void MoveForward(int oldIndex, int newIndex, AnimationOptions animationOptions = default);
     }
 }

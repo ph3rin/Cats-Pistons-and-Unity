@@ -12,10 +12,12 @@ namespace CatProcessingUnit.Machineries
         private List<IMachineryHistory> _machineryHistories;
         public int Width => _width;
         public int Height => _height;
+        public int ActiveIndex { get; private set; }
 
         private void Awake()
         {
             _machineryHistories = new List<IMachineryHistory>();
+            ActiveIndex = 0;
             foreach (var rdr in transform.GetComponentsInChildren<IMachineryRenderer>())
             {
                 _machineryHistories.Add(rdr.CreateMachineryHistory(this));
@@ -30,6 +32,15 @@ namespace CatProcessingUnit.Machineries
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable) this).GetEnumerator();
+        }
+
+        public void MoveForward()
+        {
+            foreach (var machineryHistory in _machineryHistories)
+            {
+                machineryHistory.MoveForward(ActiveIndex, ActiveIndex + 1);
+            }
+            ++ActiveIndex;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using log4net.Core;
 using UnityEngine;
 
 namespace CatProcessingUnit.Machineries
@@ -19,7 +20,7 @@ namespace CatProcessingUnit.Machineries
 
         public (Workspace, T) CreateWorkspaceFromActiveIndex()
         {
-            var activeIndex = 0;
+            var activeIndex = LevelHistory.ActiveIndex;
             MachineryApplication self = null;
             var pendingApplicationMachineries = new List<IMachineryApplication>();
             foreach (var machineryHistory in LevelHistory)
@@ -81,6 +82,11 @@ namespace CatProcessingUnit.Machineries
         public IMachineryApplication CopyMachineryAt(int index)
         {
             return CopyMachineryAtInternal(index);
+        }
+
+        public void MoveForward(int oldIndex, int newIndex)
+        {
+            LevelHistory.StartCoroutine(_renderer.LerpTowards(_history[newIndex], 0.125f));
         }
 
         private MachineryApplication CopyMachineryAtInternal(int index)

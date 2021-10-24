@@ -95,6 +95,7 @@ namespace CatProcessingUnit.Machineries
             if (workspace.ApplyForces(forces, null))
             {
                 workspace.PushToHistory();
+                history.LevelHistory.MoveForward();
             }
         }
     }

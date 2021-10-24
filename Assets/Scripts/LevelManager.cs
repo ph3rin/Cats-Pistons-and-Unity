@@ -26,7 +26,11 @@ namespace CatProcessingUnit
         public int GetCurrentLevelIndex()
         {
             // todo: this is a hack, there should be a proper way to do this
-            return int.Parse(SceneManager.GetActiveScene().name.Split(' ')[1]) - 1;
+            int index = 0;
+            var stringSplit = SceneManager.GetActiveScene().name.Split(' ');
+            if (stringSplit.Length >= 2)
+                int.TryParse(stringSplit[1], out index);
+            return Mathf.Clamp(index - 1, 0, 32);
         }
 
         public string GetCurrentLevelName()

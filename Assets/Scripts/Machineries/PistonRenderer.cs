@@ -27,13 +27,16 @@ namespace CatProcessingUnit.Machineries
         public override IEnumerator LerpTowards(Piston dest, float time)
         {
             var src = CurrentMachinery;
+            CurrentMachinery = dest;
             var t = 0.0f;
             while (t <= time)
             {
-                transform.localPosition = Vector2.Lerp(src.Position, dest.Position, t);
+                transform.localPosition = Vector2.Lerp(src.Position, dest.Position, t / time);
                 t += Time.deltaTime;
                 yield return null;
             }
+            
+            transform.localPosition = (Vector2) dest.Position;
         }
 
         public void OnPointerClick(PointerEventData eventData)

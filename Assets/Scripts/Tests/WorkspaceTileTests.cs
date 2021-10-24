@@ -10,7 +10,7 @@ namespace CatProcessingUnit.Tests
         [Test]
         public void EmptyWorkspace()
         {
-            var workspace = new Workspace(Enumerable.Empty<IMachineryApplication>(), 5, 5);
+            var workspace = new Workspace(Enumerable.Empty<Machinery>(), 5, 5);
             Assert.IsTrue(workspace.UpdateTiles());
         }
 
@@ -21,7 +21,7 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    pistonA.NoOpApplication()
+                    pistonA
                 }, 5, 5);
             Assert.IsTrue(workspace.UpdateTiles());
             Assert.AreSame(pistonA, workspace.GetTileAt(1, 4).Parent);
@@ -36,7 +36,7 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    new Piston(new Vector2Int(-1, 6), Vector2Int.right).NoOpApplication()
+                    new Piston(new Vector2Int(-1, 6), Vector2Int.right)
                 }, 5, 5);
             Assert.IsFalse(workspace.UpdateTiles());
         }
@@ -47,8 +47,8 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    new Piston(new Vector2Int(0, 0), Vector2Int.right).NoOpApplication(),
-                    new Piston(new Vector2Int(2, 1), Vector2Int.up).NoOpApplication(),
+                    new Piston(new Vector2Int(0, 0), Vector2Int.right),
+                    new Piston(new Vector2Int(2, 1), Vector2Int.up),
                 }, 5, 5);
             Assert.IsTrue(workspace.UpdateTiles());
         }
@@ -59,8 +59,8 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    new Piston(new Vector2Int(2, 1), Vector2Int.right).NoOpApplication(),
-                    new Piston(new Vector2Int(2, 1), Vector2Int.up).NoOpApplication(),
+                    new Piston(new Vector2Int(2, 1), Vector2Int.right),
+                    new Piston(new Vector2Int(2, 1), Vector2Int.up),
                 }, 5, 5);
             Assert.IsFalse(workspace.UpdateTiles());
         }
@@ -71,8 +71,8 @@ namespace CatProcessingUnit.Tests
             var workspace = new Workspace(
                 new[]
                 {
-                    new Piston(new Vector2Int(2, 1), Vector2Int.right).NoOpApplication(),
-                    new Piston(new Vector2Int(5, 5), Vector2Int.up).NoOpApplication(),
+                    new Piston(new Vector2Int(2, 1), Vector2Int.right),
+                    new Piston(new Vector2Int(5, 5), Vector2Int.up),
                 }, 5, 5);
             Assert.IsFalse(workspace.UpdateTiles());
         }

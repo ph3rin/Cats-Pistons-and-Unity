@@ -18,14 +18,12 @@ namespace CatProcessingUnit.Machineries
         private readonly List<Machinery> _machineries;
         private readonly Dictionary<Machinery, List<(Vector2Int, Tile)>> _tilesOfMachineries;
         private readonly Tile[,] _tiles;
-        private readonly List<IMachineryApplication> _applications;
         public int Width { get; }
         public int Height { get; }
 
-        public Workspace(IEnumerable<IMachineryApplication> machineryApplications, int width, int height)
+        public Workspace(IEnumerable<Machinery> machineryApplications, int width, int height)
         {
-            _applications = machineryApplications.ToList();
-            _machineries = _applications.Select(app => app.Machinery).ToList();
+            _machineries = machineryApplications.ToList();
             _tilesOfMachineries = new Dictionary<Machinery, List<(Vector2Int, Tile)>>();
             _tiles = new Tile[width, height];
             Width = width;
@@ -136,14 +134,6 @@ namespace CatProcessingUnit.Machineries
                 if (set.Contains(force.Machinery)) continue;
                 set.Add(force.Machinery);
                 yield return force;
-            }
-        }
-
-        public void PushToHistory()
-        {
-            foreach (var app in _applications)
-            {
-                app.Apply();
             }
         }
     }

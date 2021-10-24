@@ -18,9 +18,8 @@ namespace CatProcessingUnit.Machineries
             LevelHistory = levelHistory;
         }
 
-        public (Workspace, T) CreateWorkspaceFromActiveIndex()
+        public (List<IMachineryApplication>, T) SliceAt(int index)
         {
-            var activeIndex = LevelHistory.ActiveIndex;
             MachineryApplication self = null;
             var pendingApplicationMachineries = new List<IMachineryApplication>();
             foreach (var machineryHistory in LevelHistory)
@@ -28,11 +27,11 @@ namespace CatProcessingUnit.Machineries
                 IMachineryApplication machinery;
                 if (ReferenceEquals(machineryHistory, this))
                 {
-                    machinery = self = CopyMachineryAtInternal(activeIndex);
+                    machinery = self = CloneMachineryAtInternal(index);
                 }
                 else
                 {
-                    machinery = machineryHistory.CopyMachineryAt(activeIndex);
+                    machinery = machineryHistory.CloneMachineryAt(index);
                 }
 
                 pendingApplicationMachineries.Add(machinery);
@@ -40,7 +39,7 @@ namespace CatProcessingUnit.Machineries
 
             Debug.Assert(self != null);
             return (
-                new Workspace(pendingApplicationMachineries, LevelHistory.Width, LevelHistory.Height),
+                pendingApplicationMachineries,
                 self.MachineryInternal);
         }
 
@@ -48,24 +47,22 @@ namespace CatProcessingUnit.Machineries
         {
             private readonly MachineryHistory<T> _machineryHistory;
             public T MachineryInternal { get; }
-            public int Index { get; }
             public Machinery Machinery => MachineryInternal;
 
-            public MachineryApplication(MachineryHistory<T> machineryHistory, T machinery, int index)
+            public MachineryApplication(MachineryHistory<T> machineryHistory, T machinery)
             {
                 _machineryHistory = machineryHistory;
                 MachineryInternal = machinery;
-                Index = index;
             }
 
 
-            public void Apply()
+            public void ApplyAt(int index)
             {
-                _machineryHistory.ApplyAt(Index, MachineryInternal);
+                _machineryHistory.SetMachinery(index, MachineryInternal);
             }
         }
 
-        private void ApplyAt(int index, T machinery)
+        private void SetMachinery(int index, T machinery)
         {
             Debug.Assert(index >= 1 && index <= _history.Count);
             if (index == _history.Count)
@@ -79,9 +76,9 @@ namespace CatProcessingUnit.Machineries
             }
         }
 
-        public IMachineryApplication CopyMachineryAt(int index)
+        public IMachineryApplication CloneMachineryAt(int index)
         {
-            return CopyMachineryAtInternal(index);
+            return CloneMachineryAtInternal(index);
         }
 
         public void MoveForward(int oldIndex, int newIndex)
@@ -89,9 +86,9 @@ namespace CatProcessingUnit.Machineries
             LevelHistory.StartCoroutine(_renderer.LerpTowards(_history[newIndex], 0.125f));
         }
 
-        private MachineryApplication CopyMachineryAtInternal(int index)
+        private MachineryApplication CloneMachineryAtInternal(int index)
         {
-            return new MachineryApplication(this, _history[index].Clone(), index + 1);
+            return new MachineryApplication(this, _history[index].Clone());
         }
     }
 }

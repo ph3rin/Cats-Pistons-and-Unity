@@ -85,17 +85,20 @@ namespace CatProcessingUnit.Machineries
         public Piston Clone()
         {
             return new Piston(this);
-
         }
-        
+
         public void Extend(MachineryHistory<Piston> history)
         {
-            var (workspace, piston) = history.CreateWorkspaceFromActiveIndex();
+            var levelHistory = history.LevelHistory;
+            var (applications, piston) = history.SliceAt(levelHistory.ActiveIndex);
+            var workspace = new Workspace(
+                applications.Select(app => app.Machinery),
+                levelHistory.Width,
+                levelHistory.Height);
             var forces = new List<Force> {new Force(piston, Direction, Vector2Int.zero)};
             if (workspace.ApplyForces(forces, null))
             {
-                workspace.PushToHistory();
-                history.LevelHistory.MoveForward();
+                levelHistory.Push(applications);
             }
         }
     }

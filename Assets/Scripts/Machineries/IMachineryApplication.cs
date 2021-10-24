@@ -3,6 +3,6 @@
     public interface IMachineryApplication
     {
         Machinery Machinery { get; }
-        void Apply();
+        void ApplyAt(int index);
     }
 }

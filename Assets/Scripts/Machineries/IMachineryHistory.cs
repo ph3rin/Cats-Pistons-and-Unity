@@ -1,8 +1,11 @@
-﻿namespace CatProcessingUnit.Machineries
+﻿using System.Collections;
+
+namespace CatProcessingUnit.Machineries
 {
     public interface IMachineryHistory
     {
         IMachineryApplication CloneMachineryAt(int index);
-        void MoveForward(int oldIndex, int newIndex, AnimationOptions animationOptions = default);
+        IEnumerator MoveForward(int oldIndex, int newIndex, AnimationOptions animationOptions = default);
+        void SetIndex(int index, AnimationOptions animationOptions);
     }
 }

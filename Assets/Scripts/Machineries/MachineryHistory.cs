@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using log4net.Core;
 using UnityEngine;
 
@@ -72,7 +73,6 @@ namespace CatProcessingUnit.Machineries
             else
             {
                 _history[index] = machinery;
-                _history.RemoveRange(index + 1, _history.Count - index - 1);
             }
         }
 
@@ -81,10 +81,16 @@ namespace CatProcessingUnit.Machineries
             return CloneMachineryAtInternal(index);
         }
 
-        public void MoveForward(int oldIndex, int newIndex, AnimationOptions animationOptions)
+        public IEnumerator MoveForward(int oldIndex, int newIndex, AnimationOptions animationOptions)
         {
             var time = animationOptions.Snap ? 0.01f : animationOptions.Time;
-            LevelHistory.StartCoroutine(_renderer.LerpTowards(_history[newIndex], time));
+            return _renderer.LerpTowards(_history[newIndex], time);
+        }
+
+        public void SetIndex(int index, AnimationOptions animationOptions)
+        {
+            var time = animationOptions.Snap ? 0.01f : animationOptions.Time;
+            LevelHistory.StartCoroutine(_renderer.LerpTowards(_history[index], time));
         }
 
         private MachineryApplication CloneMachineryAtInternal(int index)

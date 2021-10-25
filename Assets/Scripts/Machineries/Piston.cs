@@ -66,8 +66,8 @@ namespace CatProcessingUnit.Machineries
                     yield return (Vector2Int.right * i, new Tile(this, TileSurface.PistonStem));
                 }
 
-                var surface = IsSticky ? TileSurface.PistonHead : TileSurface.PistonHeadSticky;
-                yield return (Vector2Int.right * CurrentLength, new Tile(this, TileSurface.PistonHead));
+                var surface = IsSticky ? TileSurface.PistonHeadSticky : TileSurface.PistonHead;
+                yield return (Vector2Int.right * CurrentLength, new Tile(this, surface));
             }
         }
 
@@ -97,14 +97,37 @@ namespace CatProcessingUnit.Machineries
         public void Extend(MachineryHistory<Piston> history)
         {
             var levelHistory = history.LevelHistory;
-            var (applications, piston) = history.SliceAt(levelHistory.ActiveIndex);
-            var workspace = new Workspace(
-                applications.Select(app => app.Machinery),
-                levelHistory.Width,
-                levelHistory.Height);
-            if (piston.ExtendInternal(workspace))
+            if (CurrentLength == 0)
             {
-                levelHistory.Push(applications, new AnimationOptions(0.125f));
+                for (var i = 0; i < MaxLength; ++i)
+                {
+                    var (applications, piston) = history.SliceAt(levelHistory.HeadIndex);
+                    var workspace = new Workspace(
+                        applications.Select(app => app.Machinery),
+                        levelHistory.Width,
+                        levelHistory.Height);
+                    if (piston.ExtendInternal(workspace))
+                    {
+                        levelHistory.Push(applications, new AnimationOptions(0.125f));
+                    }
+                }
+                levelHistory.StabilizeHead();
+            }
+            else
+            {
+                for (var i = CurrentLength; i > 0; --i)
+                {
+                    var (applications, piston) = history.SliceAt(levelHistory.HeadIndex);
+                    var workspace = new Workspace(
+                        applications.Select(app => app.Machinery),
+                        levelHistory.Width,
+                        levelHistory.Height);
+                    if (piston.RetractInternal(workspace))
+                    {
+                        levelHistory.Push(applications, new AnimationOptions(0.125f));
+                    }
+                }
+                levelHistory.StabilizeHead();
             }
         }
 
@@ -137,6 +160,36 @@ namespace CatProcessingUnit.Machineries
             return false;
         }
 
+        private bool RetractInternal(Workspace workspace)
+        {
+            Debug.Assert(CurrentLength >= 1);
+            var headPos = Position + Direction * CurrentLength;
+            var headTile = workspace.GetTileAt(headPos);
+            var forces = new List<Force>();
+            foreach (var delta in Workspace.Deltas)
+            {
+                var neighborPos = headPos + delta;
+                var neighbor = workspace.GetTileAt(neighborPos);
+                if (neighbor == null || ReferenceEquals(neighbor.Parent, this)) continue;
+                if (TileSurface.AreGluedTogether(Vector2Int.zero, headTile.Surface, delta, neighbor.Surface))
+                {
+                    forces.Add(new Force(neighbor.Parent, -Direction, neighborPos - neighbor.Parent.Position));
+                }
+            }
+            
+            --CurrentLength;
+            if (workspace.ApplyForces(forces, this))
+            {
+                if (workspace.UpdateTiles())
+                {
+                    return true;
+                }
+            }
+
+            ++CurrentLength;
+            return false;
+        }
+
         public void SetStickiness(MachineryHistory<Piston> history, bool value)
         {
             var levelHistory = history.LevelHistory;
@@ -150,6 +203,7 @@ namespace CatProcessingUnit.Machineries
 
             piston.IsSticky = value;
             levelHistory.Push(applications, AnimationOptions.Instant);
+            levelHistory.StabilizeHead();
         }
     }
 }

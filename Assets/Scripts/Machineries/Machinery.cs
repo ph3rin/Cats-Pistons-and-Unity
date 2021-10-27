@@ -27,7 +27,5 @@ namespace CatProcessingUnit.Machineries
         {
             Position = other.Position;
         }
-
-        public abstract Machinery CloneMachinery();
     }
 }

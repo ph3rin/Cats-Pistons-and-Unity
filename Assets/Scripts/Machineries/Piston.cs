@@ -84,11 +84,6 @@ namespace CatProcessingUnit.Machineries
             return localOffset.x * right + localOffset.y * up;
         }
 
-        public override Machinery CloneMachinery()
-        {
-            return Clone();
-        }
-
         public Piston Clone()
         {
             return new Piston(this);
@@ -203,7 +198,7 @@ namespace CatProcessingUnit.Machineries
 
             piston.IsSticky = value;
             levelHistory.Push(applications, AnimationOptions.Instant);
-            levelHistory.StabilizeHead();
+            levelHistory.StabilizeHead(AnimationOptions.Instant);
         }
     }
 }

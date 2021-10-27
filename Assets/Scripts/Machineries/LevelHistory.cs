@@ -6,6 +6,12 @@ using UnityEngine;
 
 namespace CatProcessingUnit.Machineries
 {
+    public enum GameState
+    {
+        Gameplay,
+        Animation
+    }
+    
     [RequireComponent(typeof(RegisterService))]
     public class LevelHistory : MonoBehaviour, IEnumerable<IMachineryHistory>, IService
     {
@@ -14,16 +20,20 @@ namespace CatProcessingUnit.Machineries
         [SerializeField] private GameObject _gridGuidePrefab;
 
         private List<IMachineryHistory> _machineryHistories;
+
         public int Width => _width;
         public int Height => _height;
         public int ActiveIndex { get; private set; }
         public int HeadIndex { get; private set; }
         public int HistorySize { get; private set; }
 
+        public GameState State { get; private set; }
+
         private List<bool> _stability;
 
         private void Awake()
         {
+            State = GameState.Gameplay;
             _stability = new List<bool> {true};
             _machineryHistories = new List<IMachineryHistory>();
             ActiveIndex = 0;
@@ -78,10 +88,17 @@ namespace CatProcessingUnit.Machineries
 
         public void StabilizeHead()
         {
+            StabilizeHead(new AnimationOptions(0.125f));
+        }
+        
+        public void StabilizeHead(AnimationOptions options)
+        {
+            Debug.Assert(State == GameState.Gameplay);
             if (HeadIndex == ActiveIndex) return;
 
             IEnumerator InternalStabilize()
             {
+                State = GameState.Animation;
                 var head = HeadIndex;
                 var start = ActiveIndex;
                 var sign = HeadIndex - ActiveIndex > 0 ? 1 : -1;
@@ -90,13 +107,15 @@ namespace CatProcessingUnit.Machineries
                     var iLocal = i;
                     var coroutines = _machineryHistories.Select(
                         h => StartCoroutine(
-                            h.MoveForward(iLocal, iLocal + sign, new AnimationOptions(0.125f))))
+                            h.MoveForward(iLocal, iLocal + sign, options)))
                         .ToList();
                     foreach (var coroutine in coroutines)
                     {
                         yield return coroutine;
                     };
                 }
+
+                State = GameState.Gameplay;
             }
 
             StartCoroutine(InternalStabilize());
@@ -112,6 +131,7 @@ namespace CatProcessingUnit.Machineries
         public void Undo()
         {
             Debug.Assert(HeadIndex == ActiveIndex);
+            if (State != GameState.Gameplay) return;
             if (ActiveIndex == 0)
             {
                 return;
@@ -122,12 +142,13 @@ namespace CatProcessingUnit.Machineries
                 --HeadIndex;
             } while (!_stability[HeadIndex]);
 
-            StabilizeHead();
+            StabilizeHead(new AnimationOptions(1 / 32f + 1 / 64f));
         }
 
         public void Redo()
         {
             Debug.Assert(HeadIndex == ActiveIndex);
+            if (State != GameState.Gameplay) return;
             if (ActiveIndex >= HistorySize - 1)
             {
                 return;
@@ -138,7 +159,7 @@ namespace CatProcessingUnit.Machineries
                 ++HeadIndex;
             } while (!_stability[HeadIndex]);
 
-            StabilizeHead();
+            StabilizeHead(new AnimationOptions(1 / 32f + 1 / 64f));
         }
     }
 }

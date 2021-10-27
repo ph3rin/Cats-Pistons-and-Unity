@@ -67,6 +67,7 @@ namespace CatProcessingUnit.Machineries
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (MachineryHistory.LevelHistory.State != GameState.Gameplay) return;
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 CurrentMachinery.Extend(MachineryHistory);

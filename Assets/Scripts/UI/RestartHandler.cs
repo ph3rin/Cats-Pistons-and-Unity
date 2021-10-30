@@ -1,5 +1,6 @@
 ﻿using System;
 using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.Machineries;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,13 +11,13 @@ namespace CatProcessingUnit.UI
     {
         [SerializeField] private Image _progressBar;
         [SerializeField] private float _timeRequiredToReset;
-        private Workshop _workshop;
+        private LevelHistory _level;
         private float _timeSincePressed;
         private bool _requireRelease;
         
         private void Start()
         {
-            _workshop = ServiceLocator.GetService<Workshop>();
+            _level = ServiceLocator.GetService<LevelHistory>();
             _timeSincePressed = 0;
             _requireRelease = false;
         }
@@ -36,7 +37,7 @@ namespace CatProcessingUnit.UI
 
                 if (_timeSincePressed >= _timeRequiredToReset)
                 {
-                    _workshop.Restart();
+                    _level.Restart();
                     _timeSincePressed = 0.0f;
                     _requireRelease = true;
                 }

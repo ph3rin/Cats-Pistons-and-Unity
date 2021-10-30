@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 namespace CatProcessingUnit
 {
     [RequireComponent(typeof(RegisterService))]
-    public class LevelManager : MonoBehaviour, IService
+    public class LegacyLevelManager : MonoBehaviour, IService
     {
         [Serializable]
         private class Level

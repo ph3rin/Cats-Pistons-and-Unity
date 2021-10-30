@@ -6,12 +6,6 @@ using UnityEngine;
 
 namespace CatProcessingUnit.Machineries
 {
-    public enum GameState
-    {
-        Gameplay,
-        Animation
-    }
-    
     [RequireComponent(typeof(RegisterService))]
     public class LevelHistory : MonoBehaviour, IEnumerable<IMachineryHistory>, IService
     {
@@ -29,6 +23,8 @@ namespace CatProcessingUnit.Machineries
 
         public GameState State { get; private set; }
 
+        public Vector2Int TargetPosition { get; private set; }
+
         private List<bool> _stability;
 
         private void Awake()
@@ -45,6 +41,20 @@ namespace CatProcessingUnit.Machineries
             }
 
             GenerateTileGuides();
+            FindTargetPosition();
+        }
+
+        private void FindTargetPosition()
+        {
+            var targetTile = GetComponentInChildren<TargetTileMarker>();
+            if (targetTile != null)
+            {
+                TargetPosition = Vector2Int.RoundToInt(targetTile.transform.localPosition);
+            }
+            else
+            {
+                TargetPosition = new Vector2Int(-999, -999);
+            }
         }
 
         private void GenerateTileGuides()
@@ -90,7 +100,7 @@ namespace CatProcessingUnit.Machineries
         {
             StabilizeHead(new AnimationOptions(0.125f));
         }
-        
+
         public void StabilizeHead(AnimationOptions options)
         {
             Debug.Assert(State == GameState.Gameplay);
@@ -106,13 +116,25 @@ namespace CatProcessingUnit.Machineries
                 {
                     var iLocal = i;
                     var coroutines = _machineryHistories.Select(
-                        h => StartCoroutine(
-                            h.MoveForward(iLocal, iLocal + sign, options)))
+                            h => StartCoroutine(
+                                h.MoveForward(iLocal, iLocal + sign, options)))
                         .ToList();
                     foreach (var coroutine in coroutines)
                     {
                         yield return coroutine;
-                    };
+                    }
+                }
+
+                var cat = _machineryHistories.Find(m => m is MachineryHistory<Cat>) as MachineryHistory<Cat>;
+                if (cat != null)
+                {
+                    if (cat[ActiveIndex].Position == TargetPosition)
+                    {
+                        State = GameState.UI;
+                        Debug.Log("You win!");
+                        ServiceLocator.GetService<LegacyLevelManager>().CompleteCurrentLevel();
+                        yield break;
+                    }
                 }
 
                 State = GameState.Gameplay;
@@ -161,5 +183,19 @@ namespace CatProcessingUnit.Machineries
 
             StabilizeHead(new AnimationOptions(1 / 32f + 1 / 64f));
         }
+
+        public void Restart()
+        {
+            if (HeadIndex == 0) return;
+            HeadIndex = 0;
+            StabilizeHead(new AnimationOptions(0.5f / ActiveIndex));
+        }
+    }
+
+    public enum GameState
+    {
+        Gameplay,
+        Animation,
+        UI
     }
 }

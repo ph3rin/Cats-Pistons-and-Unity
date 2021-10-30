@@ -305,25 +305,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1900024374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e9ba1737ad4b2286b4c036f846e03a, type: 3}
+  m_Script: {fileID: 11500000, guid: bbdd2193e5ef42a6adfff6df7d70e291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _levels:
-  - Name: Level 1
-    Completed: 0
-    SceneCollection: {fileID: 11400000, guid: 1cca99afe5771184a8434b903f8b6e22, type: 2}
-  - Name: Level 2
-    Completed: 0
-    SceneCollection: {fileID: 11400000, guid: e484cd6a00841934eb356e069ada285e, type: 2}
-  - Name: Level 3
-    Completed: 0
-    SceneCollection: {fileID: 11400000, guid: 272fc8300da87814e895a06a96ac735d, type: 2}
-  - Name: Level 4
-    Completed: 0
-    SceneCollection: {fileID: 11400000, guid: 6fd74d2e762f71c4a92805db0da173e8, type: 2}
-  - Name: Level 5
-    Completed: 0
-    SceneCollection: {fileID: 11400000, guid: 438e658030178b54ba440e783e276d72, type: 2}
+  - {fileID: 11400000, guid: 7a770c3b9aa11ff4090008b8a37d3e14, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1900024377
 MonoBehaviour:
   m_ObjectHideFlags: 0

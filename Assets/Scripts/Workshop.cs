@@ -94,7 +94,7 @@ namespace CatProcessingUnit
             if (data.GetTileAt(_targetPosition) is CatTileData)
             {
                 Debug.Log("You win!");
-                ServiceLocator.GetService<LevelManager>().CompleteCurrentLevel();
+                ServiceLocator.GetService<LegacyLevelManager>().CompleteCurrentLevel();
             }
         }
 

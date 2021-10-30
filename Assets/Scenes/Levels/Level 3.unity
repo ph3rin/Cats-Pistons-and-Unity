@@ -367,9 +367,6 @@ MonoBehaviour:
   _width: 5
   _height: 4
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!4 &363378680
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,9 +2882,6 @@ MonoBehaviour:
   _width: 8
   _height: 8
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!4 &1885295078
 Transform:
   m_ObjectHideFlags: 0
@@ -3191,9 +3185,6 @@ MonoBehaviour:
   _width: 7
   _height: 5
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!114 &2056011529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3511,9 +3502,6 @@ MonoBehaviour:
   _width: 8
   _height: 8
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
-  _targetColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.09097099, b: 1, a: 1}
 --- !u!4 &2115021491
 Transform:
   m_ObjectHideFlags: 0
@@ -3561,6 +3549,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9140480490276491149, guid: 88dbc3c532ab4f1439711c63e52fe85c, type: 3}
+      propertyPath: _width
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -9140480490276491149, guid: 88dbc3c532ab4f1439711c63e52fe85c, type: 3}
+      propertyPath: _height
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 801852571432968573, guid: 88dbc3c532ab4f1439711c63e52fe85c, type: 3}
       propertyPath: m_RootOrder
       value: 4

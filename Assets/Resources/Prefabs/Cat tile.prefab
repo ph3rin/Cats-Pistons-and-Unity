@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7088990517405192063}
   - component: {fileID: 7088990517405192032}
-  - component: {fileID: 7088990517405192061}
+  - component: {fileID: 829956189476515751}
   - component: {fileID: 7088990517405192062}
   m_Layer: 0
   m_Name: Cat tile
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1596a043fbefaca4f8bc60d97d552ab0, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 8514535807534904183, guid: 8545778d1fd97964eb4bade96ad3c776, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7088990517405192061
+--- !u!114 &829956189476515751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7088990517405192033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2022505d4e7c40b78bc56690de12d165, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d42acab6d554442a3a9d60cb0138127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &7088990517405192062

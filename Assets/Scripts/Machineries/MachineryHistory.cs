@@ -19,6 +19,8 @@ namespace CatProcessingUnit.Machineries
             LevelHistory = levelHistory;
         }
 
+        public T this[int i] => _history[i];
+        
         public (List<IMachineryApplication>, T) SliceAt(int index)
         {
             MachineryApplication self = null;

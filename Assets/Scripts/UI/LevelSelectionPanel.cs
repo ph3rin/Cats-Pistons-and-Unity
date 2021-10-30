@@ -22,7 +22,8 @@ namespace CatProcessingUnit.UI
                 lhs.transform.GetSiblingIndex().CompareTo(rhs.transform.GetSiblingIndex()));
 
             var currentLevelId = _levelManager.GetCurrentLevelId();
-            SetPageId(currentLevelId);
+            var pageId = currentLevelId / _buttons.Count;
+            SetPageId(pageId);
         }
 
         private void SetPageId(int pageId)

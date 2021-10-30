@@ -310,8 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - {fileID: 11400000, guid: 7a770c3b9aa11ff4090008b8a37d3e14, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b8d5c8f68c4389648b693e0700d20bb7, type: 2}
 --- !u!114 &1900024377
 MonoBehaviour:
   m_ObjectHideFlags: 0

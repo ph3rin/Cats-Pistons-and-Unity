@@ -1,14 +1,21 @@
-﻿using CatProcessingUnit.GameManagement;
+﻿using System;
+using CatProcessingUnit.GameManagement;
 using CatProcessingUnit.LevelManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CatProcessingUnit.UI
 {
+    [RequireComponent(typeof(Button))]
     public class LevelSelectBtn : MonoBehaviour
     {
         private LevelDescriptor _level;
         [SerializeField] private Text _text;
+
+        private void Awake()
+        {
+            GetComponent<Button>().onClick.AddListener(OnClick);
+        }
 
         public void SetLevel(LevelDescriptor level)
         {
@@ -28,6 +35,12 @@ namespace CatProcessingUnit.UI
         {
             GetComponent<CanvasGroup>().alpha = 1.0f;
             GetComponent<Button>().interactable = true;
+        }
+
+        private void OnClick()
+        {
+            Debug.Assert(_level != null);
+            GameManager.LoadSceneCollection(_level.SceneCollection);
         }
     }
 }

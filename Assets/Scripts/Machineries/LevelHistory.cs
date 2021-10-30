@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.UI;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CatProcessingUnit.Machineries
@@ -132,7 +134,24 @@ namespace CatProcessingUnit.Machineries
                     {
                         State = GameState.UI;
                         Debug.Log("You win!");
-                        ServiceLocator.GetService<LegacyLevelManager>().CompleteCurrentLevel();
+
+                        IEnumerator Hack()
+                        {
+                            var catCam = ServiceLocator.GetService<CatCamera>();
+                            var victoryScreen = ServiceLocator.GetService<VictoryScreen>();
+                            var catRenderer = ServiceLocator.GetService<CatRenderer>();
+                            yield return DOTween.Sequence(gameObject)
+                                .Append(victoryScreen.FadeIn())
+                                .Append(catCam.FocusCat().OnComplete(
+                                    () =>
+                                    {
+                                        catRenderer.GetComponent<Animator>().SetTrigger("meow");
+                                    }))
+                                .Append(catRenderer.FadeInHappyText())
+                                .WaitForCompletion();
+                        }
+                        // ServiceLocator.GetService<LegacyLevelManager>().CompleteCurrentLevel();
+                        yield return StartCoroutine(Hack());
                         yield break;
                     }
                 }

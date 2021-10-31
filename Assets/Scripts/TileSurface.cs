@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace CatProcessingUnit
 {
@@ -72,5 +73,24 @@ namespace CatProcessingUnit
 
             return new TileSurface(flags);
         }
+        
+        protected bool Equals(TileSurface other)
+        {
+            return Flags.SequenceEqual(other.Flags);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((TileSurface) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Flags != null ? Flags.GetHashCode() : 0);
+        }
+
     }
 }

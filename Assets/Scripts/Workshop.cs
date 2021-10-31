@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
 using CatProcessingUnit.TileDataNS;
 using CatProcessingUnit.TileRenderers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CatProcessingUnit
 {
@@ -96,7 +94,7 @@ namespace CatProcessingUnit
             if (data.GetTileAt(_targetPosition) is CatTileData)
             {
                 Debug.Log("You win!");
-                ServiceLocator.GetService<LevelManager>().CompleteCurrentLevel();
+                ServiceLocator.GetService<LegacyLevelManager>().CompleteCurrentLevel();
             }
         }
 

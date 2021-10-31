@@ -18,3 +18,4 @@ MonoBehaviour:
   _extendedStickySprite: {fileID: 21300000, guid: a11447c9713f4ff4698cc4612fda6bdf, type: 3}
   _arm: {fileID: 21300000, guid: ab82e033a7dd66e488f1bcf53965d85c, type: 3}
   _armSticky: {fileID: 21300000, guid: 9d365636f8c58064ba5efb8bd42af419, type: 3}
+  _armStem: {fileID: 21300000, guid: ef9afcc4257345c44ac9b0153af30185, type: 3}

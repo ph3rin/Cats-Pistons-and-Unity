@@ -9,7 +9,7 @@ namespace CatProcessingUnit.UI
     public class NextLevelButton : MonoBehaviour
     {
         private Button _button;
-        private LevelManager _levelManager;
+        private LegacyLevelManager _legacyLevelManager;
         private int _levelIdx;
 
         private void Awake()
@@ -19,9 +19,9 @@ namespace CatProcessingUnit.UI
 
         private void Start()
         {
-            _levelManager = ServiceLocator.GetService<LevelManager>();
-            _levelIdx = _levelManager.GetCurrentLevelIndex();
-            if (!_levelManager.HasNextLevel())
+            _legacyLevelManager = ServiceLocator.GetService<LegacyLevelManager>();
+            _levelIdx = _legacyLevelManager.GetCurrentLevelIndex();
+            if (!_legacyLevelManager.HasNextLevel())
             {
                 Destroy(gameObject);
             }
@@ -29,12 +29,12 @@ namespace CatProcessingUnit.UI
 
         private void Update()
         {
-            _button.interactable = _levelManager.IsLevelCompleted(_levelIdx);
+            _button.interactable = _legacyLevelManager.IsLevelCompleted(_levelIdx);
         }
         
         public void OnClick()
         {
-            _levelManager.GoToNextLevel();
+            _legacyLevelManager.GoToNextLevel();
         }
     }
 }

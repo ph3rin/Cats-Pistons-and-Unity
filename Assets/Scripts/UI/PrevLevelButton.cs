@@ -7,7 +7,7 @@ namespace CatProcessingUnit.UI
     public class PrevLevelButton : MonoBehaviour
     {
         private Button _button;
-        private LevelManager _levelManager;
+        private LegacyLevelManager _legacyLevelManager;
         private int _levelIdx;
 
         private void Awake()
@@ -17,9 +17,9 @@ namespace CatProcessingUnit.UI
 
         private void Start()
         {
-            _levelManager = ServiceLocator.GetService<LevelManager>();
-            _levelIdx = _levelManager.GetCurrentLevelIndex();
-            if (!_levelManager.HasPreviousLevel())
+            _legacyLevelManager = ServiceLocator.GetService<LegacyLevelManager>();
+            _levelIdx = _legacyLevelManager.GetCurrentLevelIndex();
+            if (!_legacyLevelManager.HasPreviousLevel())
             {
                 Destroy(gameObject);
             }
@@ -27,7 +27,7 @@ namespace CatProcessingUnit.UI
 
         public void OnClick()
         {
-            _levelManager.GoToPreviousLevel();
+            _legacyLevelManager.GoToPreviousLevel();
         }
     }
 }

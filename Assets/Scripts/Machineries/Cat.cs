@@ -11,6 +11,7 @@ namespace CatProcessingUnit.Machineries
 
         public Cat(Machinery other) : base(other)
         {
+            
         }
 
         public override IEnumerable<Force> PropagateForce(Workspace workspace, Force force)

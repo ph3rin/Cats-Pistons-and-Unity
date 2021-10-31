@@ -26,10 +26,23 @@ namespace CatProcessingUnit.LevelManagement
             return GetLevelId(runtimeDescriptor.StaticDescriptor);
         }
 
+        public void LoadNextLevel()
+        {
+            var nextLevel = GetLevel(GetCurrentLevelId() + 1);
+            Debug.Assert(nextLevel != null);
+            GameManager.LoadSceneCollection(nextLevel.SceneCollection);
+        }
+        
         public LevelDescriptor GetLevel(int id)
         {
             if (id < 0 || id >= _levels.Count) return null;
             return _levels[id];
+        }
+
+        public void LoadLevel(int i)
+        {
+            var level = _levels[i];
+            GameManager.LoadSceneCollection(level.SceneCollection);
         }
     }
 }

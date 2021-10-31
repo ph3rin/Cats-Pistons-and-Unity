@@ -2127,7 +2127,7 @@ GameObject:
   - component: {fileID: 1468702558}
   - component: {fileID: 1468702560}
   - component: {fileID: 1468702559}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Push cat here
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3163,7 +3163,7 @@ GameObject:
   - component: {fileID: 2047736057}
   - component: {fileID: 2047736059}
   - component: {fileID: 2047736058}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: LMB use piston
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3381,7 +3381,7 @@ GameObject:
   - component: {fileID: 2086968898}
   - component: {fileID: 2086968897}
   - component: {fileID: 2086968896}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Instruction Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

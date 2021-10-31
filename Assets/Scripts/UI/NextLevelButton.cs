@@ -1,40 +1,40 @@
 ﻿using System;
 using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.LevelManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CatProcessingUnit.UI
 {
-    [RequireComponent(typeof(Button))]
     public class NextLevelButton : MonoBehaviour
     {
-        private Button _button;
-        private LegacyLevelManager _legacyLevelManager;
-        private int _levelIdx;
-
-        private void Awake()
+        private bool NextLevelExists()
         {
-            _button = GetComponent<Button>();
+            var levelManager = ServiceLocator.GetService<LevelManager>();
+            var nextLevel = levelManager.GetLevel(levelManager.GetCurrentLevelId() + 1);
+            return nextLevel != null;
         }
-
+        
         private void Start()
         {
-            _legacyLevelManager = ServiceLocator.GetService<LegacyLevelManager>();
-            _levelIdx = _legacyLevelManager.GetCurrentLevelIndex();
-            if (!_legacyLevelManager.HasNextLevel())
+            if (!NextLevelExists())
             {
-                Destroy(gameObject);
+                GetComponentInChildren<Text>().text = "You win! MEOW :)";
             }
         }
 
-        private void Update()
+        public void LoadNextLevel()
         {
-            _button.interactable = _legacyLevelManager.IsLevelCompleted(_levelIdx);
-        }
-        
-        public void OnClick()
-        {
-            _legacyLevelManager.GoToNextLevel();
+            if (NextLevelExists())
+            {
+                ServiceLocator.GetService<LevelManager>().LoadNextLevel();
+            }
+            else
+            {
+                Debug.LogError("MEOW~~~~~~~~~~~~~~~~~~");
+                ServiceLocator.GetService<LevelManager>().LoadLevel(0);
+
+            }
         }
     }
 }

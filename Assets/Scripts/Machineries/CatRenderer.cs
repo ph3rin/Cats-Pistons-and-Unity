@@ -3,6 +3,7 @@ using System.Collections;
 using CatProcessingUnit.GameManagement;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -13,7 +14,8 @@ namespace CatProcessingUnit.Machineries
     {
         [SerializeField] private Text _happyText;
         [SerializeField] private float _happyTextFadeInTime;
-
+        [SerializeField] private UnityEvent _onInteract;
+        
         private void Awake()
         {
             _happyText.gameObject.SetActive(false);
@@ -42,7 +44,7 @@ namespace CatProcessingUnit.Machineries
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log($"MEOW {Time.frameCount}!!!");
+            _onInteract.Invoke();
         }
 
         public Tweener FadeInHappyText()

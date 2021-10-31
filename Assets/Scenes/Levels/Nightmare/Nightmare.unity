@@ -130,22 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1852885096}
     m_Modifications:
-    - target: {fileID: 4007985873554986020, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
-      propertyPath: _direction.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007985873554986020, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
-      propertyPath: _direction.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007985873554986020, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
-      propertyPath: _orientation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007985873554986020, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
-      propertyPath: _orientation.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4007985873554986023, guid: f767e065e2eb1eb408b8ed45b6d1d18f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -325,9 +309,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1852885096}
     m_Modifications:
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1996653883}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 829956189476515751, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+      propertyPath: _onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7088990517405192033, guid: 709263903ec5d814cad75a65dd673567, type: 3}
       propertyPath: m_Name
-      value: Color Tile 0
+      value: Cat Tile
       objectReference: {fileID: 0}
     - target: {fileID: 7088990517405192063, guid: 709263903ec5d814cad75a65dd673567, type: 3}
       propertyPath: m_RootOrder
@@ -618,6 +638,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 801852571432968573, guid: 88dbc3c532ab4f1439711c63e52fe85c, type: 3}
   m_PrefabInstance: {fileID: 1852885095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1996653883 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4307022672152631011, guid: 709263903ec5d814cad75a65dd673567, type: 3}
+  m_PrefabInstance: {fileID: 1225351286}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091314751
 GameObject:

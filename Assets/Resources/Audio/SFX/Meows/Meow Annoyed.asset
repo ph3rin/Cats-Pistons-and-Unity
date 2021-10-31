@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e12e72748c04a199110e169e87bd5e4, type: 3}
+  m_Name: Meow Annoyed
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: f58b23fe3fdb0f34cb8ce55ae43dbb49, type: 3}
+  - {fileID: 8300000, guid: c713498eb9a7c204598c79f3c4611cf3, type: 3}
+  - {fileID: 8300000, guid: 014cb660b915d79428e724f497a8de0c, type: 3}
+  - {fileID: 8300000, guid: 1d71001a70e4b7b419e074f77c209069, type: 3}
+  - {fileID: 8300000, guid: 74feb494d4ab45d43992742241bc13cf, type: 3}
+  _baseVolume: 0.6
+  _volumeVariation: 0.1
+  _basePitch: 1
+  _pitchVariation: 0.1

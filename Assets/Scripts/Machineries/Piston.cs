@@ -4,6 +4,13 @@ using UnityEngine;
 
 namespace CatProcessingUnit.Machineries
 {
+    public enum PistonClickResult
+    {
+        Extended,
+        Retracted,
+        NoOp
+    }
+    
     public class Piston : Machinery, ICloneable<Piston>
     {
         public Vector2Int Direction { get; }
@@ -89,9 +96,10 @@ namespace CatProcessingUnit.Machineries
             return new Piston(this);
         }
 
-        public void Extend(MachineryHistory<Piston> history)
+        public PistonClickResult Extend(MachineryHistory<Piston> history)
         {
             var levelHistory = history.LevelHistory;
+            var result = PistonClickResult.NoOp;
             if (CurrentLength == 0)
             {
                 for (var i = 0; i < MaxLength; ++i)
@@ -104,6 +112,7 @@ namespace CatProcessingUnit.Machineries
                     if (piston.ExtendInternal(workspace))
                     {
                         levelHistory.Push(applications, new AnimationOptions(0.125f));
+                        result = PistonClickResult.Extended;
                     }
                 }
                 levelHistory.StabilizeHead();
@@ -120,10 +129,13 @@ namespace CatProcessingUnit.Machineries
                     if (piston.RetractInternal(workspace))
                     {
                         levelHistory.Push(applications, new AnimationOptions(0.125f));
+                        result = PistonClickResult.Retracted;
                     }
                 }
                 levelHistory.StabilizeHead();
             }
+
+            return result;
         }
 
         private bool ExtendInternal(Workspace workspace)

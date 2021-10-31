@@ -5,6 +5,7 @@ using CatProcessingUnit.GameManagement;
 using CatProcessingUnit.UI;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CatProcessingUnit.Machineries
 {
@@ -14,7 +15,8 @@ namespace CatProcessingUnit.Machineries
         [SerializeField] private int _width;
         [SerializeField] private int _height;
         [SerializeField] private GameObject _gridGuidePrefab;
-
+        [SerializeField] private UnityEvent _onRestart;
+        
         private List<IMachineryHistory> _machineryHistories;
 
         public int Width => _width;
@@ -100,7 +102,7 @@ namespace CatProcessingUnit.Machineries
 
         public void StabilizeHead()
         {
-            StabilizeHead(new AnimationOptions(0.125f));
+            StabilizeHead(new AnimationOptions(0.18f));
         }
 
         public void StabilizeHead(AnimationOptions options)
@@ -208,6 +210,7 @@ namespace CatProcessingUnit.Machineries
             if (HeadIndex == 0) return;
             HeadIndex = 0;
             StabilizeHead(new AnimationOptions(0.5f / ActiveIndex));
+            _onRestart.Invoke();
         }
     }
 

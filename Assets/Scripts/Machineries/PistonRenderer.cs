@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
@@ -10,8 +11,10 @@ namespace CatProcessingUnit.Machineries
     {
         [SerializeField] private int _maxLength;
         [SerializeField] private int _currentLength;
-        
-        [FormerlySerializedAs("_headTransform")] [SerializeField] private SpriteRenderer _headRenderer;
+
+        [FormerlySerializedAs("_headTransform")] [SerializeField]
+        private SpriteRenderer _headRenderer;
+
         [SerializeField] private SpriteRenderer _stemRenderer;
 
         [SerializeField] private Sprite _baseSpriteOn;
@@ -19,8 +22,13 @@ namespace CatProcessingUnit.Machineries
         [SerializeField] private Sprite _headSpriteOn;
         [SerializeField] private Sprite _headSpriteOff;
 
-        private SpriteRenderer _baseRenderer;
+        [SerializeField] private UnityEvent _onExtend;
+        [SerializeField] private UnityEvent _onRetract;
+        [SerializeField] private UnityEvent _onStick;
+        [SerializeField] private UnityEvent _onUnstick;
         
+        private SpriteRenderer _baseRenderer;
+
         private void Awake()
         {
             Debug.Assert(_maxLength >= 1);
@@ -59,7 +67,7 @@ namespace CatProcessingUnit.Machineries
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-            
+
             transform.localPosition = (Vector2) dest.Position;
             _headRenderer.transform.localPosition = dest.CurrentLength * Vector2.right;
             _stemRenderer.size = new Vector2(dest.CurrentLength + 1, 1.0f);
@@ -67,13 +75,34 @@ namespace CatProcessingUnit.Machineries
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (MachineryHistory.LevelHistory.State != GameState.Gameplay) return;
+            var levelHistory = MachineryHistory.LevelHistory;
+            if (levelHistory.State != GameState.Gameplay) return;
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                CurrentMachinery.Extend(MachineryHistory);
-            } else if (eventData.button == PointerEventData.InputButton.Right)
+                switch (CurrentMachinery.Extend(MachineryHistory))
+                {
+                    case PistonClickResult.Extended:
+                        _onExtend.Invoke();
+                        break;
+                    case PistonClickResult.Retracted:
+                        _onRetract.Invoke();
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
             {
                 CurrentMachinery.SetStickiness(MachineryHistory, !CurrentMachinery.IsSticky);
+                if (CurrentMachinery.IsSticky)
+                {
+                    _onUnstick.Invoke();
+                }
+                else
+                {
+                    _onStick.Invoke();
+                }
             }
         }
     }

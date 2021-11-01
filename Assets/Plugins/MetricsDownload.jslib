@@ -1,0 +1,18 @@
+﻿mergeInto(LibraryManager.library, {
+
+    DownloadMetrics: function (filename, text) {
+        filename = Pointer_stringify(filename);
+        text = Pointer_stringify(text);
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+});

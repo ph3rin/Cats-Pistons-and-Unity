@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using CatProcessingUnit.Metrics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -83,11 +84,14 @@ namespace CatProcessingUnit.Machineries
                 {
                     case PistonClickResult.Extended:
                         _onExtend.Invoke();
+                        MetricsManager.I.AddMetrics($"[PISTON] Extended {CurrentMachinery.Position}");
                         break;
                     case PistonClickResult.Retracted:
                         _onRetract.Invoke();
+                        MetricsManager.I.AddMetrics($"[PISTON] Retracted {CurrentMachinery.Position}");
                         break;
-                    default:
+                    case PistonClickResult.NoOp:
+                        MetricsManager.I.AddMetrics($"[PISTON] Failed {CurrentMachinery.Position}");
                         break;
                 }
                 
@@ -97,10 +101,12 @@ namespace CatProcessingUnit.Machineries
                 CurrentMachinery.SetStickiness(MachineryHistory, !CurrentMachinery.IsSticky);
                 if (CurrentMachinery.IsSticky)
                 {
+                    MetricsManager.I.AddMetrics($"[PISTON] Unstick {CurrentMachinery.Position}");
                     _onUnstick.Invoke();
                 }
                 else
                 {
+                    MetricsManager.I.AddMetrics($"[PISTON] Stick {CurrentMachinery.Position}");
                     _onStick.Invoke();
                 }
             }

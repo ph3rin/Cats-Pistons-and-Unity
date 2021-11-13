@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4007985873554986025}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -105,6 +105,66 @@ MonoBehaviour:
   _baseSpriteOff: {fileID: 21300000, guid: 61fe805890ea26a46855dc80c1e456e5, type: 3}
   _headSpriteOn: {fileID: 21300000, guid: a43d89aaab341334ab906469c4ba59af, type: 3}
   _headSpriteOff: {fileID: 21300000, guid: b33d9905b60af254b897e1f14f10b4dc, type: 3}
+  _onExtend:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: cf320525d8c85eb48b2977c4e1286eaf, type: 2}
+        m_TargetAssemblyTypeName: CatProcessingUnit.Audio.Sfx, CatProcessingtUnit
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onRetract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fbc2d2589008e0e4db8d352dfae6e12a, type: 2}
+        m_TargetAssemblyTypeName: CatProcessingUnit.Audio.Sfx, CatProcessingtUnit
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onStick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 214ca890efcc30541918f2d7ee48fa36, type: 2}
+        m_TargetAssemblyTypeName: CatProcessingUnit.Audio.Sfx, CatProcessingtUnit
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onUnstick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a1ce6c1717acc0b429209b130b68a469, type: 2}
+        m_TargetAssemblyTypeName: CatProcessingUnit.Audio.Sfx, CatProcessingtUnit
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &4007985873554986021
 BoxCollider2D:
   m_ObjectHideFlags: 0

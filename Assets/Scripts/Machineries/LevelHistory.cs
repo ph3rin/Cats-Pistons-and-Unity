@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
+using CatProcessingUnit.LevelManagement;
+using CatProcessingUnit.Metrics;
 using CatProcessingUnit.UI;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CatProcessingUnit.Machineries
 {
@@ -14,7 +18,8 @@ namespace CatProcessingUnit.Machineries
         [SerializeField] private int _width;
         [SerializeField] private int _height;
         [SerializeField] private GameObject _gridGuidePrefab;
-
+        [SerializeField] private UnityEvent _onRestart;
+        
         private List<IMachineryHistory> _machineryHistories;
 
         public int Width => _width;
@@ -44,6 +49,11 @@ namespace CatProcessingUnit.Machineries
 
             GenerateTileGuides();
             FindTargetPosition();
+        }
+
+        private void Start()
+        {
+            MetricsManager.I.AddMetrics($"[LEVEL] Switch to level {ServiceLocator.GetService<LevelManager>().GetCurrentLevelId()}");
         }
 
         private void FindTargetPosition()
@@ -100,7 +110,7 @@ namespace CatProcessingUnit.Machineries
 
         public void StabilizeHead()
         {
-            StabilizeHead(new AnimationOptions(0.125f));
+            StabilizeHead(new AnimationOptions(0.18f));
         }
 
         public void StabilizeHead(AnimationOptions options)
@@ -140,6 +150,8 @@ namespace CatProcessingUnit.Machineries
                             var catCam = ServiceLocator.GetService<CatCamera>();
                             var victoryScreen = ServiceLocator.GetService<VictoryScreen>();
                             var catRenderer = ServiceLocator.GetService<CatRenderer>();
+                            MetricsManager.I.AddMetrics($"[LEVEL] Completed level" +
+                                                        $" {ServiceLocator.GetService<LevelManager>().GetCurrentLevelId()}");
                             yield return DOTween.Sequence(gameObject)
                                 .Append(victoryScreen.FadeIn())
                                 .Append(catCam.FocusCat().OnComplete(
@@ -177,7 +189,7 @@ namespace CatProcessingUnit.Machineries
             {
                 return;
             }
-
+            MetricsManager.I.AddMetrics("[HISTORY] Undo");
             do
             {
                 --HeadIndex;
@@ -194,7 +206,7 @@ namespace CatProcessingUnit.Machineries
             {
                 return;
             }
-
+            MetricsManager.I.AddMetrics("[HISTORY] Redo");
             do
             {
                 ++HeadIndex;
@@ -206,8 +218,10 @@ namespace CatProcessingUnit.Machineries
         public void Restart()
         {
             if (HeadIndex == 0) return;
+            MetricsManager.I.AddMetrics("[HISTORY] Reset");
             HeadIndex = 0;
             StabilizeHead(new AnimationOptions(0.5f / ActiveIndex));
+            _onRestart.Invoke();
         }
     }
 

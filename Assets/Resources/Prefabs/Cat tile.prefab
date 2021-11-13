@@ -180,6 +180,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _happyText: {fileID: 416240714922116691}
   _happyTextFadeInTime: 0.6
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 6cb24468904d6ed4ea62d8f9cdfe89e4, type: 2}
+        m_TargetAssemblyTypeName: CatProcessingUnit.Audio.Sfx, CatProcessingtUnit
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4307022672152631011}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: meow
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8451154799691036539
 MonoBehaviour:
   m_ObjectHideFlags: 0

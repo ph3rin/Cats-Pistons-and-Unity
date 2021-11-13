@@ -36,6 +36,8 @@ namespace CatProcessingUnit.UI
                 return;
             }
 
+            _pageId = pageId;
+
             for (var i = 0; i < _buttons.Count; ++i)
             {
                 var button = _buttons[i];
@@ -50,6 +52,16 @@ namespace CatProcessingUnit.UI
                     button.Disable();
                 }
             }
+        }
+
+        public void GotoPrevPage()
+        {
+            SetPageId(_pageId - 1);
+        }
+
+        public void GotoNextPage()
+        {
+            SetPageId(_pageId + 1);
         }
     }
 }

@@ -48,6 +48,21 @@ MonoBehaviour:
   _width: 10
   _height: 5
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
+  _onRestart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7d8fc0c5c1741d64e862458866903857, type: 2}
+        m_TargetAssemblyTypeName: CatProcessingUnit.Audio.Sfx, CatProcessingtUnit
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &801852571432968572
 MonoBehaviour:
   m_ObjectHideFlags: 0

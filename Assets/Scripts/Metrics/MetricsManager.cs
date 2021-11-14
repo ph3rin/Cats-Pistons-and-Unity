@@ -34,7 +34,7 @@ namespace CatProcessingUnit.Metrics
         public void AddMetrics(string data)
         {
             _metrics.Add($"[{DateTime.UtcNow:T}] {data}");
-            if (_metrics.Count % 16 == 0)
+            if (_metrics.Count % 16 == 0 && Application.platform != RuntimePlatform.WebGLPlayer)
             {
                 SaveMetrics();
             }

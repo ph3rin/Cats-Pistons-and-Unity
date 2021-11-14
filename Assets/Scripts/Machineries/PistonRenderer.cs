@@ -40,7 +40,7 @@ namespace CatProcessingUnit.Machineries
         protected override Piston CreateMachineryInternal()
         {
             return new Piston(
-                Vector2Int.RoundToInt(transform.position),
+                Vector2Int.RoundToInt(transform.localPosition),
                 RotationUtil.RightVectorToDirection(transform.right),
                 _maxLength,
                 _currentLength);
@@ -76,6 +76,7 @@ namespace CatProcessingUnit.Machineries
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            TransitionManager.I.TransitionToGamePlay();
             var levelHistory = MachineryHistory.LevelHistory;
             if (levelHistory.State != GameState.Gameplay) return;
             if (eventData.button == PointerEventData.InputButton.Left)

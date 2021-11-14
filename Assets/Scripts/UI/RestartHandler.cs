@@ -11,13 +11,11 @@ namespace CatProcessingUnit.UI
     {
         [SerializeField] private Image _progressBar;
         [SerializeField] private float _timeRequiredToReset;
-        private LevelHistory _level;
         private float _timeSincePressed;
         private bool _requireRelease;
         
         private void Start()
         {
-            _level = ServiceLocator.GetService<LevelHistory>();
             _timeSincePressed = 0;
             _requireRelease = false;
         }
@@ -29,7 +27,7 @@ namespace CatProcessingUnit.UI
                 _requireRelease = false;
             }
             
-            if (Input.GetKey(KeyCode.R) && !_requireRelease)
+            if (Input.GetKey(KeyCode.R) && !_requireRelease && TransitionManager.I.State == GlobalState.GamePlay)
             {
                 _timeSincePressed += Time.deltaTime;
                 _progressBar.gameObject.SetActive(true);
@@ -37,7 +35,8 @@ namespace CatProcessingUnit.UI
 
                 if (_timeSincePressed >= _timeRequiredToReset)
                 {
-                    _level.Restart();
+                    var level = TransitionManager.ActiveLevel;
+                    level.Restart();
                     _timeSincePressed = 0.0f;
                     _requireRelease = true;
                 }

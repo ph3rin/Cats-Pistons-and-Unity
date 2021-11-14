@@ -10,16 +10,9 @@ using UnityEngine.UI;
 namespace CatProcessingUnit.Machineries
 {
     [RequireComponent(typeof(RegisterService))]
-    public class CatRenderer : MachineryRenderer<Cat>, IPointerClickHandler, IService
+    public class CatRenderer : MachineryRenderer<Cat>, IPointerClickHandler
     {
-        [SerializeField] private Text _happyText;
-        [SerializeField] private float _happyTextFadeInTime;
         [SerializeField] private UnityEvent _onInteract;
-        
-        private void Awake()
-        {
-            _happyText.gameObject.SetActive(false);
-        }
 
         protected override Cat CreateMachineryInternal()
         {
@@ -45,18 +38,6 @@ namespace CatProcessingUnit.Machineries
         public void OnPointerClick(PointerEventData eventData)
         {
             _onInteract.Invoke();
-        }
-
-        public Tweener FadeInHappyText()
-        {
-            _happyText.gameObject.SetActive(true);
-            var oldColor = _happyText.color;
-            _happyText.color = new Color(oldColor.r, oldColor.g, oldColor.b, 0.0f);
-            return _happyText.DOFade(1.0f, _happyTextFadeInTime);
-        }
-        
-        public void Init()
-        {
         }
     }
 }

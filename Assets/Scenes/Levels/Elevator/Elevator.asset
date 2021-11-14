@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Elevator
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 6ccd42baf1e6f7a4e91b0183f3d9f013, type: 3}
-  _buildIndex: 11
+  _buildIndex: 12

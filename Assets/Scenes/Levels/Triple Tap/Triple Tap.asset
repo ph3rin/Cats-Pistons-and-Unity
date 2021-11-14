@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Triple Tap
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 8944bdc58d01c4142a1ee52d60154665, type: 3}
-  _buildIndex: 5
+  _buildIndex: 6

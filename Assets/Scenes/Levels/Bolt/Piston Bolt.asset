@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Piston Bolt
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
-  _buildIndex: 3
+  _buildIndex: 4

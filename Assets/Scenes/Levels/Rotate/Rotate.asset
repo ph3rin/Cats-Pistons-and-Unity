@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rotate
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 5247fc4cd6f1db44f9bc9356fb52ce0f, type: 3}
-  _buildIndex: 6
+  _buildIndex: 7

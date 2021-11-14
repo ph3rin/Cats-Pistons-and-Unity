@@ -6,22 +6,19 @@ namespace CatProcessingUnit.UI
 {
     public class UndoRedoHandler : MonoBehaviour
     {
-        private LevelHistory _levelHistory;
-        
-        private void Start()
-        {
-            _levelHistory = ServiceLocator.GetService<LevelHistory>();
-        }
-
         private void Update()
         {
+            var level = TransitionManager.ActiveLevel;
+
+            if (level == null || TransitionManager.I.State != GlobalState.GamePlay) return;
+            
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                _levelHistory.Undo();
+                level.Undo();
             } 
             else if (Input.GetKeyDown(KeyCode.C))
             {
-                _levelHistory.Redo();
+                level.Redo();
             }
         }
     }

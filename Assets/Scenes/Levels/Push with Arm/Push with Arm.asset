@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Push with Arm
   m_EditorClassIdentifier: 
   _scene: {fileID: 102900000, guid: 1f25ab663d005d144b4168295166b6f4, type: 3}
-  _buildIndex: 4
+  _buildIndex: 5

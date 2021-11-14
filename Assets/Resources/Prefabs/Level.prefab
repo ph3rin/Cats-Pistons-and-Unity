@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 801852571432968573}
   - component: {fileID: -9140480490276491149}
   - component: {fileID: 801852571432968572}
-  - component: {fileID: 3256683911238354567}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -47,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 10
   _height: 5
+  _levelFramePrefab: {fileID: 8907110446815814148, guid: 4a3a438b4e2cc5e4e9f4a6ad84124b3b, type: 3}
   _gridGuidePrefab: {fileID: 521828248052292213, guid: 665ca4507708f94448b6824811336000, type: 3}
   _onRestart:
     m_PersistentCalls:
@@ -75,16 +75,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51df14359808473b8db040604933ffcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3256683911238354567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801852571432968575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a11d264a9ea46399830bb6f38be5abc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _staticDescriptor: {fileID: 11400000, guid: b8d5c8f68c4389648b693e0700d20bb7, type: 2}

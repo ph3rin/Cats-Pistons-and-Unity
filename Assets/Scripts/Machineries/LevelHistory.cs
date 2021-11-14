@@ -3,22 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
-using CatProcessingUnit.LevelManagement;
 using CatProcessingUnit.Metrics;
-using CatProcessingUnit.UI;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace CatProcessingUnit.Machineries
 {
     [RequireComponent(typeof(RegisterService))]
-    public class LevelHistory : MonoBehaviour, IEnumerable<IMachineryHistory>, IService
+    public class LevelHistory : MonoBehaviour, IEnumerable<IMachineryHistory>
     {
         [SerializeField] private int _width;
         [SerializeField] private int _height;
+        [SerializeField] private LevelFrame _levelFramePrefab;
         [SerializeField] private GameObject _gridGuidePrefab;
         [SerializeField] private UnityEvent _onRestart;
+        private TransitionManager _transitionManager;
         
         private List<IMachineryHistory> _machineryHistories;
 
@@ -48,12 +47,21 @@ namespace CatProcessingUnit.Machineries
             }
 
             GenerateTileGuides();
+            GenerateLevelFrame();
             FindTargetPosition();
         }
 
         private void Start()
         {
-            MetricsManager.I.AddMetrics($"[LEVEL] Switch to level {ServiceLocator.GetService<LevelManager>().GetCurrentLevelId()}");
+            _transitionManager = ServiceLocator.GetService<TransitionManager>();
+            // MetricsManager.I.AddMetrics($"[LEVEL] Switch to level {ServiceLocator.GetService<LevelManager>().GetCurrentLevelId()}");
+        }
+
+        private void GenerateLevelFrame()
+        {
+            var frame = Instantiate(_levelFramePrefab, transform);
+            var center = 0.5f * new Vector2(_width - 1, _height - 1);
+            frame.ChangeDimensions(center, new Vector2(_width + 1, _height + 1));
         }
 
         private void FindTargetPosition()
@@ -115,7 +123,6 @@ namespace CatProcessingUnit.Machineries
 
         public void StabilizeHead(AnimationOptions options)
         {
-            Debug.Assert(State == GameState.Gameplay);
             if (HeadIndex == ActiveIndex) return;
 
             IEnumerator InternalStabilize()
@@ -147,22 +154,8 @@ namespace CatProcessingUnit.Machineries
 
                         IEnumerator Hack()
                         {
-                            var catCam = ServiceLocator.GetService<CatCamera>();
-                            var victoryScreen = ServiceLocator.GetService<VictoryScreen>();
-                            var catRenderer = ServiceLocator.GetService<CatRenderer>();
-                            MetricsManager.I.AddMetrics($"[LEVEL] Completed level" +
-                                                        $" {ServiceLocator.GetService<LevelManager>().GetCurrentLevelId()}");
-                            yield return DOTween.Sequence(gameObject)
-                                .Append(victoryScreen.FadeIn())
-                                .Append(catCam.FocusCat().OnComplete(
-                                    () =>
-                                    {
-                                        catRenderer.GetComponent<Animator>().SetTrigger("meow");
-                                    }))
-                                .Append(catRenderer.FadeInHappyText())
-                                .WaitForCompletion();
+                            yield return TransitionManager.I.TransitionToNextLevel();
                         }
-                        // ServiceLocator.GetService<LegacyLevelManager>().CompleteCurrentLevel();
                         yield return StartCoroutine(Hack());
                         yield break;
                     }
@@ -175,10 +168,6 @@ namespace CatProcessingUnit.Machineries
 
             _stability[HeadIndex] = true;
             ActiveIndex = HeadIndex;
-        }
-
-        public void Init()
-        {
         }
 
         public void Undo()
@@ -215,13 +204,24 @@ namespace CatProcessingUnit.Machineries
             StabilizeHead(new AnimationOptions(1 / 32f + 1 / 64f));
         }
 
-        public void Restart()
+        public void Restart(bool invokeEvents = true)
         {
             if (HeadIndex == 0) return;
             MetricsManager.I.AddMetrics("[HISTORY] Reset");
             HeadIndex = 0;
-            StabilizeHead(new AnimationOptions(0.5f / ActiveIndex));
-            _onRestart.Invoke();
+            if (invokeEvents)
+            {
+                StabilizeHead(new AnimationOptions(0.5f / ActiveIndex));
+            }
+            else
+            {
+                StabilizeHead(AnimationOptions.Instant);
+                HistorySize = 1;
+            }
+            if (invokeEvents)
+            {
+                _onRestart.Invoke();
+            }
         }
     }
 

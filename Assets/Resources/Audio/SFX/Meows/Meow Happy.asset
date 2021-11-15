@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e12e72748c04a199110e169e87bd5e4, type: 3}
+  m_Name: Meow Happy
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: 4cb85ecb9a0fd2047aab78b64e78878d, type: 3}
+  _baseVolume: 1
+  _volumeVariation: 0
+  _basePitch: 1
+  _pitchVariation: 0
+  _mixerGroup: {fileID: 5486062787067192353, guid: 3c9824e30a27d7d479437158ffb61336, type: 2}

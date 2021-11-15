@@ -76,6 +76,7 @@ namespace CatProcessingUnit.Machineries
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (TransitionManager.I.State == GlobalState.Transition) return;
             TransitionManager.I.TransitionToGamePlay();
             var levelHistory = MachineryHistory.LevelHistory;
             if (levelHistory.State != GameState.Gameplay) return;
@@ -99,6 +100,7 @@ namespace CatProcessingUnit.Machineries
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
+                if (levelHistory.PreventStickiness) return;
                 CurrentMachinery.SetStickiness(MachineryHistory, !CurrentMachinery.IsSticky);
                 if (CurrentMachinery.IsSticky)
                 {

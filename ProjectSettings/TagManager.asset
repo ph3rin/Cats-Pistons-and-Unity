@@ -53,3 +53,6 @@ TagManager:
   - name: Tiles
     uniqueID: 1249478155
     locked: 0
+  - name: Heart
+    uniqueID: 29074163
+    locked: 0

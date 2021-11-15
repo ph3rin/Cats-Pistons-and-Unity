@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CatProcessingUnit.GameManagement;
 using CatProcessingUnit.Metrics;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,13 +21,16 @@ namespace CatProcessingUnit.Machineries
         private TransitionManager _transitionManager;
         
         private List<IMachineryHistory> _machineryHistories;
-
+        [SerializeField] private bool _preventStickiness;
+        
         public int Width => _width;
         public int Height => _height;
         public int ActiveIndex { get; private set; }
         public int HeadIndex { get; private set; }
         public int HistorySize { get; private set; }
 
+        public bool PreventStickiness => _preventStickiness;
+        
         public GameState State { get; private set; }
 
         public Vector2Int TargetPosition { get; private set; }
@@ -149,12 +153,14 @@ namespace CatProcessingUnit.Machineries
                 {
                     if (cat[ActiveIndex].Position == TargetPosition)
                     {
+                        var catRenderer = transform.GetComponentInChildren<CatRenderer>();
                         State = GameState.UI;
                         Debug.Log("You win!");
 
                         IEnumerator Hack()
                         {
-                            yield return TransitionManager.I.TransitionToNextLevel();
+                            yield return catRenderer.Happy().WaitForCompletion();
+                            yield return TransitionManager.I.TransitionToNextLevel(true);
                         }
                         yield return StartCoroutine(Hack());
                         yield break;

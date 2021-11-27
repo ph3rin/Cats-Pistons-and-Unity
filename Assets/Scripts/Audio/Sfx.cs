@@ -14,7 +14,12 @@ namespace CatProcessingUnit.Audio
         
         public void Play()
         {
-            ServiceLocator.GetService<AudioManager>().CreatePlayer().Play(this);
+            Play(0.0f);
+        }
+        
+        public void Play(float time)
+        {
+            ServiceLocator.GetService<AudioManager>().CreatePlayer().Play(this, time);
         }
     }
 }

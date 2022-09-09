@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CatProcessingUnit.TileDataNS;
 using UnityEngine;
 
 namespace CatProcessingUnit
@@ -9,13 +10,13 @@ namespace CatProcessingUnit
         private readonly int _width;
         private readonly int _height;
 
-        public IDictionary<WorkshopTile, Vector2Int> Coordinates => _tileCoordinates;
+        public IDictionary<TileData, Vector2Int> Coordinates => _tileCoordinates;
 
-        public WorkshopTileCoordinates(WorkshopTile[,] tiles)
+        public WorkshopTileCoordinates(TileData[,] tiles)
         {
             _width = tiles.GetLength(0);
             _height = tiles.GetLength(1);
-            _tileCoordinates = new Dictionary<WorkshopTile, Vector2Int>();
+            _tileCoordinates = new Dictionary<TileData, Vector2Int>();
             for (var x = 0; x < _width; ++x)
             {
                 for (var y = 0; y < _height; ++y)
@@ -27,9 +28,9 @@ namespace CatProcessingUnit
             }
         }
 
-        private Dictionary<WorkshopTile, Vector2Int> _tileCoordinates;
+        private Dictionary<TileData, Vector2Int> _tileCoordinates;
 
-        public Vector2Int? GetTilePosition(WorkshopTile tile)
+        public Vector2Int? GetTilePosition(TileData tile)
         {
             Debug.Assert(tile != null);
             if (_tileCoordinates.TryGetValue(tile, out var position))
@@ -40,7 +41,7 @@ namespace CatProcessingUnit
             return null;
         }
 
-        public void SetTilePosition(WorkshopTile tile, Vector2Int? pos)
+        public void SetTilePosition(TileData tile, Vector2Int? pos)
         {
             if (pos is { } newPos)
             {
@@ -52,7 +53,7 @@ namespace CatProcessingUnit
             }
         }
 
-        public void Translate(HashSet<WorkshopTile> gluedTiles, Vector2Int direction)
+        public void Translate(HashSet<TileData> gluedTiles, Vector2Int direction)
         {
             foreach (var tile in gluedTiles)
             {

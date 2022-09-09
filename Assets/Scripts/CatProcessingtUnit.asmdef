@@ -1,0 +1,16 @@
+{
+    "name": "CatProcessingtUnit",
+    "rootNamespace": "CatProcessingUnit",
+    "references": [
+        "GUID:b30efc8c8e100ec4baa930a61a40db91"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

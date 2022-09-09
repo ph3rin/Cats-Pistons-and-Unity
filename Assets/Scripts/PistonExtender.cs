@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using CatProcessingUnit.TileDataNS;
 using UnityEngine;
 
 namespace CatProcessingUnit
@@ -13,14 +15,25 @@ namespace CatProcessingUnit
             new Vector2Int(0, -1)
         };
 
-        private static HashSet<WorkshopTile> GetGluedBlocks(WorkshopTile startTile, Vector2Int moveDirection,
-            WorkshopTile ignoreTileA, WorkshopTile ignoreTileB = null)
+
+        public static HashSet<TileData> GetGluedTiles(
+            this WorkshopData workshop,
+            Vector2Int moveDirection,
+            HashSet<TileData> startTiles,
+            HashSet<TileData> staticTiles)
         {
-            Debug.Assert(startTile != null);
-            var workshop = startTile.Workshop;
-            var visited = new HashSet<WorkshopTile> {startTile};
-            var queue = new Queue<WorkshopTile>();
-            queue.Enqueue(startTile);
+            var visited = new HashSet<TileData>();
+            var queue = new Queue<TileData>();
+            foreach (var startTile in startTiles)
+            {
+                if (!staticTiles.Contains(startTile))
+                {
+                    visited.Add(startTile);
+                }
+
+                queue.Enqueue(startTile);
+            }
+
             while (queue.Count > 0)
             {
                 var front = queue.Dequeue();
@@ -28,71 +41,100 @@ namespace CatProcessingUnit
                 foreach (var delta in Deltas)
                 {
                     var neighborPosition = position + delta;
-                    var neighborTile = workshop.GetTileAt(neighborPosition);
-                    if (neighborTile == null || visited.Contains(neighborTile) || neighborTile == ignoreTileA ||
-                        neighborTile == ignoreTileB) continue;
-                    if (delta != moveDirection && !front.IsStickyOnOrientation(delta) &&
-                        !neighborTile.IsStickyOnOrientation(-delta)) continue;
-                    visited.Add(neighborTile);
-                    queue.Enqueue(neighborTile);
+                    var neighbor = workshop.GetTileAt(neighborPosition);
+                    if (neighbor == null || visited.Contains(neighbor) || staticTiles.Contains(neighbor)) continue;
+                    if (delta == moveDirection ||
+                        TileSurface.AreGluedTogether(Vector2Int.zero, front.Surface, delta, neighbor.Surface))
+                    {
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                    }
                 }
             }
 
             return visited;
         }
 
-        public static bool ExtendPiston(WorkshopTileData tileData, PistonTile pistonTile,
+        public static WorkshopTileCoordinates MovePistonArm(
+            WorkshopData data,
+            RotatableTileData armTile,
+            int directionSign)
+        {
+            Debug.Assert(directionSign == -1 || directionSign == 1);
+            armTile = data.FindCounterpart(armTile);
+            var direction = armTile.Direction * directionSign;
+            var startTiles = new HashSet<TileData> {armTile};
+            var staticTiles = FindAllTilesInPiston(armTile);
+            var gluedTiles = data.GetGluedTiles(direction, startTiles, staticTiles);
+            var coordinates = data.ToCoordinates();
+            coordinates.Translate(gluedTiles, direction);
+            return coordinates;
+        }
+
+        private static HashSet<TileData> FindAllTilesInPiston(RotatableTileData armTile)
+        {
+            var result = new HashSet<TileData>();
+            while (true)
+            {
+                result.Add(armTile);
+                if (armTile is PistonTileData) return result;
+                armTile = armTile.GetNeighboringTileByLocalOffset(Vector2Int.left) as RotatableTileData;
+                Debug.Assert(armTile != null);
+            }
+        }
+
+        public static bool ExtendPiston(WorkshopData data, PistonTileData pistonTile,
             Vector2Int direction)
         {
-            var startTilePosition = pistonTile.Position + direction;
-            var startTile = tileData.GetTileAt(startTilePosition);
-            var tileCoordinates = tileData.ToCoordinates();
-            if (startTile != null)
-            {
-                var gluedTiles = GetGluedBlocks(startTile, direction, pistonTile);
-                tileCoordinates.Translate(gluedTiles, direction);
-            }
-
-            var pistonArm = TileFactory.I.CreatePistonArm(pistonTile.Workshop, pistonTile.Orientation);
-            pistonArm.IsSticky = pistonTile.IsSticky;
-            tileCoordinates.SetTilePosition(pistonArm, startTilePosition);
+            pistonTile = data.FindCounterpart(pistonTile);
+            var armTile = FindArmTile(pistonTile);
+            var armSpawnPos = armTile.Position + armTile.Direction;
+            var tileCoordinates = MovePistonArm(data, armTile, 1);
+            Debug.Assert(data.Tiles.Contains(pistonTile));
             if (tileCoordinates.IsValidLayout())
             {
-                tileData.ApplyCoordinates(tileCoordinates);
+                var pistonArm = new PistonArmTileData(armSpawnPos, pistonTile.Direction, pistonTile.Sticky)
+                {
+                    WorkshopData = data
+                };
+                tileCoordinates.SetTilePosition(pistonArm, armSpawnPos);
+                if (armTile is PistonArmTileData realArm)
+                {
+                    realArm.IsStem = true;
+                }
+                data.ApplyCoordinates(tileCoordinates);
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool RetractPiston(WorkshopData data, PistonTileData pistonTile, Vector2Int pistonDirection)
+        {
+            Debug.Assert(data.Tiles.Contains(pistonTile));
+            var armTile = FindArmTile(pistonTile);
+            Debug.Assert(armTile != null);
+
+            var tileCoordinates = MovePistonArm(data, armTile, -1);
+            tileCoordinates.SetTilePosition(armTile, null);
+            if (tileCoordinates.IsValidLayout())
+            {
+                data.ApplyCoordinates(tileCoordinates);
                 return true;
             }
             else
             {
-                Object.Destroy(pistonArm.gameObject);
                 return false;
             }
         }
 
-        public static bool RetractPiston(WorkshopTileData tileData, PistonTile pistonTile, Vector2Int orientation)
+        public static RotatableTileData FindArmTile(this PistonTileData pistonTile)
         {
-            var armTilePosition = pistonTile.Position + orientation;
-            var pullTilePosition = armTilePosition + orientation;
-            var armTile = tileData.GetTileAt(armTilePosition);
-            var pullTile = tileData.GetTileAt(pullTilePosition);
-            var tileCoordinates = tileData.ToCoordinates();
-            tileCoordinates.SetTilePosition(armTile, null);
-            if (pullTile != null)
-            {
-                var gluedTiles = GetGluedBlocks(armTile, -orientation, pistonTile, armTile);
-                gluedTiles.Remove(armTile);
-                tileCoordinates.Translate(gluedTiles, -orientation);
-            }
-
-            if (tileCoordinates.IsValidLayout())
-            {
-                tileData.ApplyCoordinates(tileCoordinates);
-                Object.Destroy(armTile.gameObject);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var result =
+                pistonTile.GetNeighboringTileByLocalOffset(Vector2Int.right * pistonTile.CurrentLength) as
+                    RotatableTileData;
+            Debug.Assert(result != null);
+            return result;
         }
     }
 }

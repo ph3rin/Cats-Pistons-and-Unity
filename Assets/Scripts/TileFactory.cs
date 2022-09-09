@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data;
+using CatProcessingUnit.TileDataNS;
+using CatProcessingUnit.TileRenderers;
 using UnityEngine;
 
 namespace CatProcessingUnit
@@ -9,13 +12,14 @@ namespace CatProcessingUnit
 
         public static TileFactory I => _instance;
 
-        [SerializeField] private PistonArmTile _pistonArmPrefab;
-        
-        public PistonArmTile CreatePistonArm(Workshop workshop, Vector2Int orientation)
+        [SerializeField] private PistonArmTileRenderer _pistonArmPrefab;
+
+        public PistonArmTileRenderer CreatePistonArmRenderer(PistonArmTileData data)
         {
-            var arm = Instantiate(_pistonArmPrefab);
-            arm.Workshop = workshop;
-            arm.Orientation = orientation;
+            var workshop = data.WorkshopData.Workshop;
+            var arm = Instantiate(_pistonArmPrefab, workshop.transform);
+            arm.transform.localPosition = (Vector2) data.Position;
+            arm.transform.localRotation = RotationUtil.OrientationToRotation(data.Direction);
             return arm;
         }
         

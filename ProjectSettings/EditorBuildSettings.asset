@@ -6,6 +6,51 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/GameManager.unity
+    guid: 5f3b77038eb84d842a830530a5e30dfe
+  - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: 18fec3d6a45d9a346abd26076b8d1e74
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: aabd1967ac2acbe4cbe18564c2a1575d
+  - enabled: 1
+    path: Assets/Scenes/UI/Level UI.unity
+    guid: ffd559282e89f634dbe26611c5179d65
+  - enabled: 1
+    path: Assets/Scenes/Levels/Bolt/Piston Bolt.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Levels/Push with Arm/Push with Arm.unity
+    guid: 1f25ab663d005d144b4168295166b6f4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Triple Tap/Tripple Tap.unity
+    guid: 8944bdc58d01c4142a1ee52d60154665
+  - enabled: 1
+    path: Assets/Scenes/Levels/Rotate/Rotate.unity
+    guid: 5247fc4cd6f1db44f9bc9356fb52ce0f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Tunnel/Tunnel.unity
+    guid: 61e0287a35e348a46bb6d476d21b34c9
+  - enabled: 1
+    path: Assets/Scenes/Levels/Simple/Simple.unity
+    guid: 7c0673cfde32873449053b0ebde6d15c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Nightmare/Nightmare.unity
+    guid: c062d260dbe696c41ab99cc0dde12b0a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 6.unity
+    guid: 8af9f87c34ce8c94d97c2de322f45d68
+  - enabled: 1
+    path: Assets/Scenes/Levels/Elevator/Elevator.unity
+    guid: 6ccd42baf1e6f7a4e91b0183f3d9f013
+  - enabled: 1
+    path: Assets/Scenes/Levels/Technology/Technology.unity
+    guid: 56dc81837c2744140ad874e9cb285032
+  - enabled: 1
+    path: Assets/Scenes/Levels/Experimental/Experimental.unity
+    guid: bf3189e72c07e5047b89d04cfe9b43f0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Experiment.unity
+    guid: 0c89436cb2d53514a882bc0844fb13ef
   m_configObjects: {}

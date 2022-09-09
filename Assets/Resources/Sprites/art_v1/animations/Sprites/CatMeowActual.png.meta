@@ -1,0 +1,483 @@
+fileFormatVersion: 2
+guid: 5b013f2e62b84a14a8449136aebee0e2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1813260254379354938
+    second: CatMeowActual 0
+  - first:
+      213: 1618227610036889437
+    second: CatMeowActual 1
+  - first:
+      213: -3555168923507541339
+    second: CatMeowActual 2
+  - first:
+      213: 2963049195707179702
+    second: CatMeowActual 3
+  - first:
+      213: -1036774397948415457
+    second: CatMeowActual 4
+  - first:
+      213: -299477091401115175
+    second: CatMeowActual 5
+  - first:
+      213: 7761792406883872389
+    second: CatMeowActual 6
+  - first:
+      213: 6610826131271151016
+    second: CatMeowActual 7
+  - first:
+      213: 3861013094989384613
+    second: CatMeowActual 8
+  - first:
+      213: -461296786378990219
+    second: CatMeowActual 9
+  - first:
+      213: 1167229646396986051
+    second: CatMeowActual 10
+  - first:
+      213: -7362169401977282712
+    second: CatMeowActual 11
+  - first:
+      213: -2504568283445002299
+    second: CatMeowActual 12
+  - first:
+      213: 670083201830328665
+    second: CatMeowActual 13
+  - first:
+      213: -6033016565338445044
+    second: CatMeowActual 14
+  - first:
+      213: -8130170541614260077
+    second: CatMeowActual 15
+  - first:
+      213: 6268206256357941833
+    second: CatMeowActual 16
+  - first:
+      213: -5264573863504545446
+    second: CatMeowActual 17
+  - first:
+      213: 6415087151613234877
+    second: CatMeowActual 18
+  - first:
+      213: 7126140186455304809
+    second: CatMeowActual 19
+  - first:
+      213: -5253543264868467803
+    second: CatMeowActual 20
+  - first:
+      213: 3746062564414212174
+    second: CatMeowActual 21
+  - first:
+      213: -3997875705064374727
+    second: CatMeowActual 22
+  - first:
+      213: -385930127683889462
+    second: CatMeowActual 23
+  - first:
+      213: -1419611701635478540
+    second: CatMeowActual 24
+  - first:
+      213: -8899962263019334571
+    second: CatMeowActual 25
+  - first:
+      213: 6289045878276310428
+    second: CatMeowActual 26
+  - first:
+      213: 7760485752662995531
+    second: CatMeowActual 27
+  - first:
+      213: 7625554320904620025
+    second: CatMeowActual 28
+  - first:
+      213: -4971267023503719879
+    second: CatMeowActual 29
+  - first:
+      213: -5138519518758984339
+    second: CatMeowActual 30
+  - first:
+      213: -5801173313004872874
+    second: CatMeowActual 31
+  - first:
+      213: 5480402841201969346
+    second: CatMeowActual 32
+  - first:
+      213: -5349010811481147735
+    second: CatMeowActual 33
+  - first:
+      213: 2484670932874469996
+    second: CatMeowActual 34
+  - first:
+      213: 2252692883711712922
+    second: CatMeowActual 35
+  - first:
+      213: 729004122278047411
+    second: CatMeowActual 36
+  - first:
+      213: 8515292757213049728
+    second: CatMeowActual 37
+  - first:
+      213: -2347279811551166837
+    second: CatMeowActual 38
+  - first:
+      213: 5047644197610795602
+    second: CatMeowActual 39
+  - first:
+      213: 501794932430273120
+    second: CatMeowActual 40
+  - first:
+      213: -4288025586227150751
+    second: CatMeowActual_0
+  - first:
+      213: -3879081114811219142
+    second: CatMeowActual_1
+  - first:
+      213: -3791867819303384016
+    second: CatMeowActual_2
+  - first:
+      213: -7864896596509461129
+    second: CatMeowActual_3
+  - first:
+      213: -8000529326162221707
+    second: CatMeowActual_4
+  - first:
+      213: 2549477059794319973
+    second: CatMeowActual_5
+  - first:
+      213: 2802405470612994338
+    second: CatMeowActual_6
+  - first:
+      213: 247527777048555846
+    second: CatMeowActual_7
+  - first:
+      213: 1295995095178057913
+    second: CatMeowActual_8
+  - first:
+      213: 2525500303942336279
+    second: CatMeowActual_9
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 128
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CatMeowActual_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1600521c27fdd74c0800000000000000
+      internalID: -4288025586227150751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3340c0474cba2ac0800000000000000
+      internalID: -3879081114811219142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03ccf2bfe44906bc0800000000000000
+      internalID: -3791867819303384016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 775ffd927364ad290800000000000000
+      internalID: -7864896596509461129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575610b67f868f090800000000000000
+      internalID: -8000529326162221707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a3c00d0ef816320800000000000000
+      internalID: 2549477059794319973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229bf708de424e620800000000000000
+      internalID: 2802405470612994338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6417507a3356f6300800000000000000
+      internalID: 247527777048555846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b89cbe2cac4cf110800000000000000
+      internalID: 1295995095178057913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CatMeowActual_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71fbf9055216c0320800000000000000
+      internalID: 2525500303942336279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
